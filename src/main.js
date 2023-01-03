@@ -1,15 +1,18 @@
-function Main(){
-    return(
-        <div>
-            <div class="card" style="width: 18rem;">
-  <img src="" class="card-img-top" alt="..."/>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-        </div>
-    )
+import Card from "react-bootstrap/Card";
+import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
+function Main() {
+  return (
+    <>
+      <div className="col-6 mx-auto mt-5 ">
+        <h2>Ангилал</h2>
+      </div>
+      <Card className="col-6 my-5 mx-auto">
+        <Card.Body className=" ">Улс төр</Card.Body>
+      </Card>
+    </>
+  );
 }
 export default Main;

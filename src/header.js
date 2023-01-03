@@ -1,79 +1,43 @@
 import logo from "./logo.svg";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Button from "react-bootstrap/Button";
 
 function Header() {
   return (
-    <div className="navBar">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-          <img src={logo} className="App-logo" alt="logo" />
-          <a class="navbar-brand text-light" href="#">
-            <h2 className="Name">REACT</h2>
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a
-                  class="nav-link active text-white"
-                  aria-current="page"
-                  href="#"
-                >
-                  <h4>Хэрэглэгч</h4>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white" href="#">
-                  Сан
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white" href="#">
-                  Сэдэв
-                </a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle text-white"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Мэдээ
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item text-white" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item text-white" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item text-white" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </div>
+    <Navbar bg="dark" expand="lg">
+      <img src={logo} className="App-logo" alt="logo" />
+      <Container>
+        <Navbar.Brand href="#home" className="text-light">
+          Админ
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#home" className="text-light">
+              Хэрэглэгч
+            </Nav.Link>
+            <Nav.Link href="#link" className="text-white-50">
+              Ангилал
+            </Nav.Link>
+            <NavDropdown title="Мэдээ" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Мэдээ</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Сэтгэгдэл</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">Шинэ Мэдээ</NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link href="#link" className="text-secondary">
+              Сэдэв
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+        <Button variant="dark" className="bg-white text-dark">
+          Гарах
+        </Button>
+      </Container>
+    </Navbar>
   );
 }
 

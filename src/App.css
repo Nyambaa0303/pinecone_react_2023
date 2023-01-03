@@ -1,5 +1,5 @@
 .App-logo {
-  height: 6vmin;
+  height: 5vmin;
   pointer-events: none;
 }
 
@@ -33,12 +33,11 @@
   }
 }
 
-.navBar {
-  background-color: #696969;
-}
-
 .Name {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-weight: 600;
   margin: 0;
+}
+#basic-nav-dropdown {
+  color: rgb(145, 146, 148);
 }
