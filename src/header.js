@@ -28,17 +28,17 @@ function Header() {
                   aria-current="page"
                   href="#"
                 >
-                  Home
+                  <h4>Хэрэглэгч</h4>
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white" href="#">
-                  Features
+                  Сан
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white" href="#">
-                  Pricing
+                  Сэдэв
                 </a>
               </li>
               <li class="nav-item dropdown">
@@ -49,7 +49,7 @@ function Header() {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Dropdown link hi
+                  Мэдээ
                 </a>
                 <ul class="dropdown-menu">
                   <li>

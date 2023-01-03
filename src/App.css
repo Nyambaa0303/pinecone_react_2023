@@ -1,7 +1,5 @@
-
-
 .App-logo {
-  height: 10vmin;
+  height: 6vmin;
   pointer-events: none;
 }
 
@@ -10,7 +8,6 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
 
 .App-header {
   background-color: #282c34;
@@ -36,13 +33,12 @@
   }
 }
 
-.navBar{
+.navBar {
   background-color: #696969;
 }
 
-.Name{
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+.Name {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-weight: 600;
   margin: 0;
-
 }
