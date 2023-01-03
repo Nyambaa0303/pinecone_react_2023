@@ -1,6 +1,4 @@
-.App {
-  text-align: center;
-}
+
 
 .App-logo {
   height: 10vmin;
@@ -45,5 +43,6 @@
 .Name{
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight: 600;
+  margin: 0;
 
 }
