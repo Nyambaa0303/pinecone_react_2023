@@ -2,6 +2,8 @@ import Card from "react-bootstrap/Card";
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Form from 'react-bootstrap/Form';
 
 function Main() {
 
@@ -15,20 +17,35 @@ function Main() {
         <h2>Ангилал</h2>
         <Button variant="outline-primary" onClick={handleShow}>Шинэ</Button>
       </div>
-      <Card className="col-6 my-5 mx-auto">
-        <Card.Body className=" ">Улс төр</Card.Body>
+      <Card className="col-6 mt-5 mx-auto bg-light">
+        <Card.Body className="d-flex justify-content-between "><b className="mb-0 d-flex align-items-center">Улс төр</b> <Button variant="light" className="">Засах </Button></Card.Body>
+      </Card>
+      <Card className="col-6 mt-5 mx-auto bg-light">
+        <Card.Body className="d-flex justify-content-between "><b className="mb-0 d-flex align-items-center">Нийгэм </b> <Button variant="light" className="">Засах </Button></Card.Body>
+      </Card>
+      <Card className="col-6 mt-5 mx-auto bg-light">
+        <Card.Body className="d-flex justify-content-between "><b className="mb-0 d-flex align-items-center">Спорт</b> <Button variant="light" className="">Засах </Button></Card.Body>
       </Card>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Ангилал нэмэх</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
+        <Modal.Body> 
+        <InputGroup className="mb-1" >
+        <b>Hэр</b>
+      </InputGroup>
+        <Form.Control
+          aria-label="Default"
+          aria-describedby="inputGroup-sizing-default"
+          placeholder=" Ангилалийн нэр"
+        />
+        </Modal.Body>
+        <Modal.Footer className=" d-flex justify-content-between">
+          <Button variant="white" onClick={handleClose} className="btn btn-outline-danger ">
+          Устгах
           </Button>
           <Button variant="primary" onClick={handleClose}>
-            Save Changes
+          Хадгалах
           </Button>
         </Modal.Footer>
       </Modal>

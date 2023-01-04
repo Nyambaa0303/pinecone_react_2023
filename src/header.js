@@ -8,8 +8,8 @@ import Button from "react-bootstrap/Button";
 function Header() {
   return (
     <Navbar bg="dark" expand="lg">
-      <img src={logo} className="App-logo" alt="logo" />
       <Container>
+      <img src={logo} className="App-logo" alt="logo" />
         <Navbar.Brand href="#home" className="text-light">
           Админ
         </Navbar.Brand>
@@ -33,7 +33,7 @@ function Header() {
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <Button variant="dark" className="bg-white text-dark">
+        <Button variant="dark" className="bg-white text-dark d-sm-none d-lg-block">
           Гарах
         </Button>
       </Container>
