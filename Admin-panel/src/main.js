@@ -4,7 +4,8 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
-import Buttons from "./button.js";
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
 
 function Main() {
   const [show, setShow] = useState(false);
@@ -57,14 +58,14 @@ function Main() {
           />
         </Modal.Body>
         <Modal.Footer className=" d-flex justify-content-between">
-          {/* <Button
+          <Button
             variant="white"
             onClick={handleClose}
             className="btn btn-outline-danger "
           >
             Устгах
-          </Button> */}
-          <Buttons />
+          </Button>
+          {/* <AwesomeButton type="danger">Устгах</AwesomeButton> */}
 
           <Button variant="primary" onClick={handleClose}>
             Хадгалах
