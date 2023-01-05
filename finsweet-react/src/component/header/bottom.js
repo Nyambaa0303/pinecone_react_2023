@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { GrLocation } from "react-icons/gr";
-import { CiDeliveryTruck } from "react-icons/ci";
+import { BsTruck } from "react-icons/bs";
 import "../style/bottom.css";
 
 export function Bottom() {
@@ -13,11 +13,10 @@ export function Bottom() {
           <p className="par1">Our store</p>
         </div>
         <div className="d-flex bottomBottom">
-          <CiDeliveryTruck />
+          <BsTruck />
           <p className="par2">Track your order</p>
         </div>
       </div>
-      <div></div>
     </div>
   );
 }

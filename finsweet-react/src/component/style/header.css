@@ -1,0 +1,12 @@
+.header {
+  background-color: #003f62;
+  height: 10vh;
+}
+.headerImg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.headerBody {
+  height: 10vh;
+}

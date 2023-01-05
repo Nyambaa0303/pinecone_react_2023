@@ -21,6 +21,7 @@
 }
 .par1 {
   margin: 0;
+  margin-left: 8px;
 }
 .bottomBottom {
   display: flex;
@@ -28,4 +29,5 @@
 }
 .par2 {
   margin: 0;
+  margin-left: 8px;
 }
