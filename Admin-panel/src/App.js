@@ -6,9 +6,7 @@ import Main from "./main.js";
 function App() {
   return (
     <>
-      <header>
-        <Header />
-      </header>
+      <Header />
       <Main />
     </>
   );
