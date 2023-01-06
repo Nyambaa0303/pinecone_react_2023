@@ -3,10 +3,11 @@
   height: 10vh;
 }
 .headerImg {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-top: 20px;
 }
 .headerBody {
   height: 10vh;
+  max-width: 1000px;
+  width: 100%;
+  margin: auto;
 }
