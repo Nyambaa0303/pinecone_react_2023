@@ -12,7 +12,7 @@ import { RiShoppingCart2Line } from "react-icons/ri";
 export function Header() {
   return (
     <Navbar className="header">
-      <Container className="gap-5">
+      <Container style={{ maxWidth: "1200px" }} className="gap-5">
         <Navbar.Brand href="#">
           <img src="/images/logo 1.png" />
         </Navbar.Brand>

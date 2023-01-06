@@ -5,7 +5,7 @@ import "../style/bottom.css";
 
 export function Bottom() {
   return (
-    <div className="container bottom">
+    <div className=" bottom">
       <p className="par">Need help? Call Us: (+98) 0234 456 788</p>
       <div className="d-flex bottomBody">
         <div className="d-flex bottomTop">
