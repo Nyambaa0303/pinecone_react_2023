@@ -2,12 +2,16 @@
   background-color: #003f62;
   height: 10vh;
 }
-.headerImg {
-  margin-top: 20px;
+#search {
+  width: 350px;
 }
-.headerBody {
-  height: 10vh;
-  max-width: 1000px;
-  width: 100%;
-  margin: auto;
+a {
+  text-decoration: none;
+}
+.user {
+  display: flex;
+  align-items: center;
+}
+.icon {
+  font-size: 25px;
 }
