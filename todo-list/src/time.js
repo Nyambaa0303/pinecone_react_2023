@@ -25,7 +25,7 @@ class Time extends React.Component {
   render() {
     return (
       <div className="App">
-        <p className="text-secondary">
+        <p className="text-secondary text-decoration-underline">
           Current Date (Y-m-d) : {this.state.date}
         </p>
       </div>

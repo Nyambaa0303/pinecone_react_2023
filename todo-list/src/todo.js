@@ -62,7 +62,7 @@ export function Todos() {
       </InputGroup>
 
       <div className="">
-        <h1 className="mt-5 border-bottom border-4 pb-3">Task List</h1>
+        <h1 className="mt-3 border-bottom border-4 pb-3">Task List</h1>
         {todos.map((todo, index) => {
           return (
             <div
