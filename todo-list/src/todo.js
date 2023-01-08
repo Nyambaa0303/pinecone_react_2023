@@ -35,7 +35,7 @@ export function Todos() {
 
   // list ustgsh function
   function handleDelete(position) {
-    if (window.confirm("Устгах уу?")) {
+    if (window.confirm("Are you delete ?")) {
       const newTodos = [...todos];
       newTodos.splice(position, 1); // delete item from array using index
       setTodos(newTodos);
