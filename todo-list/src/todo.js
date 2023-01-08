@@ -9,15 +9,18 @@ import { BsFillTrashFill } from "react-icons/bs";
 import { BsPenFill } from "react-icons/bs";
 import Time from "./time";
 
+// undsen todo function
 export function Todos() {
   const [text, setText] = useState("");
   const [todos, setTodos] = useState([]);
   const [error, setError] = useState("");
 
+  //
   function handleTextChange(event) {
     setText(event.target.value);
   }
 
+  // list nemeh function
   function addTodo() {
     if (text === "") {
       setError("Utgaa bichne uu?");
@@ -29,6 +32,7 @@ export function Todos() {
     }
   }
 
+  // list ustgsh function
   function handleDelete(position) {
     if (window.confirm("Устгах уу?")) {
       const newTodos = [...todos];
@@ -67,7 +71,7 @@ export function Todos() {
             <div
               className="d-flex justify-content-between bg-light border border-secondary text-secondary rounded-3 border-secondary mt-5 align-items-center p-4 shadow p-3 mb-5 bg-body-tertiary rounded"
               key={index}
-              style={{ textDecoration: "line-through" }}
+              // style={{ textDecoration: "line-through" }}
             >
               {todo}
               <div>
