@@ -38,26 +38,25 @@ export function Todos() {
   }
 
   return (
-    <div className="card1 pt-5 border rounded-4 border-warning mt-5 p-4 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+    <div className="card1 pt-5 border rounded-4 border-secondary mt-5 p-4 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
       <h1>Todo List App</h1>
       <Time />
 
       <InputGroup className="">
         <Form.Control
-          className="bg-light border-warning rounded-3 mt-5 text-secondary shadow p-3 mb-5 bg-body-tertiary rounded"
+          className="bg-light rounded-3 mt-5 text-secondary shadow p-3 mb-5 bg-body-tertiary "
           placeholder="Add new task"
           value={text}
-          style={{ borderColor: error ? "red" : "warning" }}
+          style={{ borderColor: error ? "red" : "gray" }}
           onChange={handleTextChange}
         />
         <Button
-          className="mt-5 btn rounded-3 shadow p-3 mb-5 bg-body-tertiary rounded"
-          variant="outline-warning"
+          className="mt-5 rounded-3 shadow p-3 mb-5 bg-body-tertiary rounded"
+          variant="outline-secondary"
           onClick={addTodo}
         >
           Add++
         </Button>
-
         {error && <div style={{ color: "red" }}>{error}</div>}
       </InputGroup>
 
@@ -66,7 +65,7 @@ export function Todos() {
         {todos.map((todo, index) => {
           return (
             <div
-              className="d-flex justify-content-between bg-light border border-warning text-secondary rounded-3 border-secondary mt-5 align-items-center p-4 shadow p-3 mb-5 bg-body-tertiary rounded"
+              className="d-flex justify-content-between bg-light border border-secondary text-secondary rounded-3 border-secondary mt-5 align-items-center p-4 shadow p-3 mb-5 bg-body-tertiary rounded"
               key={index}
               style={{ textDecoration: "line-through" }}
             >

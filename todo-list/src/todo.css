@@ -19,3 +19,7 @@ h1 {
   display: flex;
   justify-content: center;
 }
+
+body {
+  background-image: url("../gradient-F6C344.svg");
+}
