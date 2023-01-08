@@ -23,7 +23,7 @@ export function Todos() {
   // list nemeh function
   function addTodo() {
     if (text === "") {
-      setError("Utgaa bichne uu?");
+      setError("Task empy !!!");
     } else {
       const newTodos = [...todos, text];
       setTodos(newTodos);
@@ -48,21 +48,31 @@ export function Todos() {
 
       <InputGroup className="">
         <Form.Control
-          className="bg-light rounded-3 mt-5 text-secondary shadow p-3 mb-5 bg-body-tertiary "
+          className="bg-light rounded-3 mt-5 text-secondary shadow p-3  bg-body-tertiary "
           placeholder="Add new task"
           value={text}
-          style={{ borderColor: error ? "red" : "gray" }}
+          style={
+            error
+              ? { borderColor: "red", borderWidth: "2px" }
+              : { borderColor: "gray" }
+          }
           onChange={handleTextChange}
         />
         <Button
-          className="mt-5 rounded-3 shadow p-3 mb-5 bg-body-tertiary rounded"
+          className="mt-5 rounded-3 shadow p-3 bg-body-tertiary rounded mx-1"
           variant="outline-secondary"
           onClick={addTodo}
         >
           Add++
         </Button>
-        {error && <div style={{ color: "red" }}>{error}</div>}
       </InputGroup>
+      <div>
+        {error && (
+          <div className="" style={{ color: "red" }}>
+            {error}
+          </div>
+        )}
+      </div>
 
       <div className="">
         <h1 className="mt-3 border-bottom border-4 pb-3">Task List</h1>
