@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BsCheckSquareFill } from "react-icons/bs";
 import { BsFillTrashFill } from "react-icons/bs";
 import { BsPenFill } from "react-icons/bs";
+import { MdError } from "react-icons/md";
 import Time from "./time";
 
 // undsen todo function
@@ -69,6 +70,7 @@ export function Todos() {
       <div>
         {error && (
           <div className="" style={{ color: "red" }}>
+            <MdError style={{ fontSize: "20px" }} className="mx-2" />
             {error}
           </div>
         )}
