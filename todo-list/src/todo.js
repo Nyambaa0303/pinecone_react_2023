@@ -114,7 +114,7 @@ export function Todos() {
         {error && (
           <div className="" style={{ color: "red" }}>
             <MdError style={{ fontSize: "20px" }} className="mx-2" />
-            {error}
+            Error: {error}
           </div>
         )}
       </div>
