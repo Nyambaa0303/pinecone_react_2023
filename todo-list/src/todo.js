@@ -9,12 +9,14 @@ import { BsFillTrashFill } from "react-icons/bs";
 import { BsPenFill } from "react-icons/bs";
 import { MdError } from "react-icons/md";
 import Time from "./time";
+import React from "react";
 
 // undsen todo function
 export function Todos() {
   const [text, setText] = useState("");
   const [todos, setTodos] = useState([]);
   const [error, setError] = useState("");
+  const [count, setCount] = useState(0);
 
   //
   function handleTextChange(event) {
@@ -33,6 +35,12 @@ export function Todos() {
     }
   }
 
+  // edit button
+  function disableButton() {
+    var btn = document.getElementById("btn");
+    InputGroup.disabled = true;
+  }
+
   // list ustgsh function
   function handleDelete(position) {
     if (window.confirm("Are you delete ?")) {
@@ -46,7 +54,7 @@ export function Todos() {
     <div className="card1 pt-5 border rounded-4 border-secondary mt-5 p-4 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
       <h1>Todo List App</h1>
       <Time />
-
+      <p className="text-secondary">Completed Task: {count}</p>
       <InputGroup className="">
         <Form.Control
           className="bg-light rounded-3 mt-5 text-secondary shadow p-3  bg-body-tertiary "
@@ -77,7 +85,7 @@ export function Todos() {
       </div>
 
       <div className="">
-        <h1 className="mt-3 border-bottom border-4 pb-3">Task List</h1>
+        <h1 className="mt-3 border-bottom border-4 pb-3 ">Task List</h1>
         {todos.map((todo, index) => {
           return (
             <div
@@ -86,11 +94,20 @@ export function Todos() {
               // style={{ textDecoration: "line-through" }}
             >
               {todo}
+
               <div>
-                <Button className="btn toggle bg-light text-secondary border-0">
+                <Button
+                  id="btn"
+                  className="btn toggle( bg-light text-secondary border-0"
+                  onClick={disableButton}
+                >
                   <BsPenFill />
                 </Button>
-                <Button className="btn toggle bg-light text-success border-0">
+                <Button
+                  id="btnCheck"
+                  className="btn toggle bg-light text-success border-0"
+                  onClick={() => setCount(count + 1)}
+                >
                   <BsCheckSquareFill />
                 </Button>
                 <Button
