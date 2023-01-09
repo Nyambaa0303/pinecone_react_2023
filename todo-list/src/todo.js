@@ -91,20 +91,18 @@ export function Todos() {
             <div
               className="d-flex justify-content-between bg-light border border-secondary text-secondary rounded-3 border-secondary mt-5 align-items-center p-4 shadow p-3 mb-5 bg-body-tertiary rounded"
               key={index}
-              // style={{ textDecoration: "line-through" }}
+              style={{ textDecoration: "line-through" }}
             >
               {todo}
 
               <div>
                 <Button
-                  id="btn"
                   className="btn toggle( bg-light text-secondary border-0"
                   onClick={disableButton}
                 >
                   <BsPenFill />
                 </Button>
                 <Button
-                  id="btnCheck"
                   className="btn toggle bg-light text-success border-0"
                   onClick={() => setCount(count + 1)}
                 >

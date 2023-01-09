@@ -8,6 +8,7 @@ import Nav from "react-bootstrap/Nav";
 import { BiUser } from "react-icons/bi";
 import { BsHeart } from "react-icons/bs";
 import { RiShoppingCart2Line } from "react-icons/ri";
+import Badge from "react-bootstrap/Badge";
 
 export function Header() {
   return (
@@ -38,9 +39,15 @@ export function Header() {
         </Nav>
         <Nav className="text-white">
           <BsHeart className="icon" />
+          <Badge bg="warning d-flex justify-content-center align-items-center rounded-circle mx-1">
+            0
+          </Badge>
         </Nav>
         <Nav className="text-white">
           <RiShoppingCart2Line className="icon" />
+          <Badge bg="warning d-flex justify-content-center align-items-center rounded-circle mx-1">
+            0
+          </Badge>
         </Nav>
       </Container>
     </Navbar>
