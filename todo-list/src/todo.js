@@ -10,6 +10,7 @@ import { BsPenFill } from "react-icons/bs";
 import { MdError } from "react-icons/md";
 import Time from "./time";
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
 // undsen todo function
 export function Todos() {
@@ -17,6 +18,7 @@ export function Todos() {
   const [todos, setTodos] = useState([]);
   const [error, setError] = useState("");
   const [count, setCount] = useState(0);
+  const [editing, setEditing] = useState(); // index hadaglan
 
   //
   function handleTextChange(event) {
@@ -28,17 +30,50 @@ export function Todos() {
     if (text === "") {
       setError("Task empy !!!");
     } else {
-      const newTodos = [...todos, text];
-      setTodos(newTodos);
+      if (editing === undefined) {
+        const newTodo = {
+          text: text,
+          done: false,
+          id: uuidv4(),
+        };
+        const newTodos = [newTodo, ...todos];
+        setTodos(newTodos);
+      } else {
+        const newTodos = [...todos];
+        newTodos[editing].text = text;
+        setTodos(newTodos);
+        setEditing(undefined);
+      }
+
       setText("");
       setError("");
     }
   }
 
-  // edit button
-  function disableButton() {
-    var btn = document.getElementById("btn");
-    InputGroup.disabled = true;
+  // edit hiij baigaa function
+
+  function editInput(index) {
+    setEditing(index);
+    setText(todos[index].text);
+  }
+
+  // check hiij baigaa function
+
+  function handleDoneChange(id) {
+    const newTodos = [...todos];
+    let index;
+    for (let i = 0; i < todos.length; i++) {
+      //ene uildeliig ingej hiij bolno const index = newTodos.findIndex((todo) => todo.id === id)
+      if (id === todos[i].id) {
+        index = i;
+        break;
+      }
+    }
+    newTodos[index].done = !newTodos[index].done;
+    setTodos(newTodos);
+    if (newTodos[index].done === true) {
+      setCount(count + 1);
+    }
   }
 
   // list ustgsh function
@@ -90,21 +125,28 @@ export function Todos() {
           return (
             <div
               className="d-flex justify-content-between bg-light border border-secondary text-secondary rounded-3 border-secondary mt-5 align-items-center p-4 shadow p-3 mb-5 bg-body-tertiary rounded"
-              key={index}
-              style={{ textDecoration: "line-through" }}
+              key={todo.id}
+              style={
+                todo.done
+                  ? {
+                      textDecoration: "line-through",
+                      textDecorationColor: "red",
+                    }
+                  : { textDecoration: "none" }
+              }
             >
-              {todo}
+              {todo.text}
 
               <div>
                 <Button
                   className="btn toggle( bg-light text-secondary border-0"
-                  onClick={disableButton}
+                  onClick={() => editInput(index)}
                 >
                   <BsPenFill />
                 </Button>
                 <Button
                   className="btn toggle bg-light text-success border-0"
-                  onClick={() => setCount(count + 1)}
+                  onClick={() => handleDoneChange(todo.id)}
                 >
                   <BsCheckSquareFill />
                 </Button>
