@@ -29,15 +29,15 @@ const HomeDowns = [
 ];
 
 export function HomeDropdown() {
-  return HomeDowns.map((HomeDropdown, index) => {
+  return HomeDowns.map((Homedown, index) => {
     return (
       <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
-          {HomeDropdown.title}
+          {Homedown.title}
         </Dropdown.Toggle>
 
         <Dropdown.Menu key={23}>
-          {HomeDropdown.childrens.map((item) => {
+          {Homedown.childrens.map((item) => {
             return <Dropdown.Item href="#/action">{item.title}</Dropdown.Item>;
           })}
         </Dropdown.Menu>
