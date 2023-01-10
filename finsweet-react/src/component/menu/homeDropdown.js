@@ -32,11 +32,9 @@ export function HomeDropdown() {
   return HomeDowns.map((Homedown, index) => {
     return (
       <Dropdown>
-        <Dropdown.Toggle variant="success" id="dropdown-basic">
-          {Homedown.title}
-        </Dropdown.Toggle>
+        <Dropdown.Toggle className="homeDrop">{Homedown.title}</Dropdown.Toggle>
 
-        <Dropdown.Menu key={23}>
+        <Dropdown.Menu>
           {Homedown.childrens.map((item) => {
             return <Dropdown.Item href="#/action">{item.title}</Dropdown.Item>;
           })}

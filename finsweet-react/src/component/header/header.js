@@ -20,12 +20,12 @@ export function Header() {
 
         <Navbar.Toggle />
         <Nav className="me-auto my-2 my-lg-0 ">
-          <InputGroup className="bg-white rounded-4" id="search">
+          <InputGroup className="searchInput bg-white rounded-4" id="search">
             <Form.Control
               className="border-0 rounded-4"
               placeholder="Search any things"
             />
-            <Button className="rounded-4 bg-warning border-0 text-white">
+            <Button className="searchButton rounded-4 bg-warning border-0 text-white">
               Search
             </Button>
           </InputGroup>

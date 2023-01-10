@@ -7,6 +7,11 @@
 }
 a {
   text-decoration: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
 }
 .user {
   display: flex;
@@ -14,4 +19,18 @@ a {
 }
 .icon {
   font-size: 25px;
+}
+.searchInput ::placeholder {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+}
+.searchButton {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
 }

@@ -16,6 +16,11 @@
   align-items: center;
   margin: 0;
   width: 40%;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
 }
 .bottomTop {
   display: flex;
@@ -24,12 +29,13 @@
 .par1 {
   margin: 0;
   margin-left: 8px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
 }
 .bottomBottom {
   display: flex;
   align-items: center;
-}
-.par2 {
-  margin: 0;
-  margin-left: 8px;
 }

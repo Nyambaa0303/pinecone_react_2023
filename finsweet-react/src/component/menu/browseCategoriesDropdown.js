@@ -1,4 +1,5 @@
 import Dropdown from "react-bootstrap/Dropdown";
+import { SlArrowDown } from "react-icons/sl";
 
 const DropDownMenus = [
   {
@@ -31,12 +32,13 @@ const DropDownMenus = [
 export function BrowseCategoriesDropdown() {
   return DropDownMenus.map((DropDownMenu, index) => {
     return (
-      <Dropdown>
-        <Dropdown.Toggle variant="success" id="">
+      <Dropdown className="browseDropDown">
+        <Dropdown.Toggle className="browseDropDownText">
           {DropDownMenu.title}
+          {/* <SlArrowDown /> */}
         </Dropdown.Toggle>
 
-        <Dropdown.Menu key={23}>
+        <Dropdown.Menu>
           {DropDownMenu.childrens.map((item) => {
             return <Dropdown.Item href="">{item.title}</Dropdown.Item>;
           })}

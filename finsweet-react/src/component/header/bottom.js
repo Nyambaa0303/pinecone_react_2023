@@ -14,7 +14,7 @@ export function Bottom() {
         </div>
         <div className="d-flex bottomBottom">
           <BsTruck />
-          <p className="par2">Track your order</p>
+          <p className="par1">Track your order</p>
         </div>
       </div>
     </div>

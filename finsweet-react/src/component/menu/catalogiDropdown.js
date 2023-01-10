@@ -32,7 +32,7 @@ export function CatalogDropdown() {
   return CatalogiDowns.map((CatalogiDown, index) => {
     return (
       <Dropdown>
-        <Dropdown.Toggle variant="success" id="dropdown-basic">
+        <Dropdown.Toggle className="homeDrop">
           {CatalogiDown.title}
         </Dropdown.Toggle>
 

@@ -32,9 +32,7 @@ export function PageDropdown() {
   return PageDowns.map((PageDown, index) => {
     return (
       <Dropdown>
-        <Dropdown.Toggle variant="success" id="dropdown-basic">
-          {PageDown.title}
-        </Dropdown.Toggle>
+        <Dropdown.Toggle className="homeDrop">{PageDown.title}</Dropdown.Toggle>
 
         <Dropdown.Menu key={23}>
           {PageDown.childrens.map((item) => {
