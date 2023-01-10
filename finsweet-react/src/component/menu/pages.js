@@ -1,4 +1,5 @@
 import Dropdown from "react-bootstrap/Dropdown";
+import { SlArrowDown } from "react-icons/sl";
 
 const PageDowns = [
   {
@@ -32,9 +33,12 @@ export function PageDropdown() {
   return PageDowns.map((PageDown, index) => {
     return (
       <Dropdown>
-        <Dropdown.Toggle className="homeDrop">{PageDown.title}</Dropdown.Toggle>
+        <Dropdown.Toggle className="homeDrop">
+          {PageDown.title}
+          <SlArrowDown className="mx-2" />
+        </Dropdown.Toggle>
 
-        <Dropdown.Menu key={23}>
+        <Dropdown.Menu className="bg-light">
           {PageDown.childrens.map((item) => {
             return <Dropdown.Item href="#/action">{item.title}</Dropdown.Item>;
           })}

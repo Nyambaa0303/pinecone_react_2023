@@ -1,3 +1,4 @@
+/* Browse drop down style */
 .menu {
   max-width: 1400px;
   margin: auto;
@@ -12,6 +13,15 @@
 }
 .browseDropDownText:hover {
   background-color: #eda415;
+}
+.down {
+  background-color: #eda415 !important;
+}
+.downDown {
+  color: #f4f4f4 !important;
+}
+.downDown:hover {
+  background-color: #e99f09;
 }
 .browseDropDownText {
   font-family: poppins;
@@ -32,6 +42,24 @@
   justify-content: start;
   gap: 40px;
 }
+
+.browseDropDownText::after {
+  display: none !important;
+}
+.homeDrop::after {
+  display: none !important;
+}
+.btn-primary {
+  --bs-btn-active-bg: #eda415;
+}
+.homeDrop.btn-primary {
+  --bs-btn-active-bg: #f4f4f4;
+  color: #292d32;
+}
+.homeDrop:hover {
+  background-color: #f4f4f4;
+}
+
 /* Home dropdown style ehelj baina */
 
 .homeDrop {
@@ -60,4 +88,9 @@ p.text {
   align-items: center;
   color: #003f62;
   margin: 0;
+}
+.dropdown-menu {
+  background-color: transparent;
+  border: transparent;
+  border: none;
 }

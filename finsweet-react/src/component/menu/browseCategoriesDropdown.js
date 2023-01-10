@@ -35,12 +35,16 @@ export function BrowseCategoriesDropdown() {
       <Dropdown className="browseDropDown">
         <Dropdown.Toggle className="browseDropDownText">
           {DropDownMenu.title}
-          {/* <SlArrowDown /> */}
+          <SlArrowDown className="mx-2" />
         </Dropdown.Toggle>
 
-        <Dropdown.Menu>
+        <Dropdown.Menu className="down">
           {DropDownMenu.childrens.map((item) => {
-            return <Dropdown.Item href="">{item.title}</Dropdown.Item>;
+            return (
+              <Dropdown.Item className="downDown" href="">
+                {item.title}
+              </Dropdown.Item>
+            );
           })}
         </Dropdown.Menu>
       </Dropdown>
