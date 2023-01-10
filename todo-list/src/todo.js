@@ -8,6 +8,8 @@ import { BsCheckSquareFill } from "react-icons/bs";
 import { BsFillTrashFill } from "react-icons/bs";
 import { BsPenFill } from "react-icons/bs";
 import { MdError } from "react-icons/md";
+import { FaCheckSquare } from "react-icons/fa";
+import { BsBackspace } from "react-icons/bs";
 import Time from "./time";
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
@@ -19,6 +21,7 @@ export function Todos() {
   const [error, setError] = useState("");
   const [count, setCount] = useState(0);
   const [editing, setEditing] = useState(); // index hadaglan
+  const [editingTexts, setEditingTexts] = useState({});
 
   //
   function handleTextChange(event) {
@@ -50,13 +53,6 @@ export function Todos() {
     }
   }
 
-  // edit hiij baigaa function
-
-  function editInput(index) {
-    setEditing(index);
-    setText(todos[index].text);
-  }
-
   // check hiij baigaa function
 
   function handleDoneChange(id) {
@@ -85,16 +81,63 @@ export function Todos() {
     }
   }
 
+  // edit hiij baigaa function 2 dahi arga
+
+  function editInput(index) {
+    setEditing(index);
+    setText(todos[index].text);
+  }
+
+  // edit hiij baigaa function 1 dahi arga
+
+  function editTodoInline(id, index) {
+    const newEditingTexts = { ...editingTexts };
+    newEditingTexts[id] = todos[index].text;
+    setEditingTexts(newEditingTexts);
+  }
+
+  //
+  function handleEditingText(id, event) {
+    const newEditingTexts = { ...editingTexts };
+    newEditingTexts[id] = event.target.value;
+    setEditingTexts(newEditingTexts);
+  }
+
+  // zasahaa bolih uyd hiigdej baigaaa  uildel
+  function cancelEditing(id) {
+    const newEditingTexts = { ...editingTexts };
+    newEditingTexts[id] = undefined;
+    setEditingTexts(newEditingTexts);
+  }
+
+  // hadgalah button darah uyd hiigdej baigaa uildel
+  function updateEditingText(index, id) {
+    const newTodos = [...todos];
+    newTodos[index].text = editingTexts[id];
+    setTodos(newTodos);
+    cancelEditing(id);
+  }
+
+  // Enter darahad todo list nemj baigaa function
+  function handleKeyUp(event) {
+    if (event.code === "Enter") {
+      addTodo();
+    }
+  }
+
   return (
     <div className="card1 pt-5 border rounded-4 border-secondary mt-5 p-4 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
       <h1>Todo List App</h1>
       <Time />
-      <p className="text-secondary">Completed Task: {count}</p>
+      <p className="text-secondary">
+        <b>Completed Task: {count}</b>
+      </p>
       <InputGroup className="">
         <Form.Control
           className="bg-light rounded-3 mt-5 text-secondary shadow p-3  bg-body-tertiary "
           placeholder="Add new task"
           value={text}
+          onKeyUp={handleKeyUp}
           style={
             error
               ? { borderColor: "red", borderWidth: "2px" }
@@ -106,8 +149,9 @@ export function Todos() {
           className="mt-5 rounded-3 shadow p-3 bg-body-tertiary rounded mx-1"
           variant="outline-secondary"
           onClick={addTodo}
+          onChange={handleTextChange}
         >
-          Add++
+          +Add
         </Button>
       </InputGroup>
       <div>
@@ -135,28 +179,70 @@ export function Todos() {
                   : { textDecoration: "none" }
               }
             >
-              {todo.text}
+              {editingTexts[todo.id] !== undefined ? (
+                <div className="d-flex w-100 justify-content-between">
+                  <InputGroup className=" w-75 ">
+                    <Form.Control
+                      className="bg-light rounded-3 text-secondary"
+                      value={editingTexts[todo.id]}
+                      onChange={(event) => handleEditingText(todo.id, event)}
+                    />
+                  </InputGroup>
+                  <div className="d-flex gap">
+                    <button
+                      onClick={() => cancelEditing(todo.id)}
+                      className="border-0 bg-light"
+                    >
+                      <BsBackspace className="zasah" />
+                    </button>
+                    <button
+                      onClick={() => updateEditingText(index, todo.id)}
+                      className="border-0 bg-light"
+                    >
+                      <FaCheckSquare className="ilgeeh" />
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  {todo.text}
+                  {!todo.done && (
+                    <div>
+                      {/* zasah arga hoyriin button */}
 
-              <div>
-                <Button
-                  className="btn toggle( bg-light text-secondary border-0"
-                  onClick={() => editInput(index)}
-                >
-                  <BsPenFill />
-                </Button>
-                <Button
-                  className="btn toggle bg-light text-success border-0"
-                  onClick={() => handleDoneChange(todo.id)}
-                >
-                  <BsCheckSquareFill />
-                </Button>
-                <Button
-                  className="btn toggle bg-light text-danger border-0"
-                  onClick={() => handleDelete(index)}
-                >
-                  <BsFillTrashFill />
-                </Button>
-              </div>
+                      {/* <Button
+                        className="btn toggle( bg-light text-secondary border-0"
+                        onClick={() => editInput(index)}
+                      >
+                        <BsPenFill />
+                      </Button> */}
+
+                      {/* zasah arga negiiin button */}
+                    </div>
+                  )}
+                  <div>
+                    <Button
+                      className="btn toggle( bg-light text-secondary border-0"
+                      onClick={() => editTodoInline(todo.id, index)}
+                    >
+                      <BsPenFill />
+                    </Button>
+
+                    <Button
+                      className="btn toggle bg-light text-success border-0"
+                      onClick={() => handleDoneChange(todo.id)}
+                    >
+                      <BsCheckSquareFill />
+                    </Button>
+                    <Button
+                      className="btn toggle bg-light text-danger border-0"
+                      onClick={() => handleDelete(index)}
+                    >
+                      <BsFillTrashFill />
+                    </Button>
+                  </div>
+                </>
+              )}
             </div>
           );
         })}
