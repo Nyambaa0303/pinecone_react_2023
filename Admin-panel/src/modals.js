@@ -22,12 +22,8 @@ export function Modals({ show, onClose }) {
           />
         </Modal.Body>
         <Modal.Footer className=" d-flex justify-content-between">
-          <Button
-            variant="white"
-            onClick={onClose}
-            className="btn btn-outline-danger"
-          >
-            Устгах
+          <Button variant="btn btn-secondary" onClick={onClose}>
+            Хаах
           </Button>
           <Button variant="primary" onClick={onClose}>
             Хадгалах
