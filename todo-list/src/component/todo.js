@@ -1,18 +1,12 @@
 import { useState } from "react";
 import "./todo.css";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BsCheckSquareFill } from "react-icons/bs";
-import { BsFillTrashFill } from "react-icons/bs";
-import { BsPenFill } from "react-icons/bs";
 import { MdError } from "react-icons/md";
-import { FaCheckSquare } from "react-icons/fa";
-import { BsBackspace } from "react-icons/bs";
-import Time from "./time";
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
+import { TodoNew } from "./todoNew";
+import { TodoList } from "./todoList";
+import { TodoEditing } from "./todoEditing";
 
 // undsen todo function
 export function Todos() {
@@ -127,33 +121,14 @@ export function Todos() {
 
   return (
     <div className="card1 pt-5 border rounded-4 border-secondary mt-5 p-4 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-      <h1>Todo List App</h1>
-      <Time />
-      <p className="text-secondary">
-        <b>Completed Task: {count}</b>
-      </p>
-      <InputGroup className="">
-        <Form.Control
-          className="bg-light rounded-3 mt-5 text-secondary shadow p-3  bg-body-tertiary "
-          placeholder="Add new task"
-          value={text}
-          onKeyUp={handleKeyUp}
-          style={
-            error
-              ? { borderColor: "red", borderWidth: "2px" }
-              : { borderColor: "gray" }
-          }
-          onChange={handleTextChange}
-        />
-        <Button
-          className="mt-5 rounded-3 shadow p-3 bg-body-tertiary rounded mx-1"
-          variant="outline-secondary"
-          onClick={addTodo}
-          onChange={handleTextChange}
-        >
-          +Add
-        </Button>
-      </InputGroup>
+      <TodoNew
+        count={count}
+        text={text}
+        handleKeyUp={handleKeyUp}
+        error={error}
+        handleTextChange={handleTextChange}
+        addTodo={addTodo}
+      />
       <div>
         {error && (
           <div className="" style={{ color: "red" }}>
@@ -180,68 +155,22 @@ export function Todos() {
               }
             >
               {editingTexts[todo.id] !== undefined ? (
-                <div className="d-flex w-100 justify-content-between">
-                  <InputGroup className=" w-75 ">
-                    <Form.Control
-                      className="bg-light rounded-3 text-secondary"
-                      value={editingTexts[todo.id]}
-                      onChange={(event) => handleEditingText(todo.id, event)}
-                    />
-                  </InputGroup>
-                  <div className="d-flex gap">
-                    <button
-                      onClick={() => cancelEditing(todo.id)}
-                      className="border-0 bg-light"
-                    >
-                      <BsBackspace className="zasah" />
-                    </button>
-                    <button
-                      onClick={() => updateEditingText(index, todo.id)}
-                      className="border-0 bg-light"
-                    >
-                      <FaCheckSquare className="ilgeeh" />
-                    </button>
-                  </div>
-                </div>
+                <TodoEditing
+                  editingTexts={editingTexts}
+                  todo={todo}
+                  handleEditingText={handleEditingText}
+                  cancelEditing={cancelEditing}
+                  updateEditingText={updateEditingText}
+                  index={index}
+                />
               ) : (
-                <>
-                  {todo.text}
-                  {!todo.done && (
-                    <div>
-                      {/* zasah arga hoyriin button */}
-
-                      {/* <Button
-                        className="btn toggle( bg-light text-secondary border-0"
-                        onClick={() => editInput(index)}
-                      >
-                        <BsPenFill />
-                      </Button> */}
-
-                      {/* zasah arga negiiin button */}
-                    </div>
-                  )}
-                  <div>
-                    <Button
-                      className="btn toggle( bg-light text-secondary border-0"
-                      onClick={() => editTodoInline(todo.id, index)}
-                    >
-                      <BsPenFill />
-                    </Button>
-
-                    <Button
-                      className="btn toggle bg-light text-success border-0"
-                      onClick={() => handleDoneChange(todo.id)}
-                    >
-                      <BsCheckSquareFill />
-                    </Button>
-                    <Button
-                      className="btn toggle bg-light text-danger border-0"
-                      onClick={() => handleDelete(index)}
-                    >
-                      <BsFillTrashFill />
-                    </Button>
-                  </div>
-                </>
+                <TodoList
+                  todo={todo}
+                  editTodoInline={editTodoInline}
+                  handleDoneChange={handleDoneChange}
+                  handleDelete={handleDelete}
+                  index={index}
+                />
               )}
             </div>
           );
