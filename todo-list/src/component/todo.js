@@ -24,6 +24,39 @@ export function Todos() {
     setTodos(newTodos);
   }
 
+  // list ustgsh function
+  function handleDelete(position) {
+    if (window.confirm("Are you delete ?")) {
+      const newTodos = [...todos];
+      newTodos.splice(position, 1); // delete item from array using index
+      setTodos(newTodos);
+    }
+  }
+
+  // check hiij baigaa function
+
+  function handleDoneChange(id) {
+    const newTodos = [...todos];
+    let index;
+    for (let i = 0; i < todos.length; i++) {
+      //ene uildeliig ingej hiij bolno const index = newTodos.findIndex((todo) => todo.id === id)
+      if (id === todos[i].id) {
+        index = i;
+        break;
+      }
+    }
+    newTodos[index].done = !newTodos[index].done;
+    setTodos(newTodos);
+  }
+
+  // edit hiij baigaa function 1 dahi arga
+
+  function editTodoInline(id, index) {
+    const newEditingTexts = { ...editingTexts };
+    newEditingTexts[id] = todos[index]?.text;
+    setEditingTexts(newEditingTexts);
+  }
+
   //
   function handleEditingText(id, event) {
     const newEditingTexts = { ...editingTexts };
@@ -82,7 +115,13 @@ export function Todos() {
                   error={error}
                 />
               ) : (
-                <TodoList todo={todo} index={index} />
+                <TodoList
+                  editTodoInline={editTodoInline}
+                  handleDoneChange={handleDoneChange}
+                  handleDelete={handleDelete}
+                  index={index}
+                  todo={todo}
+                />
               )}
             </div>
           );
