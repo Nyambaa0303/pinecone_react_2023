@@ -54,6 +54,7 @@ export function Todos() {
   function editTodoInline(id, index) {
     const newEditingTexts = { ...editingTexts };
     newEditingTexts[id] = todos[index]?.text;
+
     setEditingTexts(newEditingTexts);
   }
 
@@ -99,7 +100,7 @@ export function Todos() {
                 todo.done
                   ? {
                       textDecoration: "line-through",
-                      textDecorationColor: "red",
+                      textDecorationColor: "gray",
                     }
                   : { textDecoration: "none" }
               }
