@@ -5,7 +5,7 @@ const list = [
   { id: 12, name: "Спорт" },
 ];
 
-export function List() {
+export function AdminList() {
   return (
     <div className="">
       {list.map((card) => (
