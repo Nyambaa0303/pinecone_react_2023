@@ -36,7 +36,7 @@ export function TodoNew({ onSave }) {
       <Time />
       <InputGroup className="">
         <Form.Control
-          className="bg-light rounded-3 mt-5 text-secondary shadow p-3  bg-body-tertiary "
+          className="bg-light rounded-3 mt-5 text-secondary shadow p-3  bg-body-tertiary"
           placeholder="Add new task"
           value={text}
           onKeyUp={handleKeyUp}

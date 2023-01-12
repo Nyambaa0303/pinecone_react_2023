@@ -6,7 +6,6 @@ import { v4 as uuidv4 } from "uuid";
 import { TodoNew } from "./todoNew";
 import { TodoList } from "./todoList";
 import { TodoEditing } from "./todoEditing";
-import { TodosError } from "./todoError";
 
 // undsen todo function
 export function Todos() {
@@ -23,39 +22,6 @@ export function Todos() {
     };
     const newTodos = [newTodo, ...todos];
     setTodos(newTodos);
-  }
-
-  // check hiij baigaa function
-
-  function handleDoneChange(id) {
-    const newTodos = [...todos];
-    let index;
-    for (let i = 0; i < todos.length; i++) {
-      //ene uildeliig ingej hiij bolno const index = newTodos.findIndex((todo) => todo.id === id)
-      if (id === todos[i].id) {
-        index = i;
-        break;
-      }
-    }
-    newTodos[index].done = !newTodos[index].done;
-    setTodos(newTodos);
-  }
-
-  // list ustgsh function
-  function handleDelete(position) {
-    if (window.confirm("Are you delete ?")) {
-      const newTodos = [...todos];
-      newTodos.splice(position, 1); // delete item from array using index
-      setTodos(newTodos);
-    }
-  }
-
-  // edit hiij baigaa function 1 dahi arga
-
-  function editTodoInline(id, index) {
-    const newEditingTexts = { ...editingTexts };
-    newEditingTexts[id] = todos[index].text;
-    setEditingTexts(newEditingTexts);
   }
 
   //
@@ -116,13 +82,7 @@ export function Todos() {
                   error={error}
                 />
               ) : (
-                <TodoList
-                  todo={todo}
-                  editTodoInline={editTodoInline}
-                  handleDoneChange={handleDoneChange}
-                  handleDelete={handleDelete}
-                  index={index}
-                />
+                <TodoList todo={todo} index={index} />
               )}
             </div>
           );
