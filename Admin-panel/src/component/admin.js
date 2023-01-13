@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
-import { AdminList } from "./adminList";
+import { AdminListItem } from "./adminListItem";
 import { v4 as uuidv4 } from "uuid";
 import { AdminNew } from "./adminNew";
 
-function Admin() {
+function Admins() {
   const [admins, setAdmins] = useState([]);
   const [editing, setEditing] = useState(false);
 
@@ -20,6 +20,7 @@ function Admin() {
     };
     const newAdmins = [newAdmin, ...admins];
     setAdmins(newAdmins);
+    console.log(text);
   }
 
   function handleDelete(index) {
@@ -44,9 +45,23 @@ function Admin() {
           Шинэ
         </Button>
       </div>
+
       <AdminNew onSave={handleSave} show={editing} onClose={closeModal} />
-      <AdminList />
+      {admins.map((admin, index) => (
+        <div
+          key={admin.id}
+          className="row border rounded-3 p-4 mt-5 col-6 mx-auto  d-flex justify-content-between align-items-center"
+        >
+          <b className="col-none-12 col-lg-6">{admin.text}</b>
+          <AdminListItem
+            admin={admin}
+            key={admin.id}
+            onUpdate={(text) => handleUpdate(index, text)}
+            onDelete={() => handleDelete(index)}
+          />
+        </div>
+      ))}
     </>
   );
 }
-export default Admin;
+export default Admins;
