@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import React from "react";
 import Button from "react-bootstrap/Button";
 
-export function Modals({ show, onClose }) {
+export function AdminNew({ show, onClose, onSave }) {
   return (
     <>
       <Modal show={show} onHide={onClose}>
@@ -25,7 +25,7 @@ export function Modals({ show, onClose }) {
           <Button variant="btn btn-secondary" onClick={onClose}>
             Хаах
           </Button>
-          <Button variant="primary" onClick={onClose}>
+          <Button variant="primary" onClick={onSave}>
             Хадгалах
           </Button>
         </Modal.Footer>

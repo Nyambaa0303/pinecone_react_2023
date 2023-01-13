@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
-import { Modals } from "./modals.js";
 import { AdminList } from "./adminList";
 import { v4 as uuidv4 } from "uuid";
+import { AdminNew } from "./adminNew";
 
 function Admin() {
   const [admins, setAdmins] = useState([]);
@@ -44,8 +44,8 @@ function Admin() {
           Шинэ
         </Button>
       </div>
+      <AdminNew onSave={handleSave} show={editing} onClose={closeModal} />
       <AdminList />
-      <Modals show={editing} onClose={closeModal} />
     </>
   );
 }
