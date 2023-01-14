@@ -30,7 +30,10 @@ export function TodosNew({ onSave }) {
       <input
         value={text}
         style={{ borderColor: error ? "red" : "black" }}
+        onChange={handleTextChange}
+        onKeyUp={handleKeyUp}
       ></input>
+      <button onClick={handleSave}>hadgalah</button>
     </>
   );
 }

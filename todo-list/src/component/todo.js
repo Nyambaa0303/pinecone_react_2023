@@ -76,7 +76,7 @@ export function Todos() {
   function updateEditingText(index, id) {
     const newTodos = [...todos];
     if (!editingTexts[id]) {
-      setError("Empy Task");
+      setError("Task is empy !!!");
     } else {
       newTodos[index].text = editingTexts[id];
       setTodos(newTodos);

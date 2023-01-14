@@ -15,7 +15,7 @@ export function TodoNew({ onSave }) {
 
   function handleSave() {
     if (text === "") {
-      setError("Task empy !!!");
+      setError("Task is empy !!!");
     } else {
       onSave(text);
       setText("");
