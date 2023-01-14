@@ -52,7 +52,6 @@ function Admins() {
           key={admin.id}
           className="row border rounded-3 p-4 mt-5 col-6 mx-auto  d-flex justify-content-between align-items-center"
         >
-          <b className="col-none-12 col-lg-6">{admin.text}</b>
           <AdminListItem
             admin={admin}
             key={admin.id}

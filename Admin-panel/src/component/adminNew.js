@@ -4,18 +4,31 @@ import Form from "react-bootstrap/Form";
 import React from "react";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
+import { AdminError } from "./adminError";
 
 export function AdminNew({ show, onClose, onSave }) {
   const [text, setText] = useState("");
+  const [error, setError] = useState("");
 
   function handleTextChange(event) {
     setText(event.target.value);
   }
 
   function handleSave() {
-    onSave(text);
-    setText("");
-    onClose();
+    if (text === "") {
+      setError("Task is empy !!!");
+    } else {
+      onSave(text);
+      setText("");
+      setError("");
+      onClose();
+    }
+  }
+
+  function handleKeyUp(event) {
+    if (event.code === "Enter") {
+      handleSave();
+    }
   }
   return (
     <>
@@ -33,7 +46,14 @@ export function AdminNew({ show, onClose, onSave }) {
             placeholder=" Ангилалийн нэр"
             value={text}
             onChange={handleTextChange}
+            onKeyUp={handleKeyUp}
+            style={
+              error
+                ? { borderColor: "red", borderWidth: "2px" }
+                : { borderColor: "gray" }
+            }
           />
+          <AdminError error={error} />
         </Modal.Body>
         <Modal.Footer className=" d-flex justify-content-between">
           <Button variant="btn btn-secondary" onClick={onClose}>
