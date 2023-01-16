@@ -78,12 +78,19 @@ export function AdminListItem({ onDelete, admin, onUpdate }) {
   function EditingItem({ onSave, onCancel, defaultValue }) {
     const [text, setText] = useState(defaultValue);
 
+    function handleKeyUp(event) {
+      if (event.code === "Enter") {
+        onSave(text);
+      }
+    }
+
     return (
       <div className="d-flex gap-3 justify-content-between">
         <inputGroup className="w-75">
           <Form.Control
             value={text}
             onChange={(event) => setText(event.target.value)}
+            onKeyUp={handleKeyUp}
           />
           <AdminError error={error} />
         </inputGroup>
