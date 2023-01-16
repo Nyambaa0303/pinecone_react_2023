@@ -55,10 +55,7 @@ export function AdminNew({ show, onClose, onSave }) {
           />
           <AdminError error={error} />
         </Modal.Body>
-        <Modal.Footer className=" d-flex justify-content-between">
-          <Button variant="btn btn-secondary" onClick={onClose}>
-            Хаах
-          </Button>
+        <Modal.Footer>
           <Button variant="primary" onClick={handleSave}>
             Хадгалах
           </Button>

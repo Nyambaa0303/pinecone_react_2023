@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -19,11 +20,13 @@ function Header() {
             <Nav.Link href="#home" className="text-light">
               Хэрэглэгч
             </Nav.Link>
-            <Nav.Link href="#link" className="text-white-50">
+            <Nav.Link to="/angilal" as={Link} className="text-white-50">
               Ангилал
             </Nav.Link>
             <NavDropdown title="Мэдээ" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Мэдээ</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/about">
+                Мэдээ
+              </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Сэтгэгдэл</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Шинэ Мэдээ</NavDropdown.Item>
