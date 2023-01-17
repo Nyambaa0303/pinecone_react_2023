@@ -86,14 +86,14 @@ export function AdminListItem({ onDelete, admin, onUpdate }) {
 
     return (
       <div className="d-flex gap-3 justify-content-between">
-        <inputGroup className="w-75">
+        <InputGroup className="w-75">
           <Form.Control
             value={text}
             onChange={(event) => setText(event.target.value)}
             onKeyUp={handleKeyUp}
           />
           <AdminError error={error} />
-        </inputGroup>
+        </InputGroup>
 
         <div className="d-flex gap-2  w-25">
           <Button variant="outline-secondary" onClick={() => onCancel()}>
