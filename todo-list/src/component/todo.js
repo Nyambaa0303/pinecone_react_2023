@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./todo.css";
+import "./Todo.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
