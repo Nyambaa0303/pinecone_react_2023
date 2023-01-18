@@ -1,27 +1,55 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
 export function Header() {
   return (
     <Navbar bg="dark" expand="lg">
       <Container>
-        <Navbar.Brand to="/admin" as={Link} className="text-light">
-          Home
-        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto  ">
-            <Nav.Link to="/admin/categories" as={Link} className="text-light">
+            <Nav.Link
+              style={({ isActive }) => ({
+                background: isActive ? "red" : "none",
+              })}
+              to="/admin/home"
+              as={NavLink}
+              className="text-light"
+            >
+              Home
+            </Nav.Link>
+            <Nav.Link
+              style={({ isActive }) => ({
+                background: isActive ? "red" : "none",
+              })}
+              to="/admin/categories"
+              as={NavLink}
+              className="text-light"
+            >
               Categories
             </Nav.Link>
-            <Nav.Link to="/admin/about" as={Link} className="text-light">
+            <Nav.Link
+              style={({ isActive }) => ({
+                background: isActive ? "red" : "none",
+              })}
+              to="/admin/about"
+              as={NavLink}
+              className="text-light"
+            >
               About
             </Nav.Link>
-            <Nav.Link to="/admin/contact" as={Link} className="text-light">
-              Contact
+            <Nav.Link
+              style={({ isActive }) => ({
+                background: isActive ? "red" : "none",
+              })}
+              to="/admin/contact"
+              as={NavLink}
+              className="text-light"
+            >
+              Contact US
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
