@@ -11,7 +11,7 @@ export function AdminApp() {
       <Container>
         <div style={{ maxWidth: 700, margin: "2rem auto" }}>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/categories" element={<div>Categories app</div>} />
             <Route path="/about" element={<div>About app</div>} />
             <Route path="/contact" element={<div>Contact app</div>} />
