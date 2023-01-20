@@ -1,9 +1,9 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import Logo from "./yconsulting.png";
+import Logo from "../../component/images.png";
 
 export function Header() {
   return (
@@ -17,7 +17,7 @@ export function Header() {
               style={({ isActive }) => ({
                 background: isActive ? "red" : "none",
               })}
-              to="/admin/home"
+              to="/home"
               as={NavLink}
               className="text-light"
             >
@@ -28,7 +28,7 @@ export function Header() {
               style={({ isActive }) => ({
                 background: isActive ? "red" : "none",
               })}
-              to="/admin/categories"
+              to="/categories"
               as={NavLink}
               className="text-light"
             >
@@ -38,7 +38,7 @@ export function Header() {
               style={({ isActive }) => ({
                 background: isActive ? "red" : "none",
               })}
-              to="/admin/about"
+              to="/about"
               as={NavLink}
               className="text-light"
             >
@@ -48,21 +48,11 @@ export function Header() {
               style={({ isActive }) => ({
                 background: isActive ? "red" : "none",
               })}
-              to="/admin/contact"
+              to="/contact"
               as={NavLink}
               className="text-light"
             >
               Contact US
-            </Nav.Link>
-            <Nav.Link
-              style={({ isActive }) => ({
-                background: isActive ? "red" : "none",
-              })}
-              to="/admin/edit"
-              as={NavLink}
-              className="text-light"
-            >
-              Edit
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

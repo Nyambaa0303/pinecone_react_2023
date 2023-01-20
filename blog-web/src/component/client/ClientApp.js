@@ -1,13 +1,22 @@
 import { Link, Route, Routes, useParams } from "react-router-dom";
+import { Header } from "./Header";
 
 export function ClientApp() {
   return (
     <div>
-      <Link to="/">Home</Link> <Link to="/blog">Blog</Link>
+      <Header />
+
       <Routes>
-        <Route path="/" element={<div>wellcome to client page</div>} />
-        <Route path="/blog" element={<div>Blog list</div>} />
-        <Route path="/blog/:slug" element={<SingleBlog />} />
+        <Route path="/home" element={<div>wellcome to client home page</div>} />
+        <Route
+          path="/categories"
+          element={<div>wellcome categories client page</div>}
+        />
+        <Route
+          path="/contact"
+          element={<div>wellcome contact client page</div>}
+        />
+        <Route path="/about/:slug" element={<SingleBlog />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
