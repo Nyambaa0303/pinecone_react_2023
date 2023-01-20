@@ -54,6 +54,16 @@ export function Header() {
             >
               Contact US
             </Nav.Link>
+            <Nav.Link
+              style={({ isActive }) => ({
+                background: isActive ? "red" : "none",
+              })}
+              to="/admin/edit"
+              as={NavLink}
+              className="text-light"
+            >
+              Edit
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <Button
