@@ -3,12 +3,13 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, NavLink } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import Logo from "./yconsulting.png";
 
 export function Header() {
   return (
     <Navbar bg="dark" expand="lg">
       <Container>
-        <img src="" alt="logo" />
+        <img src={Logo} alt="logo" />
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto  ">
@@ -22,6 +23,7 @@ export function Header() {
             >
               Home
             </Nav.Link>
+
             <Nav.Link
               style={({ isActive }) => ({
                 background: isActive ? "red" : "none",
