@@ -5,6 +5,8 @@ import { NavLink } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Logo from "../../component/images.png";
 
+import NavDropdown from "react-bootstrap/NavDropdown";
+
 export function Header() {
   return (
     <Navbar bg="dark" expand="lg">
@@ -24,7 +26,9 @@ export function Header() {
               Home
             </Nav.Link>
 
-            <Nav.Link
+            <NavDropdown
+              title="Categories"
+              id="navbarScrollingDropdown"
               style={({ isActive }) => ({
                 background: isActive ? "red" : "none",
               })}
@@ -32,8 +36,16 @@ export function Header() {
               as={NavLink}
               className="text-light"
             >
-              Categories
-            </Nav.Link>
+              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action4">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action5">
+                Something else here
+              </NavDropdown.Item>
+            </NavDropdown>
+
             <Nav.Link
               style={({ isActive }) => ({
                 background: isActive ? "red" : "none",
