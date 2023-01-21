@@ -7,6 +7,7 @@ export function ClientApp() {
       <Header />
 
       <Routes>
+        <Route path="/" element={<div>wellcome to client page</div>} />
         <Route path="/home" element={<div>wellcome to client home page</div>} />
         <Route
           path="/categories"

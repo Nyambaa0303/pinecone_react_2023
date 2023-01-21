@@ -13,12 +13,8 @@ export function AdminApp() {
       </Link>
       <Container>
         <div style={{ maxWidth: 700, margin: "2rem auto", position: "fixed" }}>
-          wellcome admin app
           <Routes>
-            <Route
-              path="/admin/home"
-              element={<div>wellcome admin home</div>}
-            />
+            <Route path="/admin" element={<div>wellcome admin home</div>} />
             <Route
               path="/admin/categories"
               element={<div style={{ color: "white" }}>Categories app</div>}
