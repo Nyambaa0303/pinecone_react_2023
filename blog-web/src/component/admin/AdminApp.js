@@ -1,6 +1,7 @@
 import { Link, Route, Routes } from "react-router-dom";
 
 import Container from "react-bootstrap/Container";
+import { Edit } from "./edit";
 
 // import { Particless } from "../Particles";
 
@@ -23,6 +24,7 @@ export function AdminApp() {
             <Route path="/admin/contact" element={<div>Contact app</div>} />
           </Routes>
         </div>
+        <Edit />
       </Container>
     </>
   );
