@@ -1,16 +1,30 @@
-import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { AdminListItem } from "./adminListItem";
 import { v4 as uuidv4 } from "uuid";
 import { AdminNew } from "./adminNew";
 
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+
 function Admins() {
   const [admins, setAdmins] = useState([]);
-  const [editing, setEditing] = useState(false);
+  // const [editing, setEditing] = useState(false);
+
+  const [searchParams, setSearchParams] = useSearchParams({});
+
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    fetch("https://dummyjson.com/products")
+      .then((req) => req.json())
+      .then((data) => setList(data.products));
+  }, []);
 
   function closeModal() {
-    setEditing(false);
+    setSearchParams({});
   }
+
+  const editing = searchParams.get("editing") === "new";
 
   function handleSave(text) {
     const newAdmin = {
@@ -41,7 +55,10 @@ function Admins() {
     <>
       <div className="col-6 mx-auto mt-5 d-flex justify-content-between">
         <h2>Ангилал</h2>
-        <Button variant="outline-primary" onClick={() => setEditing(true)}>
+        <Button
+          variant="outline-primary"
+          onClick={() => setSearchParams({ editing: "new" })}
+        >
           Шинэ
         </Button>
       </div>
@@ -57,6 +74,7 @@ function Admins() {
             key={admin.id}
             onUpdate={(text) => handleUpdate(index, text)}
             onDelete={() => handleDelete(index)}
+            list={list}
           />
         </div>
       ))}
