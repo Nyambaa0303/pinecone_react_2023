@@ -12,12 +12,10 @@ function Admins() {
 
   const [searchParams, setSearchParams] = useSearchParams({});
 
-  const [list, setList] = useState([]);
-
   useEffect(() => {
     fetch("https://dummyjson.com/products")
       .then((req) => req.json())
-      .then((data) => setList(data.products));
+      .then((data) => setAdmins(data.products));
   }, []);
 
   function closeModal() {
@@ -74,7 +72,6 @@ function Admins() {
             key={admin.id}
             onUpdate={(text) => handleUpdate(index, text)}
             onDelete={() => handleDelete(index)}
-            list={list}
           />
         </div>
       ))}

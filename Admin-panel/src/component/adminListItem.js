@@ -27,7 +27,7 @@ export function AdminListItem({ onDelete, admin, onUpdate }) {
   if (editing) {
     return (
       <EditingItem
-        defaultValue={admin.text}
+        defaultValue={admin.title}
         onCancel={() => setEditing(false)}
         onSave={handleSave}
       />
@@ -49,8 +49,9 @@ export function AdminListItem({ onDelete, admin, onUpdate }) {
     return (
       <div className="d-flex justify-content-between align-items-center flex-wrap">
         <b style={{ textDecoration: done ? "line-through" : "none" }}>
-          {admin.text}
+          {admin.title}
         </b>
+        <p>{admin.price}</p>
 
         <div className=" d-flex gap-2 flex-wrap">
           <Button variant="outline-secondary" onClick={onEdit}>
