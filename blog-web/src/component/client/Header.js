@@ -11,7 +11,7 @@ export function Header() {
   return (
     <Navbar bg="dark" expand="lg">
       <Container>
-        <img src={Logo} alt="logo" />
+        <img src={Logo} alt="logo" style={{ width: "40px" }} />
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto  ">

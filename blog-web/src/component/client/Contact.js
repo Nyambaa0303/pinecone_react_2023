@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-export function Home() {
+export function Contact() {
   const [list, setList] = useState([]);
 
   useEffect(() => {
@@ -12,11 +12,9 @@ export function Home() {
   return (
     <div>
       {list.map((item, index) => (
-        <div className="d-flex ">
-          <>
-            <img src={item.thumbnail} />
-            {item.title}
-          </>
+        <div>
+          <img src={item.thumbnail} />
+          {item.title}
         </div>
       ))}
     </div>

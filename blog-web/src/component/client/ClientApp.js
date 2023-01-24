@@ -1,5 +1,7 @@
 import { Link, Route, Routes, useParams } from "react-router-dom";
+import { Contact } from "./Contact";
 import { Header } from "./Header";
+import { Home } from "./Home";
 
 export function ClientApp() {
   return (
@@ -8,15 +10,12 @@ export function ClientApp() {
 
       <Routes>
         <Route path="/" element={<div>wellcome to client page</div>} />
-        <Route path="/home" element={<div>wellcome to client home page</div>} />
+        <Route path="/home" element={<Home />} />
         <Route
           path="/categories"
           element={<div>wellcome categories client page</div>}
         />
-        <Route
-          path="/contact"
-          element={<div>wellcome contact client page</div>}
-        />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/about/:slug" element={<SingleBlog />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
