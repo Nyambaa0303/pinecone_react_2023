@@ -1,20 +1,27 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import axios, { isCancel, AxiosError } from "axios";
 
 export function Contact() {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    fetch("https://dummyjson.com/products")
-      .then((req) => req.json())
-      .then((data) => setList(data.products));
+    axios.get("http://localhost:8000/").then((response) => {
+      const { data, status } = response;
+
+      if (status === 200) {
+        setList(data);
+      } else {
+        alert(`Aldaa garlaa: ${status} `);
+      }
+    });
   }, []);
   return (
     <div>
-      {list.map((item, index) => (
+      {list.map((item) => (
         <div>
-          <img src={item.thumbnail} />
-          {item.title}
+          {/* <img src={item.thumbnail} /> */}
+          {item.name}
         </div>
       ))}
     </div>
