@@ -21,7 +21,8 @@ export function Contact() {
       {list.map((item) => (
         <div>
           {/* <img src={item.thumbnail} /> */}
-          {item.name}
+          {item.name} {":"}
+          {item.age}
         </div>
       ))}
     </div>
