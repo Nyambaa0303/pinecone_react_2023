@@ -12,11 +12,9 @@ export function Home() {
   return (
     <div>
       {list.map((item, index) => (
-        <div className="d-flex ">
-          <>
-            <img src={item.thumbnail} />
-            {item.title}
-          </>
+        <div className="">
+          <img src={item.thumbnail} />
+          <h5>{item.title}</h5>
         </div>
       ))}
     </div>
