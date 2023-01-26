@@ -24,7 +24,7 @@ export function Topbar() {
             <SettingsIcon />
           </div>
           <img
-            src="https://images.unsplash.com/photo-1628563694622-5a76957fd09c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW5zdGFncmFtJTIwcHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
+            src="https://i.scdn.co/image/ab6761610000e5eba48fee36f72248193d719774"
             alt=""
             className="topAvatar"
           />

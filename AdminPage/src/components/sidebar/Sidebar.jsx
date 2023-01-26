@@ -2,6 +2,15 @@ import "./sidebar.css";
 import LineStyleIcon from "@mui/icons-material/LineStyle";
 import TimelineIcon from "@mui/icons-material/Timeline";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import InventoryIcon from "@mui/icons-material/Inventory";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import AssessmentIcon from "@mui/icons-material/Assessment";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
+import ReportIcon from "@mui/icons-material/Report";
 
 export default function Sidebar() {
   return (
@@ -28,19 +37,19 @@ export default function Sidebar() {
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem ">
-              <LineStyleIcon className="sidebarIcon" />
+              <PersonOutlineIcon className="sidebarIcon" />
               Users
             </li>
             <li className="sidebarListItem">
-              <TimelineIcon className="sidebarIcon" />
+              <InventoryIcon className="sidebarIcon" />
               Products
             </li>
             <li className="sidebarListItem">
-              <TrendingUpIcon className="sidebarIcon" />
+              <AttachMoneyIcon className="sidebarIcon" />
               Transactions
             </li>
             <li className="sidebarListItem">
-              <TrendingUpIcon className="sidebarIcon" />
+              <AssessmentIcon className="sidebarIcon" />
               Reports
             </li>
           </ul>
@@ -49,15 +58,15 @@ export default function Sidebar() {
           <h3 className="sidebarTitle">Notifications</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem ">
-              <LineStyleIcon className="sidebarIcon" />
+              <MailOutlineIcon className="sidebarIcon" />
               Mail
             </li>
             <li className="sidebarListItem">
-              <TimelineIcon className="sidebarIcon" />
+              <DynamicFeedIcon className="sidebarIcon" />
               Feedback
             </li>
             <li className="sidebarListItem">
-              <TrendingUpIcon className="sidebarIcon" />
+              <ChatBubbleOutlineIcon className="sidebarIcon" />
               Messages
             </li>
           </ul>
@@ -66,15 +75,15 @@ export default function Sidebar() {
           <h3 className="sidebarTitle">Staff</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem ">
-              <LineStyleIcon className="sidebarIcon" />
+              <WorkOutlineIcon className="sidebarIcon" />
               Manage
             </li>
             <li className="sidebarListItem">
-              <TimelineIcon className="sidebarIcon" />
+              <TrendingUpIcon className="sidebarIcon" />
               Analytics
             </li>
             <li className="sidebarListItem">
-              <TrendingUpIcon className="sidebarIcon" />
+              <ReportIcon className="sidebarIcon" />
               Reports
             </li>
           </ul>
