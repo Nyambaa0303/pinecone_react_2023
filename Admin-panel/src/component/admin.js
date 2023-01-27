@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import { AdminListItem } from "./adminListItem";
-import { v4 as uuidv4 } from "uuid";
+
 import { AdminNew } from "./adminNew";
 import axios, { isCancel, AxiosError } from "axios";
 
@@ -12,13 +12,34 @@ function Admins() {
   // const [editing, setEditing] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams({});
+  function fetchData() {
+    axios.get("http://localhost:4000").then((response) => {
+      const { data, status } = response;
+      if (status === 200) {
+        setAdmins(data.reverse());
+      } else {
+        alert(`aldaa garlaaa: ${status}`);
+      }
+    });
+  }
+  // function Post() {
+  //   return axios
+  //     .post("http://localhost:4000", {
+  //       name: text,
+  //     })
+  //     .then((res) => {
+  //       const { status } = res;
+  //       if (status === 201) {
+  //         setText("");
+  //         setError("");
+  //         onClose();
+  //         onSave();
+  //       }
+  //     });
+  // }
 
   useEffect(() => {
-    axios.get("http://localhost:8000").then((response) => {
-      const data = response;
-      setAdmins(data.data);
-      console.log(data);
-    });
+    fetchData();
   }, []);
 
   function closeModal() {
@@ -27,23 +48,8 @@ function Admins() {
 
   const editing = searchParams.get("editing") === "new";
 
-  function handleSave(text) {
-    const newAdmin = {
-      text: text,
-      done: false,
-      id: uuidv4(),
-    };
-    const newAdmins = [newAdmin, ...admins];
-    setAdmins(newAdmins);
-    console.log(text);
-  }
-
-  function handleDelete(index) {
-    if (window.confirm("Are you delete?")) {
-      const newAdmins = [...admins];
-      newAdmins.splice(index, 1);
-      setAdmins(newAdmins);
-    }
+  function handleSave() {
+    fetchData();
   }
 
   function handleUpdate(index, text) {
@@ -74,7 +80,7 @@ function Admins() {
             admin={admin}
             key={admin.id}
             onUpdate={(text) => handleUpdate(index, text)}
-            onDelete={() => handleDelete(index)}
+            fetchData={fetchData}
           />
         </div>
       ))}

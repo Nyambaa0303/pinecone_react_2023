@@ -5,6 +5,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import { AdminError } from "./adminError";
+import axios from "axios";
 
 export function AdminNew({ show, onClose, onSave }) {
   const [text, setText] = useState("");
@@ -18,10 +19,19 @@ export function AdminNew({ show, onClose, onSave }) {
     if (text === "") {
       setError("Task is empy !!!");
     } else {
-      onSave(text);
-      setText("");
-      setError("");
-      onClose();
+      axios
+        .post("http://localhost:4000", {
+          name: text,
+        })
+        .then((res) => {
+          const { status } = res;
+          if (status === 201) {
+            setText("");
+            setError("");
+            onClose();
+            onSave();
+          }
+        });
     }
   }
 

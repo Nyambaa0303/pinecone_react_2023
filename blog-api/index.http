@@ -1,2 +1,28 @@
-GET http://localhost:4000/data 
+GET http://localhost:4000/
+
 ###
+
+GET http://localhost:4000/data/f7d9ba25-9a79-4b6f-b031-28ddf60c4097
+###
+
+
+POST http://localhost:4000/
+content-type: application/json
+
+{"name": "Bataa", "age": "34"} 
+
+###
+
+DELETE http://localhost:4000/4fb588d2-2d41-4c17-a22f-643f829d62fa
+
+
+###
+
+PUT http://localhost:4000
+content-type: application/json
+
+{
+    "name": "Bold",
+    "age": "45"
+
+}

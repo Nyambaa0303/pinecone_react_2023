@@ -3,8 +3,9 @@ import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import { AdminError } from "./adminError";
 import InputGroup from "react-bootstrap/InputGroup";
+import axios from "axios";
 
-export function AdminListItem({ onDelete, admin, onUpdate }) {
+export function AdminListItem({ admin, onUpdate, fetchData }) {
   const [editing, setEditing] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState("");
@@ -23,13 +24,19 @@ export function AdminListItem({ onDelete, admin, onUpdate }) {
       setError("");
     }
   }
+  const onDelete = (id) => {
+    if (window.confirm("Are you delete?")) {
+      axios.delete(`http://localhost:4000/${id}`).then((response) => {
+        fetchData();
+      });
+    }
+  };
 
   if (editing) {
     return (
       <EditingItem
         defaultValue={admin.name}
         onCancel={() => setEditing(false)}
-        onSave={handleSave}
       />
     );
   }
@@ -67,7 +74,7 @@ export function AdminListItem({ onDelete, admin, onUpdate }) {
           <Button
             variant="white"
             className="btn btn-outline-danger"
-            onClick={onDelete}
+            onClick={() => onDelete(admin.id)}
           >
             Устгах
           </Button>
@@ -85,6 +92,15 @@ export function AdminListItem({ onDelete, admin, onUpdate }) {
       }
     }
 
+    function EditSave(id) {
+      axios.put(`http://localhost:4000/${id}`, {
+        name: text,
+      });
+      // .then((res) => {});
+      fetchData();
+      onCancel();
+    }
+
     return (
       <div className="d-flex gap-3 justify-content-between">
         <InputGroup className="w-75">
@@ -100,7 +116,7 @@ export function AdminListItem({ onDelete, admin, onUpdate }) {
           <Button variant="outline-secondary" onClick={() => onCancel()}>
             Буцах
           </Button>
-          <Button variant="outline-primary" onClick={() => onSave(text)}>
+          <Button variant="outline-primary" onClick={() => EditSave(admin.id)}>
             Хадгалах
           </Button>
         </div>
