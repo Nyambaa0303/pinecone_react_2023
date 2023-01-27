@@ -2,6 +2,7 @@ import Button from "react-bootstrap/Button";
 import { AdminListItem } from "./adminListItem";
 import { v4 as uuidv4 } from "uuid";
 import { AdminNew } from "./adminNew";
+import axios, { isCancel, AxiosError } from "axios";
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -13,9 +14,11 @@ function Admins() {
   const [searchParams, setSearchParams] = useSearchParams({});
 
   useEffect(() => {
-    fetch("https://dummyjson.com/products")
-      .then((req) => req.json())
-      .then((data) => setAdmins(data.products));
+    axios.get("http://localhost:8000").then((response) => {
+      const data = response;
+      setAdmins(data.data);
+      console.log(data);
+    });
   }, []);
 
   function closeModal() {

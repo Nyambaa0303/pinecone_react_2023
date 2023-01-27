@@ -6,7 +6,7 @@ export function Contact() {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/").then((response) => {
+    axios.get("http://localhost:6000/").then((response) => {
       const { data, status } = response;
 
       if (status === 200) {

@@ -2,6 +2,7 @@ import "./userList.css";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { width } from "@mui/system";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { userRows } from "../../dummyData";
 
 export default function UserList() {
   const columns = [
@@ -45,75 +46,16 @@ export default function UserList() {
     },
   ];
 
-  const rows = [
-    {
-      id: 1,
-      username: "John Snow",
-      avatar: "https://i.ytimg.com/vi/EovZhep-xes/maxresdefault.jpg",
-      status: "active",
-      transaction: "$12,345",
-      email: "Jhon@gamil.com",
-    },
-    {
-      id: 2,
-      username: "John Snow",
-      avatar: "https://i.ytimg.com/vi/EovZhep-xes/maxresdefault.jpg",
-      status: "active",
-      transaction: "$12,345",
-      email: "Jhon@gamil.com",
-    },
-    {
-      id: 3,
-      username: "John Snow",
-      avatar: "https://i.ytimg.com/vi/EovZhep-xes/maxresdefault.jpg",
-      status: "active",
-      transaction: "$12,345",
-      email: "Jhon@gamil.com",
-    },
-    {
-      id: 4,
-      username: "John Snow",
-      avatar: "https://i.ytimg.com/vi/EovZhep-xes/maxresdefault.jpg",
-      status: "active",
-      transaction: "$12,345",
-      email: "Jhon@gamil.com",
-    },
-    {
-      id: 5,
-      username: "John Snow",
-      avatar: "https://i.ytimg.com/vi/EovZhep-xes/maxresdefault.jpg",
-      status: "active",
-      transaction: "$12,345",
-      email: "Jhon@gamil.com",
-    },
-
-    {
-      id: 6,
-      username: "John Snow",
-      avatar: "https://i.ytimg.com/vi/EovZhep-xes/maxresdefault.jpg",
-      status: "active",
-      transaction: "$12,345",
-      email: "Jhon@gamil.com",
-    },
-    {
-      id: 7,
-      username: "John Snow",
-      avatar: "https://i.ytimg.com/vi/EovZhep-xes/maxresdefault.jpg",
-      status: "active",
-      transaction: "$12,345",
-      email: "Jhon@gamil.com",
-    },
-  ];
-
   return (
     <div className="userList">
       {" "}
       <DataGrid
-        rows={rows}
+        rows={userRows}
         columns={columns}
-        pageSize={5}
+        pageSize={8}
         rowsPerPageOptions={[5]}
         checkboxSelection
+        disableSelectionOnClick
       />
     </div>
   );
