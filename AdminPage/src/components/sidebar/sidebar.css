@@ -26,10 +26,10 @@
 
 .sidebarListItem {
   display: flex;
-  padding: 5px;
+  padding: 5px !important;
   cursor: pointer;
-  align-items: center;
-  border-radius: 10px;
+  align-items: center !important;
+  border-radius: 10px !important;
 }
 
 .sidebarListItem.active,
