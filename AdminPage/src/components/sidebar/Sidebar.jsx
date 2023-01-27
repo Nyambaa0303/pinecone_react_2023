@@ -21,10 +21,8 @@ export default function Sidebar() {
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem ">
-              <Link to={"/"} className="sidebarListItem ">
-                <LineStyleIcon className="sidebarIcon" />
-                Home
-              </Link>
+              <LineStyleIcon className="sidebarIcon" />
+              <Link to={"/"}>Home</Link>
             </li>
             <li className="sidebarListItem">
               <TimelineIcon className="sidebarIcon" />
@@ -40,10 +38,8 @@ export default function Sidebar() {
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem ">
-              <Link to={"/users"}>
-                <PersonOutlineIcon className="sidebarIcon" />
-                Users
-              </Link>
+              <PersonOutlineIcon className="sidebarIcon" />
+              <Link to={"/users"}>Users</Link>
             </li>
             <li className="sidebarListItem">
               <InventoryIcon className="sidebarIcon" />

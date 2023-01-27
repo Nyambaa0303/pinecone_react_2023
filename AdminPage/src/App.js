@@ -4,6 +4,7 @@ import "./app.css";
 import Home from "./Pages/home/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import UserList from "./Pages/userList/UserList";
+import User from "./Pages/user/User";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/users" element={<UserList />} />
+          <Route path="/users/:userId" element={<User />} />
         </Routes>
       </div>
     </BrowserRouter>

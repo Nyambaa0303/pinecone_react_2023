@@ -1,8 +1,10 @@
 import "./featuredinfo.css";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import { motion } from "framer-motion";
 
 export default function FeaturedInfo() {
+  // const [selectedId, setSelectedId] = useState(null);
   return (
     <div className="featured">
       <div className="featuresItem">
@@ -16,6 +18,7 @@ export default function FeaturedInfo() {
         </div>
         <span className="featuredSub">Compared to last month</span>
       </div>
+
       <div className="featuresItem">
         <span className="featuredTitle">Sales</span>
         <div className="featuredMoneyContainer">

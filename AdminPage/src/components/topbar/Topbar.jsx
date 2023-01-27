@@ -9,7 +9,7 @@ export function Topbar() {
     <div className="topbar">
       <div className="topbarWrapper">
         <div className="topleft">
-          <span className="logo">Nyamoo.mn</span>
+          <span className="logo">Nyamooo.mn</span>
         </div>
         <div className="topright">
           <div className="topbarIconContainer">
