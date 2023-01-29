@@ -13,7 +13,7 @@
   width: 80px;
   border: none;
   padding: 5px;
-  background-color: teal;
+  background-color: darkblue;
   border-radius: 5px;
   color: white;
   cursor: pointer;
@@ -149,7 +149,7 @@
   border-radius: 5px;
   padding: 5px;
   border: none;
-  background-color: teal;
+  background-color: darkblue;
   color: white;
   cursor: pointer;
   font-weight: 600;
