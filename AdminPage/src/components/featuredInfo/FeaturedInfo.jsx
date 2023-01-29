@@ -1,7 +1,6 @@
 import "./featuredinfo.css";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import { motion } from "framer-motion";
 
 export default function FeaturedInfo() {
   // const [selectedId, setSelectedId] = useState(null);
