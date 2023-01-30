@@ -1,7 +1,7 @@
 import "./userList.css";
 import { DataGrid } from "@mui/x-data-grid";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import { userRows } from "../../dummyData";
+import { userRows } from "../../../dummyData";
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -60,7 +60,6 @@ export default function UserList() {
 
   return (
     <div className="userList">
-      {" "}
       <DataGrid
         rows={data}
         columns={columns}

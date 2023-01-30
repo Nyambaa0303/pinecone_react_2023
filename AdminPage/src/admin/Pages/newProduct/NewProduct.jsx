@@ -33,7 +33,7 @@ export default function NewProduct() {
             <option value="no">No</option>
           </select>
         </div>
-        <button className="addProductButton">Create</button>
+        <button className="addProductButton">Publish</button>
       </form>
     </div>
   );

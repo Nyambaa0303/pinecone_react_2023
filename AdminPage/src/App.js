@@ -1,14 +1,14 @@
-import Sidebar from "./components/sidebar/Sidebar";
-import { Topbar } from "./components/topbar/Topbar";
+import Sidebar from "./admin/components/sidebar/Sidebar";
+import { Topbar } from "./admin/components/topbar/Topbar";
 import "./app.css";
-import Home from "./Pages/home/Home";
+import Home from "./admin/Pages/home/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import UserList from "./Pages/userList/UserList";
-import User from "./Pages/user/User";
-import NewUser from "./Pages/newUser/newUser";
-import ProductList from "./Pages/productList/ProductList";
-import Product from "./Pages/Product/Product";
-import NewProduct from "./Pages/newProduct/NewProduct";
+import UserList from "./admin/Pages/userList/UserList";
+import User from "./admin/Pages/user/User";
+import NewUser from "./admin/Pages/newUser/newUser";
+import ProductList from "./admin/Pages/productList/ProductList";
+import Product from "./admin/Pages/Product/Product";
+import NewProduct from "./admin/Pages/newProduct/NewProduct";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
       <div className="container">
         <Sidebar />
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route path="/admin" element={<Home />} />
           <Route path="/users" element={<UserList />} />
           <Route path="/users/:userId" element={<User />} />
           <Route path="/newUser" element={<NewUser />} />
