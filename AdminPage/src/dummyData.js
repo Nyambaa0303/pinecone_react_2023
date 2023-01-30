@@ -49,6 +49,21 @@ export const userData = [
   },
 ];
 
+export const productData = [
+  {
+    name: "Jan",
+    Sales: 4000,
+  },
+  {
+    name: "Feb",
+    Sales: 5000,
+  },
+  {
+    name: "Mar",
+    Sales: 4000,
+  },
+];
+
 export const userRows = [
   {
     id: 1,
@@ -130,5 +145,89 @@ export const userRows = [
     status: "active",
     transaction: "$12,345",
     email: "Jhon@gamil.com",
+  },
+];
+
+export const productRows = [
+  {
+    id: 1,
+    name: "Apple iphone",
+    img: "https://imageio.forbes.com/specials-images/imageserve/627fa3b6a736222d2161069c/Apple--iPhone-14--iPhone-14-Pro--iPhone-14-Max--iPhone-14-Pro-Max--new-iPhone-/0x0.jpg?format=jpg&crop=1835,1375,x402,y49,safe&width=960",
+    stock: 123,
+    status: "active",
+    price: "$1000",
+  },
+  {
+    id: 2,
+    name: "Apple iphone",
+    img: "https://imageio.forbes.com/specials-images/imageserve/627fa3b6a736222d2161069c/Apple--iPhone-14--iPhone-14-Pro--iPhone-14-Max--iPhone-14-Pro-Max--new-iPhone-/0x0.jpg?format=jpg&crop=1835,1375,x402,y49,safe&width=960",
+    stock: 123,
+    status: "active",
+    price: "$1000",
+  },
+  {
+    id: 3,
+    name: "Apple iphone",
+    img: "https://imageio.forbes.com/specials-images/imageserve/627fa3b6a736222d2161069c/Apple--iPhone-14--iPhone-14-Pro--iPhone-14-Max--iPhone-14-Pro-Max--new-iPhone-/0x0.jpg?format=jpg&crop=1835,1375,x402,y49,safe&width=960",
+    stock: 123,
+    status: "active",
+    price: "$1000",
+  },
+  {
+    id: 4,
+    name: "Apple iphone",
+    img: "https://imageio.forbes.com/specials-images/imageserve/627fa3b6a736222d2161069c/Apple--iPhone-14--iPhone-14-Pro--iPhone-14-Max--iPhone-14-Pro-Max--new-iPhone-/0x0.jpg?format=jpg&crop=1835,1375,x402,y49,safe&width=960",
+    stock: 123,
+    status: "active",
+    price: "$1000",
+  },
+  {
+    id: 5,
+    name: "Apple iphone",
+    img: "https://imageio.forbes.com/specials-images/imageserve/627fa3b6a736222d2161069c/Apple--iPhone-14--iPhone-14-Pro--iPhone-14-Max--iPhone-14-Pro-Max--new-iPhone-/0x0.jpg?format=jpg&crop=1835,1375,x402,y49,safe&width=960",
+    stock: 123,
+    status: "active",
+    price: "$1000",
+  },
+
+  {
+    id: 6,
+    name: "Apple iphone",
+    img: "https://imageio.forbes.com/specials-images/imageserve/627fa3b6a736222d2161069c/Apple--iPhone-14--iPhone-14-Pro--iPhone-14-Max--iPhone-14-Pro-Max--new-iPhone-/0x0.jpg?format=jpg&crop=1835,1375,x402,y49,safe&width=960",
+    stock: 123,
+    status: "active",
+    price: "$1000",
+  },
+  {
+    id: 7,
+    name: "Apple iphone",
+    img: "https://imageio.forbes.com/specials-images/imageserve/627fa3b6a736222d2161069c/Apple--iPhone-14--iPhone-14-Pro--iPhone-14-Max--iPhone-14-Pro-Max--new-iPhone-/0x0.jpg?format=jpg&crop=1835,1375,x402,y49,safe&width=960",
+    stock: 123,
+    status: "active",
+    price: "$1000",
+  },
+  {
+    id: 8,
+    name: "Apple iphone",
+    img: "https://imageio.forbes.com/specials-images/imageserve/627fa3b6a736222d2161069c/Apple--iPhone-14--iPhone-14-Pro--iPhone-14-Max--iPhone-14-Pro-Max--new-iPhone-/0x0.jpg?format=jpg&crop=1835,1375,x402,y49,safe&width=960",
+    stock: 123,
+    status: "active",
+    price: "$1000",
+  },
+  {
+    id: 9,
+    name: "Apple iphone",
+    img: "https://imageio.forbes.com/specials-images/imageserve/627fa3b6a736222d2161069c/Apple--iPhone-14--iPhone-14-Pro--iPhone-14-Max--iPhone-14-Pro-Max--new-iPhone-/0x0.jpg?format=jpg&crop=1835,1375,x402,y49,safe&width=960",
+    stock: 123,
+    status: "active",
+    price: "$1000",
+  },
+  {
+    id: 10,
+    name: "Apple iphone",
+    img: "https://imageio.forbes.com/specials-images/imageserve/627fa3b6a736222d2161069c/Apple--iPhone-14--iPhone-14-Pro--iPhone-14-Max--iPhone-14-Pro-Max--new-iPhone-/0x0.jpg?format=jpg&crop=1835,1375,x402,y49,safe&width=960",
+    stock: 123,
+    status: "active",
+    price: "$1000",
   },
 ];
