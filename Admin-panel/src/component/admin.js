@@ -22,21 +22,6 @@ function Admins() {
       }
     });
   }
-  // function Post() {
-  //   return axios
-  //     .post("http://localhost:4000", {
-  //       name: text,
-  //     })
-  //     .then((res) => {
-  //       const { status } = res;
-  //       if (status === 201) {
-  //         setText("");
-  //         setError("");
-  //         onClose();
-  //         onSave();
-  //       }
-  //     });
-  // }
 
   useEffect(() => {
     fetchData();
