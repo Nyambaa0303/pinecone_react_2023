@@ -13,20 +13,36 @@ import NewProduct from "./admin/Pages/newProduct/NewProduct";
 function App() {
   return (
     <BrowserRouter>
+      <Routes>
+        <Route path="/admin/*" element={<AdminApp />} />
+        <Route path="*" element={<ClientApp />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+function AdminApp() {
+  return (
+    <>
       <Topbar />
       <div className="container">
         <Sidebar />
+
         <Routes>
-          <Route path="/admin" element={<Home />} />
-          <Route path="/users" element={<UserList />} />
-          <Route path="/users/:userId" element={<User />} />
-          <Route path="/newUser" element={<NewUser />} />
-          <Route path="/products" element={<ProductList />} />
-          <Route path="/product/:productId" element={<Product />} />
+          <Route path="home/" element={<Home />} />
+          <Route path="users/" element={<UserList />} />
+          <Route path="users/:userId" element={<User />} />
+          <Route path="newUser/" element={<NewUser />} />
+          <Route path="products/" element={<ProductList />} />
+          <Route path="products/:productId" element={<Product />} />
           <Route path="/newproduct" element={<NewProduct />} />
         </Routes>
       </div>
-    </BrowserRouter>
+    </>
   );
+}
+
+function ClientApp() {
+  return <>ClientApp</>;
 }
 export default App;
