@@ -15,29 +15,6 @@ function readData() {
   return data;
 }
 
-// let data = [
-//   {
-//     id: uuid(),
-//     name: "Amka",
-//     age: "23",
-//   },
-//   {
-//     id: uuid(),
-//     name: "Tsagaan",
-//     age: "25",
-//   },
-//   {
-//     id: uuid(),
-//     name: "Huslee",
-//     age: "20",
-//   },
-//   {
-//     id: uuid(),
-//     name: "Nyamoo",
-//     age: "32",
-//   },
-// ];
-
 app.get("/", (req, res) => {
   const data = readData();
   res.json(data);
@@ -56,7 +33,6 @@ app.get("/:id", (req, res) => {
 
 app.post("/", (req, res) => {
   const { name, age } = req.body;
-  console.log(name);
   const newData = { id: uuid(), name: name, age: age };
 
   const data = readData();

@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import { AdminListItem } from "./adminListItem";
 
 import { AdminNew } from "./adminNew";
-import axios, { isCancel, AxiosError } from "axios";
+import axios from "axios";
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
