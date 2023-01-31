@@ -1,7 +1,38 @@
 import "./newProduct.css";
 import PublishIcon from "@mui/icons-material/Publish";
+// import { useState } from "react";
+// import axios from "axios";
 
 export default function NewProduct() {
+  // const [text, setText] = useState("");
+  // const [error, setError] = useState("");
+
+  // function handleTextChange(event) {
+  //   setText(event.target.value);
+  // }
+
+  // function handleSave(e) {
+  //   e.preventDefault();
+  //   if (text === "") {
+  //     setError("Task is empy !!!");
+  //   } else {
+  //     axios
+  //       .post("http://localhost:4000", {
+  //         name: text,
+  //       })
+
+  //       .then((res) => {
+  //         const { status } = res;
+  //         if (status === 201) {
+  //           setText("");
+  //           setError("");
+  //           // onClose();
+  //           // onSave();
+  //         }
+  //       });
+  //     console.log(text);
+  //   }
+  // }
   return (
     <div className="newProduct">
       <h1 className="addProductTitle">New Product</h1>
@@ -14,9 +45,10 @@ export default function NewProduct() {
             className="addProductImg"
           />
           <input type="file" id="file" style={{ display: "none" }} />
-          <label for="file">
+          <label htmlFor="file">
             <PublishIcon className="addProductIcon" />
           </label>
+          <input type="text" />
         </div>
         <div className="addProductItem">
           <label>Name</label>

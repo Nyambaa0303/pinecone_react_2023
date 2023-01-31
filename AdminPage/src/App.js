@@ -35,7 +35,7 @@ function AdminApp() {
           <Route path="newUser/" element={<NewUser />} />
           <Route path="products/" element={<ProductList />} />
           <Route path="products/:productId" element={<Product />} />
-          <Route path="/newproduct" element={<NewProduct />} />
+          <Route path="newproduct/" element={<NewProduct />} />
         </Routes>
       </div>
     </>
