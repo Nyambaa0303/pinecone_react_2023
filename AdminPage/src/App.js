@@ -29,13 +29,13 @@ function AdminApp() {
         <Sidebar />
 
         <Routes>
-          <Route path="home/" element={<Home />} />
-          <Route path="users/" element={<UserList />} />
+          <Route path="home" element={<Home />} />
+          <Route path="users" element={<UserList />} />
           <Route path="users/:userId" element={<User />} />
-          <Route path="newUser/" element={<NewUser />} />
-          <Route path="products/" element={<ProductList />} />
+          <Route path="newUser" element={<NewUser />} />
+          <Route path="products" element={<ProductList />} />
           <Route path="products/:productId" element={<Product />} />
-          <Route path="newproduct/" element={<NewProduct />} />
+          <Route path="newproduct" element={<NewProduct />} />
         </Routes>
       </div>
     </>

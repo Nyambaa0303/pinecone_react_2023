@@ -11,7 +11,7 @@ import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import ReportIcon from "@mui/icons-material/Report";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Sidebar() {
   return (
@@ -20,12 +20,12 @@ export default function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
-            <Link to={"home/"} className="link">
+            <NavLink to={"home/"} className="link">
               <li className="sidebarListItem ">
                 <LineStyleIcon className="sidebarIcon" />
                 Home
               </li>
-            </Link>
+            </NavLink>
             <li className="sidebarListItem">
               <TimelineIcon className="sidebarIcon" />
               Analytics
@@ -39,18 +39,18 @@ export default function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
-            <Link to={"users/"} className="link">
+            <NavLink to={"users/"} className="link">
               <li className="sidebarListItem ">
                 <PersonOutlineIcon className="sidebarIcon" />
                 Users
               </li>
-            </Link>
-            <Link to={"products/"} className="link">
+            </NavLink>
+            <NavLink to={"products/"} className="link">
               <li className="sidebarListItem">
                 <InventoryIcon className="sidebarIcon" />
                 Products
               </li>
-            </Link>
+            </NavLink>
             <li className="sidebarListItem">
               <AttachMoneyIcon className="sidebarIcon" />
               Transactions
