@@ -1,7 +1,7 @@
 import "./newProduct.css";
 import PublishIcon from "@mui/icons-material/Publish";
 import { useState } from "react";
-
+import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
 export default function NewProduct() {
@@ -12,12 +12,6 @@ export default function NewProduct() {
   const [price, setPrice] = useState("");
   const [error, setError] = useState("");
 
-  // function handleSave() {
-  //   setImg("");
-  //   setText("");
-  //   setStock("");
-  //   cons;
-  // }
   function handleSave(e) {
     e.preventDefault();
     if (text === "") {
@@ -41,8 +35,16 @@ export default function NewProduct() {
             setStock("");
             setStatus("No");
             setPrice("");
-            // onClose();
-            // onSave();
+            toast("Success save", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
           }
         });
     }

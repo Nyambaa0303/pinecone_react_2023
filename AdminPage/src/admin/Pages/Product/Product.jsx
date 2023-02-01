@@ -7,16 +7,17 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function Product() {
+  const [product, setProduct] = useState([]);
   useEffect(() => {
     axios.get("http://localhost:4000").then((response) => {
       const { data, status } = response;
       if (status === 200) {
+        setProduct(data);
       } else {
         alert(`aldaa garlaaa: ${status}`);
       }
     });
   }, []);
-
   return (
     <div className="product">
       <div className="productTitleContainer">
@@ -31,8 +32,8 @@ export default function Product() {
         </div>
         <div className="productTopRight">
           <div className="productInfoTop">
-            <img src="" alt="title img" className="productInfoImg" />
-            <span className="priductName">title</span>
+            <img src={product.img} alt="title img" className="productInfoImg" />
+            <span className="priductName">{product.name}</span>
           </div>
           <div className="productInfoBottom">
             <div className="productInfoItem">

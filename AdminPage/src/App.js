@@ -1,4 +1,5 @@
 import Sidebar from "./admin/components/sidebar/Sidebar";
+import ClientTopBar from "./clientPage/components/topBar/ClientTopBar";
 import { Topbar } from "./admin/components/topbar/Topbar";
 import "./app.css";
 import Home from "./admin/Pages/home/Home";
@@ -9,6 +10,7 @@ import NewUser from "./admin/Pages/newUser/newUser";
 import ProductList from "./admin/Pages/productList/ProductList";
 import Product from "./admin/Pages/Product/Product";
 import NewProduct from "./admin/Pages/newProduct/NewProduct";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -38,11 +40,27 @@ function AdminApp() {
           <Route path="newproduct" element={<NewProduct />} />
         </Routes>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
   );
 }
 
 function ClientApp() {
-  return <>ClientApp</>;
+  return (
+    <>
+      <ClientTopBar />
+    </>
+  );
 }
 export default App;
