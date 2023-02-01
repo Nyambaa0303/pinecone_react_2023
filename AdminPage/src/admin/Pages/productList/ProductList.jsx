@@ -70,7 +70,7 @@ export default function ProductList() {
       <DataGrid
         rows={products}
         columns={columns}
-        pageSize={8}
+        pageSize={20}
         rowsPerPageOptions={[5]}
         checkboxSelection
         disableSelectionOnClick

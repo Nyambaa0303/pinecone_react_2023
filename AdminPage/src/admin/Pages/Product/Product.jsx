@@ -1,10 +1,22 @@
 import "./product.css";
 import { Link } from "react-router-dom";
 import { Chart } from "../../../admin/components/chart/Chart";
-import { productData } from "../../../dummyData";
+import { productData, productRows } from "../../../dummyData";
 import PublishIcon from "@mui/icons-material/Publish";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function Product() {
+  useEffect(() => {
+    axios.get("http://localhost:4000").then((response) => {
+      const { data, status } = response;
+      if (status === 200) {
+      } else {
+        alert(`aldaa garlaaa: ${status}`);
+      }
+    });
+  }, []);
+
   return (
     <div className="product">
       <div className="productTitleContainer">
@@ -19,12 +31,8 @@ export default function Product() {
         </div>
         <div className="productTopRight">
           <div className="productInfoTop">
-            <img
-              src="https://imageio.forbes.com/specials-images/imageserve/627fa3b6a736222d2161069c/Apple--iPhone-14--iPhone-14-Pro--iPhone-14-Max--iPhone-14-Pro-Max--new-iPhone-/0x0.jpg?format=jpg&crop=1835,1375,x402,y49,safe&width=960"
-              alt=""
-              className="productInfoImg"
-            />
-            <span className="priductName">Apple Iphone</span>
+            <img src="" alt="title img" className="productInfoImg" />
+            <span className="priductName">title</span>
           </div>
           <div className="productInfoBottom">
             <div className="productInfoItem">
