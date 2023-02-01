@@ -32,8 +32,15 @@ app.get("/:id", (req, res) => {
 });
 
 app.post("/", (req, res) => {
-  const { name, age } = req.body;
-  const newData = { id: uuid(), name: name, age: age };
+  const { name, img, stock, status, price } = req.body;
+  const newData = {
+    id: uuid(),
+    name: name,
+    img: img,
+    stock: stock,
+    status: status,
+    price: price,
+  };
 
   const data = readData();
 
