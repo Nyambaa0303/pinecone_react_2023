@@ -11,6 +11,9 @@ import ProductList from "./admin/Pages/productList/ProductList";
 import Product from "./admin/Pages/Product/Product";
 import NewProduct from "./admin/Pages/newProduct/NewProduct";
 import { ToastContainer } from "react-toastify";
+import HomePage from "./clientPage/pages/homepage/HomePage";
+import { useState } from "react";
+import { useDebounce } from "use-debounce";
 
 function App() {
   return (
@@ -57,9 +60,12 @@ function AdminApp() {
 }
 
 function ClientApp() {
+  const [query, setQuery] = useState("");
+  const [searchedQuery] = useDebounce(query, 1000);
   return (
     <>
-      <ClientTopBar />
+      <ClientTopBar query={query} setQuery={setQuery} />
+      <HomePage query={searchedQuery} />
     </>
   );
 }

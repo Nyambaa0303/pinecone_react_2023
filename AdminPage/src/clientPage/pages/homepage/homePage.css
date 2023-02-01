@@ -1,0 +1,17 @@
+.homePageItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.homePageImg {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.homePageItems {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}

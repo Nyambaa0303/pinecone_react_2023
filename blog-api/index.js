@@ -16,8 +16,16 @@ function readData() {
 }
 
 app.get("/", (req, res) => {
+  const { q } = req.query;
   const data = readData();
-  res.json(data);
+  if (q) {
+    const filteredData = data.filter((list) =>
+      list.name.toLowerCase().includes(q.toLowerCase())
+    );
+    res.json(filteredData);
+  } else {
+    res.json(data);
+  }
 });
 
 app.get("/:id", (req, res) => {
@@ -67,13 +75,16 @@ app.delete("/:id", (req, res) => {
 
 app.put("/:id", (req, res) => {
   const { id } = req.params;
-  const { name, age } = req.body;
+  const { name, price, stock, status, img } = req.body;
   const data = readData();
-
+  console.log(name);
   const index = data.findIndex((category) => category.id === id);
   if (index > -1) {
     data[index].name = name;
-    data[index].age = age;
+    data[index].price = price;
+    data[index].status = status;
+    data[index].stock = stock;
+    data[index].img = img;
     fs.writeFileSync("data.json", JSON.stringify(data));
     res.json({ updatedId: id });
   } else {

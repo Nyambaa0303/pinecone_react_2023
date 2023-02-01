@@ -2,11 +2,12 @@ import "./productList.css";
 import { DataGrid } from "@mui/x-data-grid";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams({});
 
   function fetchData() {
     axios.get("http://localhost:4000").then((response) => {
@@ -56,7 +57,16 @@ export default function ProductList() {
         return (
           <>
             <Link to={"/admin/products/" + params.row.id}>
-              <button className="productListEdit">Edit</button>
+              <button
+                className="productListEdit"
+                // onClick={() => {
+                //   //usenavigat
+                //   navigate("/admin/products/" + params.row.id);
+                //   setSearchParams({ id: params.row.id });
+                // }}
+              >
+                Edit
+              </button>
             </Link>
             <DeleteOutlineIcon className="productListDelete" />
           </>

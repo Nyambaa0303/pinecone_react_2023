@@ -1,5 +1,10 @@
 import "./product.css";
-import { Link } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import { Chart } from "../../../admin/components/chart/Chart";
 import { productData, productRows } from "../../../dummyData";
 import PublishIcon from "@mui/icons-material/Publish";
@@ -7,9 +12,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function Product() {
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState();
+  let { productId } = useParams();
+
   useEffect(() => {
-    axios.get("http://localhost:4000").then((response) => {
+    axios.get(`http://localhost:4000/${productId}`).then((response) => {
       const { data, status } = response;
       if (status === 200) {
         setProduct(data);
@@ -17,7 +24,14 @@ export default function Product() {
         alert(`aldaa garlaaa: ${status}`);
       }
     });
-  }, []);
+  }, [productId]);
+
+  // ***************************
+
+  if (!product) {
+    return null;
+  }
+
   return (
     <div className="product">
       <div className="productTitleContainer">
@@ -37,56 +51,101 @@ export default function Product() {
           </div>
           <div className="productInfoBottom">
             <div className="productInfoItem">
-              <span className="productInfoKey">id:</span>
-              <span className="productInfoValue">324</span>
+              <span className="productInfoKey">active : </span>
+              <span className="productInfoValue">{product.status}</span>
             </div>
             <div className="productInfoItem">
-              <span className="productInfoKey">Sales:</span>
-              <span className="productInfoValue">1324</span>
+              <span className="productInfoKey">in stock : </span>
+              <span className="productInfoValue">{product.stock}</span>
             </div>
             <div className="productInfoItem">
-              <span className="productInfoKey">active:</span>
-              <span className="productInfoValue">yes</span>
-            </div>
-            <div className="productInfoItem">
-              <span className="productInfoKey">in stock:</span>
-              <span className="productInfoValue">no</span>
+              <span className="productInfoKey">Price: </span>
+              <span className="productInfoValue">{product.price}</span>
             </div>
           </div>
         </div>
       </div>
-      <div className="productBottom">
-        <form className="productForm">
-          <div className="productFormLeft">
-            <label>Product Name</label>
-            <input type="text" placeholder="Apple Iphone" />
-            <label>In Stock</label>
-            <select name="instock" id="idstock">
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-            <label>Active</label>
-            <select name="active" id="active">
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
+      <EditingItem defaultValue={product} />
+    </div>
+  );
+}
+
+function EditingItem({ defaultValue }) {
+  const [product, setProduct] = useState();
+  let { productId } = useParams();
+  const [img, setImg] = useState(defaultValue.img);
+  const [text, setText] = useState(defaultValue.name);
+  const [stock, setStock] = useState(defaultValue.stock);
+  const [status, setStatus] = useState(defaultValue.status);
+  const [price, setPrice] = useState(defaultValue.price);
+
+  function EditSave(id) {
+    axios.put(`http://localhost:4000/${id}`, {
+      name: text,
+      img: img,
+      stock: stock,
+      status: status,
+      price: price,
+    });
+  }
+  return (
+    <div className="productBottom">
+      <form className="productForm">
+        <div className="productFormLeft">
+          <label>Product Name</label>
+          <input
+            type="text"
+            placeholder="name"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+          <label>Price</label>
+          <input
+            type="text"
+            placeholder="price"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
+          <label>In Stock</label>
+          <input
+            type="text"
+            placeholder="in stock"
+            value={stock}
+            onChange={(e) => setStock(e.target.value)}
+          />
+          <label>Active</label>
+          <select
+            name="active"
+            id="active"
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+          >
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        <div className="productFormRight">
+          <div className="productUpload">
+            <img src={img} alt="" className="productUploadImg" />
+            <input
+              type="text"
+              placeholder="img URL"
+              value={img}
+              onChange={(e) => setImg(e.target.value)}
+            />
+            <label for="file">
+              <PublishIcon />
+            </label>
+            <input type="file" id="file" style={{ display: "none" }} />
           </div>
-          <div className="productFormRight">
-            <div className="productUpload">
-              <img
-                src="https://imageio.forbes.com/specials-images/imageserve/627fa3b6a736222d2161069c/Apple--iPhone-14--iPhone-14-Pro--iPhone-14-Max--iPhone-14-Pro-Max--new-iPhone-/0x0.jpg?format=jpg&crop=1835,1375,x402,y49,safe&width=960"
-                alt=""
-                className="productUploadImg"
-              />
-              <label for="file">
-                <PublishIcon />
-              </label>
-              <input type="file" id="file" style={{ display: "none" }} />
-            </div>
-            <button className="productButton">Update</button>
-          </div>
-        </form>
-      </div>
+          <button
+            className="productButton"
+            onClick={() => EditSave(defaultValue.id)}
+          >
+            Update
+          </button>
+        </div>
+      </form>
     </div>
   );
 }
