@@ -1,0 +1,70 @@
+.singlePage {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 60px;
+}
+
+.singlePageImg {
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.singlePageLeft {
+  width: 60%;
+}
+
+.singlePageRight {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.singlePageRightTitle {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.singlePageRightPrice {
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.singlePageButtonCart {
+  background-color: teal;
+  color: white;
+  width: 150px;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  margin-right: 20px;
+}
+
+.singlePageButtonPurchase {
+  background-color: darkblue;
+  color: white;
+  width: 150px;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+}
+
+.singlePageConnect {
+}
+
+.singlePageConnectTitle {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.singlePageIcon {
+  color: white;
+}

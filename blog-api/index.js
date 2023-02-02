@@ -52,7 +52,7 @@ app.post("/", (req, res) => {
 
   const data = readData();
 
-  data.push(newData);
+  data.unshift(newData);
   fs.writeFileSync("data.json", JSON.stringify(data));
 
   res.sendStatus(201);

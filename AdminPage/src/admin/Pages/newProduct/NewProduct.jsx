@@ -11,6 +11,7 @@ export default function NewProduct() {
   const [status, setStatus] = useState("No");
   const [price, setPrice] = useState("");
   const [error, setError] = useState("");
+  const [category, setCategory] = useState();
 
   function handleSave(e) {
     e.preventDefault();
@@ -24,6 +25,7 @@ export default function NewProduct() {
           stock: stock,
           status: status,
           price: price,
+          categories: category,
         })
 
         .then((res) => {
@@ -65,6 +67,22 @@ export default function NewProduct() {
             value={img}
             placeholder="img URL"
           />
+        </div>
+        <div className="addProductItem">
+          <label>Categories</label>
+          <select
+            name="active"
+            id="active"
+            onChange={(e) => setCategory(e.target.value)}
+            value={category}
+          >
+            <option value="Empy">Empy</option>
+            <option value="Apple">Apple</option>
+            <option value="Samsung">Samsung</option>
+            <option value="Redmi">Redmi</option>
+            <option value="Dell">Dell</option>
+            <option value="Huawei">Huawei</option>
+          </select>
         </div>
         <div className="addProductItem">
           <label>Name</label>

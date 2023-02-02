@@ -27,7 +27,7 @@ export default function HomePage({ query }) {
       <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }} />
       <div className="homePageList">
         {product.map((item) => (
-          <Link to="/single" className="clientLink">
+          <Link to={`/single/${item.id}`} className="clientLink">
             <div className="homePageItem">
               <img src={item.img} alt="" className="homePageImg"></img>
               <span className="homePageTitle">{item.name}</span>
