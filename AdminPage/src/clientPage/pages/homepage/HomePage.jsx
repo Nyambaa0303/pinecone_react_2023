@@ -19,16 +19,16 @@ export default function HomePage({ query }) {
     return <div>iim ur dun oldsongui ee </div>;
   }
   return (
-    <div className="homePageItems">
-      {product.map((item) => (
-        <div className="homePage">
+    <div className="homePage">
+      <div className="homePageList">
+        {product.map((item) => (
           <div className="homePageItem">
             <img src={item.img} alt="" className="homePageImg"></img>
             <span className="homePageTitle">{item.name}</span>
             <span className="hoemPagePrice">Price : {item.price}</span>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

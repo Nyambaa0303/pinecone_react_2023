@@ -1,6 +1,8 @@
-.homePageItem {
+.homePageList {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: center;
 }
 
 .homePageImg {
@@ -9,9 +11,11 @@
   object-fit: cover;
 }
 
-.homePageItems {
+.homePageItem {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 50px;
+  flex-direction: column;
+}
+
+.homePage {
+  flex: 4;
 }
