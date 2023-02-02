@@ -1,6 +1,10 @@
 import "./homePage.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import React from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+// import "../styles.css";
 
 export default function HomePage({ query }) {
   const [product, setProduct] = useState([]);
@@ -19,14 +23,17 @@ export default function HomePage({ query }) {
     return <div>iim ur dun oldsongui ee </div>;
   }
   return (
-    <div className="homePage">
+    <div className="my-container homePage">
+      <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }} />
       <div className="homePageList">
         {product.map((item) => (
-          <div className="homePageItem">
-            <img src={item.img} alt="" className="homePageImg"></img>
-            <span className="homePageTitle">{item.name}</span>
-            <span className="hoemPagePrice">Price : {item.price}</span>
-          </div>
+          <Link to="/single" className="clientLink">
+            <div className="homePageItem">
+              <img src={item.img} alt="" className="homePageImg"></img>
+              <span className="homePageTitle">{item.name}</span>
+              <span className="hoemPagePrice">Price : {item.price}</span>
+            </div>
+          </Link>
         ))}
       </div>
     </div>

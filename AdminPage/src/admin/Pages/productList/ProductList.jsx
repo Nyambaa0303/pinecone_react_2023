@@ -2,11 +2,12 @@ import "./productList.css";
 import { DataGrid } from "@mui/x-data-grid";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import axios from "axios";
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
+
   const [searchParams, setSearchParams] = useSearchParams({});
 
   function fetchData() {
@@ -18,6 +19,14 @@ export default function ProductList() {
         alert(`aldaa garlaaa: ${status}`);
       }
     });
+  }
+
+  function handleDelete(id) {
+    if (window.confirm("Are you delete?")) {
+      axios.delete(`http://localhost:4000/${id}`).then((response) => {
+        fetchData();
+      });
+    }
   }
 
   useEffect(() => {
@@ -68,7 +77,12 @@ export default function ProductList() {
                 Edit
               </button>
             </Link>
-            <DeleteOutlineIcon className="productListDelete" />
+
+            <DeleteOutlineIcon
+              className="productListDelete"
+              onClick={() => handleDelete(params.row.id)}
+              type="button"
+            />
           </>
         );
       },

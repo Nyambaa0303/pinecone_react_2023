@@ -14,6 +14,7 @@ import { ToastContainer } from "react-toastify";
 import HomePage from "./clientPage/pages/homepage/HomePage";
 import { useState } from "react";
 import { useDebounce } from "use-debounce";
+import SinglePage from "./clientPage/pages/singlePage/SinglePage";
 
 function App() {
   return (
@@ -65,7 +66,12 @@ function ClientApp() {
   return (
     <>
       <ClientTopBar query={query} setQuery={setQuery} />
-      <HomePage query={searchedQuery} />
+      <div className="container">
+        <Routes>
+          <Route path="/home" element={<HomePage query={searchedQuery} />} />
+          <Route path="/single" element={<SinglePage />} />
+        </Routes>
+      </div>
     </>
   );
 }
