@@ -1,5 +1,5 @@
 import Sidebar from "./admin/components/sidebar/Sidebar";
-import ClientTopBar from "./clientPage/components/topBar/ClientTopBar";
+
 import { Topbar } from "./admin/components/topbar/Topbar";
 import "./app.css";
 import Home from "./admin/Pages/home/Home";
@@ -11,10 +11,10 @@ import ProductList from "./admin/Pages/productList/ProductList";
 import Product from "./admin/Pages/Product/Product";
 import NewProduct from "./admin/Pages/newProduct/NewProduct";
 import { ToastContainer } from "react-toastify";
-import HomePage from "./clientPage/pages/homepage/HomePage";
-import { useState } from "react";
-import { useDebounce } from "use-debounce";
-import SinglePage from "./clientPage/pages/singlePage/SinglePage";
+import Layout from "./clientApp/components/Layout";
+import { HomePage } from "./clientApp/pages/HomePage";
+import About from "./clientApp/pages/About";
+import Contact from "./clientApp/pages/Contact";
 
 function App() {
   return (
@@ -61,17 +61,15 @@ function AdminApp() {
 }
 
 function ClientApp() {
-  const [query, setQuery] = useState("");
-  const [searchedQuery] = useDebounce(query, 1000);
   return (
     <>
-      <ClientTopBar query={query} setQuery={setQuery} />
-      <div className="container">
-        <Routes>
-          <Route path="/home" element={<HomePage query={searchedQuery} />} />
-          <Route path="/single/:productId" element={<SinglePage />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+        </Route>
+      </Routes>
     </>
   );
 }
