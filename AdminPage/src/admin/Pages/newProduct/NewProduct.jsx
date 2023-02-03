@@ -3,6 +3,7 @@ import PublishIcon from "@mui/icons-material/Publish";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function NewProduct() {
   const [img, setImg] = useState("");
@@ -37,7 +38,7 @@ export default function NewProduct() {
             setStock("");
             setStatus("No");
             setPrice("");
-            toast("Success save", {
+            toast.success("Success", {
               position: "top-right",
               autoClose: 5000,
               hideProgressBar: false,
