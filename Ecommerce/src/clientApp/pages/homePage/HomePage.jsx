@@ -1,4 +1,5 @@
 import React from "react";
+import "./homePage.css";
 import { Link } from "react-router-dom";
 import { FaShippingFast } from "react-icons/fa";
 import { FiGift } from "react-icons/fi";
@@ -6,7 +7,8 @@ import { BsHeadset } from "react-icons/bs";
 import { GiFulguroPunch } from "react-icons/gi";
 import { MdPayment } from "react-icons/md";
 import Marquee from "react-fast-marquee";
-import BlogCard from "../components/BlogCard";
+import BlogCard from "../../components/BlogCard/BlogCard";
+import ProductCard from "../../components/productCard/ProductCard";
 
 export const HomePage = () => {
   return (
@@ -285,7 +287,20 @@ export const HomePage = () => {
         <div className="container-xxl">
           <div className="row">
             <div className="col-12">
-              <h3 className="section-heading">Our Latest blogs</h3>
+              <h3 className="section-heading">Featured Coll</h3>
+            </div>
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+          </div>
+        </div>
+      </section>
+      <section className="blog-wrapper py-5 home-wrapper">
+        <div className="container-xxl">
+          <div className="row">
+            <div className="col-12">
+              <h3 className="section-heading">Our Latest Blogs</h3>
             </div>
             <BlogCard />
             <BlogCard />

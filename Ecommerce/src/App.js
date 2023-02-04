@@ -11,10 +11,10 @@ import ProductList from "./admin/Pages/productList/ProductList";
 import Product from "./admin/Pages/Product/Product";
 import NewProduct from "./admin/Pages/newProduct/NewProduct";
 import { ToastContainer } from "react-toastify";
-import Layout from "./clientApp/components/Layout";
-import { HomePage } from "./clientApp/pages/HomePage";
-import About from "./clientApp/pages/About";
-import Contact from "./clientApp/pages/Contact";
+import Layout from "./clientApp/components/layout/Layout";
+import { HomePage } from "./clientApp/pages/homePage/HomePage";
+import About from "./clientApp/pages/about/About";
+import Contact from "./clientApp/pages/contact/Contact";
 
 function App() {
   return (

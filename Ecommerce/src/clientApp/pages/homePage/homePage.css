@@ -1,0 +1,141 @@
+.section-heading {
+  font-size: 26px;
+  line-height: 32px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.card-wrapper {
+  background-color: white;
+  padding: 15px;
+  box-shadow: 0 0 10px #0000001a;
+}
+
+.main-banner img {
+  width: 100%;
+  object-fit: cover;
+}
+.main-banner-content {
+  top: 15%;
+  left: 5%;
+}
+
+.main-banner-content h4 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--color-bf4800);
+  margin: 0 0 12px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.main-banner-content h5 {
+  font-size: 52px;
+  line-height: 64px;
+  font-weight: 500;
+  letter-spacing: -2px;
+  text-transform: none;
+}
+
+.main-banner-content p {
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.4;
+  color: var(--color-131921);
+}
+
+.small-banner {
+  width: 49%;
+}
+.small-banner img {
+  object-fit: cover;
+}
+
+.small-banner-content {
+  top: 25%;
+  left: 5%;
+}
+
+.small-banner-content h4 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--color-bf4800);
+  margin: 0 0 12px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.small-banner-content h5 {
+  font-size: 22px;
+  line-height: 34px;
+  font-weight: 500;
+  letter-spacing: -2px;
+  text-transform: none;
+}
+
+.small-banner-content p {
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.4;
+  color: var(--color-131921);
+}
+
+/* home-wrapper-2 part */
+
+.home-wrapper-2 {
+  background-color: var(--color-f5f5f7);
+}
+
+.homeIcon {
+  font-size: 30px !important;
+}
+
+.categories {
+  background-color: white;
+  padding: 15px;
+  box-shadow: 0 0 10px #0000001a;
+}
+
+.categories > div {
+  width: 25%;
+  padding: 10px 10px 10px 20px;
+}
+
+.categories > div:nth-child(1),
+.categories > div:nth-child(2),
+.categories > div:nth-child(3),
+.categories > div:nth-child(4) {
+  border-bottom: 1px solid var(--color-ededed);
+}
+
+.categories > div:nth-child(1),
+.categories > div:nth-child(2),
+.categories > div:nth-child(3) {
+  border-right: 1px solid var(--color-ededed);
+}
+
+.categories > div:nth-child(5),
+.categories > div:nth-child(6),
+.categories > div:nth-child(7) {
+  border-right: 1px solid var(--color-ededed);
+}
+
+.categories > div > div {
+  width: 60%;
+}
+
+.categories > div img {
+  width: 60%;
+  object-fit: cover;
+}
+
+.card-wrapper > div img {
+  width: 80px;
+  object-fit: cover;
+}
+
+.marque-wrapper {
+  background-color: var(--color-f5f5f7);
+}

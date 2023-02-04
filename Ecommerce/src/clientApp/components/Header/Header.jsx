@@ -6,6 +6,7 @@ import { BsHeart } from "react-icons/bs";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import { FiRefreshCcw } from "react-icons/fi";
 import WidgetsIcon from "@mui/icons-material/Widgets";
+import "./header.css";
 
 export default function Header() {
   return (

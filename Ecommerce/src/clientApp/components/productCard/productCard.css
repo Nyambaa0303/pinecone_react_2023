@@ -1,0 +1,10 @@
+.procduct-card {
+  padding: 15px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.product-card .product-detials h6 {
+  font-size: 13px;
+  color: #bf4800;
+}
