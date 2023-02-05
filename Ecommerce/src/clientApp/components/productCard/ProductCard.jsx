@@ -5,6 +5,7 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import MovingIcon from "@mui/icons-material/Moving";
 import { Link } from "react-router-dom";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ReactStars from "react-rating-stars-component";
 
 export default function ProductCard() {
   return (
@@ -34,7 +35,14 @@ export default function ProductCard() {
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id,
               vitae.
             </h5>
-            <p>rating star</p>
+
+            <ReactStars
+              count={5}
+              value="3"
+              edit={false}
+              size={24}
+              activeColor="#ffd700"
+            />
             <p className="price">$100.00</p>
           </div>
           <div className="action-bar position-absolute">
