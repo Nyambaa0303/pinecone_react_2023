@@ -237,9 +237,6 @@ export const HomePage = () => {
               <h3 className="section-heading">Featured Collection</h3>
             </div>
             <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
           </div>
         </div>
       </section>

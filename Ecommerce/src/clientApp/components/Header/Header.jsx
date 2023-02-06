@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -9,6 +9,7 @@ import WidgetsIcon from "@mui/icons-material/Widgets";
 import "./header.css";
 
 export default function Header() {
+  const [query, setQuery] = useState();
   return (
     <>
       <header className="header-top-strip py-3">
