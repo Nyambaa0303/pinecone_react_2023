@@ -39,6 +39,10 @@ a {
   gap: 10px;
 }
 
+.gap-5 {
+  gap: 5px;
+}
+
 .gap-15 {
   gap: 15px;
 }
