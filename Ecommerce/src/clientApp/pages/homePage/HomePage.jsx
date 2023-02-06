@@ -11,7 +11,7 @@ import BlogCard from "../../components/BlogCard/BlogCard";
 import ProductCard from "../../components/productCard/ProductCard";
 import SpecialProduct from "../../components/specialProduct/SpecialProduct";
 
-export const HomePage = () => {
+export const HomePage = ({ query }) => {
   return (
     <>
       <section className="home-wrapper-1 py-5">
@@ -236,7 +236,7 @@ export const HomePage = () => {
             <div className="col-12">
               <h3 className="section-heading">Featured Collection</h3>
             </div>
-            <ProductCard />
+            <ProductCard query={query} />
           </div>
         </div>
       </section>

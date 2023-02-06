@@ -7,7 +7,7 @@ import { TfiLayoutMenuV } from "react-icons/tfi";
 import { useState } from "react";
 import ProductCard from "../../components/productCard/ProductCard";
 
-export default function OurStore() {
+export default function OurStore({ query }) {
   const [grid, setGrid] = useState(4);
 
   return (
@@ -243,7 +243,7 @@ export default function OurStore() {
             </div>
             <div className="product-list pb-5">
               <div className="d-flex gap-10 flex-wrap">
-                <ProductCard grid={grid} />
+                <ProductCard query={query} grid={grid} />
               </div>
             </div>
           </div>

@@ -5,11 +5,11 @@
   width: 100%;
 }
 
-.product-cards {
+/* .product-cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 25px;
-}
+} */
 
 /* .product-card:hover .action-bar {
   right: 15px;

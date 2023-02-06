@@ -8,8 +8,7 @@ import { FiRefreshCcw } from "react-icons/fi";
 import WidgetsIcon from "@mui/icons-material/Widgets";
 import "./header.css";
 
-export default function Header() {
-  const [query, setQuery] = useState();
+export default function Header({ query, setQuery }) {
   return (
     <>
       <header className="header-top-strip py-3">
@@ -48,6 +47,8 @@ export default function Header() {
                   placeholder="Search Product Here"
                   aria-label="Search Product Here"
                   aria-describedby="basic-addon2"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
                 />
                 <span className="input-group-text p-3" id="basic-addon2">
                   <BsSearch className="fs-6" />
