@@ -1,7 +1,15 @@
 import "./ourStore.css";
 import ReactStars from "react-rating-stars-component";
+import { TfiLayoutColumn4 } from "react-icons/tfi";
+import { TfiLayoutColumn3 } from "react-icons/tfi";
+import { TfiLayoutColumn2 } from "react-icons/tfi";
+import { TfiLayoutMenuV } from "react-icons/tfi";
+import { useState } from "react";
+import ProductCard from "../../components/productCard/ProductCard";
 
 export default function OurStore() {
+  const [grid, setGrid] = useState(4);
+
   return (
     <div className="store-wrapper  py-5">
       <div className="container-xxl">
@@ -195,10 +203,12 @@ export default function OurStore() {
             </div>
           </div>
           <div className="col-9">
-            <div className="filter-sort-grid">
+            <div className="filter-sort-grid mb-4">
               <div className="d-flex justify-content-between align-items-center">
                 <div className="d-flex align-items-center gap-10">
-                  <p className="mb-0">Sort By:</p>
+                  <p className="mb-0" style={{ width: "100px" }}>
+                    Sort By:
+                  </p>
                   <select name="" id="" className="form-control form-select">
                     <option value="manual">Featured</option>
                     <option value="best-selling">Best Selling</option>
@@ -208,6 +218,32 @@ export default function OurStore() {
                     <option value="create-descending">Date new to old</option>
                   </select>
                 </div>
+                <div className="d-flex align-items-center gap-10">
+                  <p className="totol-products mb-0">23 Products</p>
+                  <div className="d-flex align-items-center gap-10 grid">
+                    <TfiLayoutColumn4
+                      className="filter-card-icon"
+                      onClick={() => setGrid(3)}
+                    />
+                    <TfiLayoutColumn3
+                      className="filter-card-icon"
+                      onClick={() => setGrid(4)}
+                    />
+                    <TfiLayoutColumn2
+                      className="filter-card-icon"
+                      onClick={() => setGrid(6)}
+                    />
+                    <TfiLayoutMenuV
+                      className="filter-card-icon"
+                      onClick={() => setGrid(12)}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="product-list pb-5">
+              <div className="d-flex gap-10 flex-wrap">
+                <ProductCard grid={grid} />
               </div>
             </div>
           </div>

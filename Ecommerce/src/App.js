@@ -16,6 +16,7 @@ import { HomePage } from "./clientApp/pages/homePage/HomePage";
 import About from "./clientApp/pages/about/About";
 import Contact from "./clientApp/pages/contact/Contact";
 import OurStore from "./clientApp/pages/ourstore/OurStore";
+import { useState } from "react";
 
 function App() {
   return (
