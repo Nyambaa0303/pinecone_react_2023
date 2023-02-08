@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Spinner from "react-bootstrap/Spinner";
@@ -55,6 +55,16 @@ export function CategoriesEdit({ show, onClose, onComplete, editingId }) {
     }
   }
 
+  // react DOM buyu useref
+
+  const inputEl = useRef();
+
+  useEffect(() => {
+    if (show) {
+      inputEl.current.focus();
+    }
+  }, [show]);
+
   return (
     <>
       <Modal show={show} onHide={onClose}>
@@ -63,6 +73,7 @@ export function CategoriesEdit({ show, onClose, onComplete, editingId }) {
         </Modal.Header>
         <Modal.Body>
           <input
+            ref={inputEl}
             disabled={loading}
             className="form-control"
             value={name}
