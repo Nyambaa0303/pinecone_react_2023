@@ -12,7 +12,7 @@ export default function Header({ query, setQuery }) {
   return (
     <>
       <header className="header-top-strip py-3">
-        <div className="container-xxl">
+        <div className="mx-5">
           <div className="row">
             <div className="col-6">
               <p className="text-white mb-0">
@@ -32,14 +32,14 @@ export default function Header({ query, setQuery }) {
         </div>
       </header>
       <header className="header-upper py-3">
-        <div className="container-xxl">
-          <div className="row align-items-center">
+        <div className="mx-5">
+          <div className="row align-items-center  d-flex justify-content-between">
             <div className="col-2">
               <h2>
                 <Link className="text-white">Nyamooo.mn</Link>
               </h2>
             </div>
-            <div className="col-5">
+            <div className="col-3">
               <div className="input-group">
                 <input
                   type="text"
@@ -55,7 +55,7 @@ export default function Header({ query, setQuery }) {
                 </span>
               </div>
             </div>
-            <div className="col-5">
+            <div className="col-4">
               <div className="header-upper-liks d-flex align-items-center justify-content-between">
                 <div>
                   <Link className="d-flex align-items-center gap-10 text-white">

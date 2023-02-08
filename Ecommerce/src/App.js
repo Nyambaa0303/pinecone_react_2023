@@ -18,6 +18,7 @@ import OurStore from "./clientApp/pages/ourstore/OurStore";
 import { useState } from "react";
 import Header from "./clientApp/components/Header/Header";
 import Footer from "./clientApp/components/footer/Footer";
+// import { createContext } from "react";
 
 function App() {
   return (
