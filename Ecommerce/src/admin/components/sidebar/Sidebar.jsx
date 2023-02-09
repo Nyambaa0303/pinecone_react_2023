@@ -18,37 +18,43 @@ export default function Sidebar() {
     <div className="sidebar">
       <div className="sidebarWrapper">
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Dashboard</h3>
+          <h3 className="sidebarTitle">Үндсэн цэс</h3>
           <ul className="sidebarList">
             <NavLink to={"home/"} className="link">
               <li className="sidebarListItem ">
                 <LineStyleIcon className="sidebarIcon" />
-                Home
+                Эхлэл
               </li>
             </NavLink>
             <li className="sidebarListItem">
               <TimelineIcon className="sidebarIcon" />
-              Analytics
+              Аналист
             </li>
             <li className="sidebarListItem">
               <TrendingUpIcon className="sidebarIcon" />
-              Sales
+              Хямдралууд
             </li>
           </ul>
         </div>
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Quick Menu</h3>
+          <h3 className="sidebarTitle">Каталог</h3>
           <ul className="sidebarList">
             <NavLink to={"users/"} className="link">
               <li className="sidebarListItem ">
                 <PersonOutlineIcon className="sidebarIcon" />
-                Users
+                Хэрэглэгчид
               </li>
             </NavLink>
             <NavLink to={"products/"} className="link">
               <li className="sidebarListItem">
                 <InventoryIcon className="sidebarIcon" />
-                Products
+                Бараа бүтээгдэхүүн
+              </li>
+            </NavLink>
+            <NavLink to={"categories/"} className="link">
+              <li className="sidebarListItem">
+                <InventoryIcon className="sidebarIcon" />
+                Ангилал
               </li>
             </NavLink>
             <li className="sidebarListItem">
