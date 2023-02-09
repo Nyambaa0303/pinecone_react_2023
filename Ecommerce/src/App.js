@@ -35,7 +35,7 @@ function AdminApp() {
   return (
     <>
       <Topbar />
-      <div className="container">
+      <div className="adminContainer">
         <Sidebar />
 
         <Routes>

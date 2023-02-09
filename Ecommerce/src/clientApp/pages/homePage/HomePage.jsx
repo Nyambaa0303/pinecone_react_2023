@@ -10,88 +10,58 @@ import Marquee from "react-fast-marquee";
 import BlogCard from "../../components/BlogCard/BlogCard";
 import ProductCard from "../../components/productCard/ProductCard";
 import SpecialProduct from "../../components/specialProduct/SpecialProduct";
+import Carousel from "react-bootstrap/Carousel";
 
 export const HomePage = ({ query }) => {
   return (
     <>
-      <section className="home-wrapper-1 py-5">
-        <div className="container-xxl">
-          <div className="row">
-            <div className="col-6">
-              <div className="main-banner position-relative">
+      <section className="home-wrapper-1 ">
+        <div className="row">
+          <div className="col-12">
+            <Carousel>
+              <Carousel.Item>
                 <img
-                  src="https://images.unsplash.com/photo-1663373460363-448cf1bf9402?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80 "
-                  alt=""
-                  className="img-fluid rounded-3"
+                  className="d-block  w-100 img-fluid"
+                  src="https://images.unsplash.com/photo-1648931770267-d925f21df971?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDMyfFM0TUtMQXNCQjc0fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+                  alt="First slide"
                 />
-                <div className="main-banner-content position-absolute">
-                  <h4>SUPERCHARGED FOR PROS.</h4>
-                  <h5>Iphone 14 Pro </h5>
-                  <p>From 900.00 $ or $40/mo.</p>
-                  <Link className="button">BUY NOW</Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-6">
-              <div className="d-flex gap-10 justify-content-center align-items-center flex-wrap">
-                <div className="small-banner position-relative">
-                  <img
-                    src="https://images.macrumors.com/t/FFxfkIdbbWx_RXML7XJpJdxoh70=/1600x0/article-new/2023/01/Apple-MacBook-Pro-M2-Feature-Blue-Green.jpg"
-                    alt=""
-                    className="img-fluid rounded-3"
-                  />
-                  <div className="small-banner-content position-absolute px-3">
-                    <h4>BEST SALE</h4>
-                    <h5>Macbook Pro </h5>
-                    <p>
-                      From 900.00 $ <br /> or $40/mo.
-                    </p>
-                  </div>
-                </div>
-                <div className="small-banner position-relative">
-                  <img
-                    src="https://i.pcmag.com/imagery/articles/07fOXHEXdbQv0yowaTqfmsY-43.fit_lim.v1646770013.jpg"
-                    alt=""
-                    className="img-fluid rounded-3"
-                  />
-                  <div className="small-banner-content position-absolute px-3">
-                    <h4>NEW ARRIVAL</h4>
-                    <h5>Buy Ipad Air </h5>
-                    <p>
-                      From 900.00 $ <br /> or $40/mo.
-                    </p>
-                  </div>
-                </div>
-                <div className="small-banner position-relative">
-                  <img
-                    src="https://image.coolblue.nl/content/d637295221b6233594069c77a542e47d"
-                    alt=""
-                    className="img-fluid rounded-3"
-                  />
-                  <div className="small-banner-content position-absolute px-3">
-                    <h4>20% OFF</h4>
-                    <h5>Iwatch</h5>
-                    <p>
-                      From 900.00 $ <br /> or $40/mo.
-                    </p>
-                  </div>
-                </div>
-                <div className="small-banner position-relative">
-                  <img
-                    src="https://s.yimg.com/os/creatr-uploaded-images/2020-12/5c3b6610-4493-11eb-befb-0b1948212105"
-                    alt=""
-                    className="img-fluid rounded-3"
-                  />
-                  <div className="small-banner-content position-absolute px-3">
-                    <h4>FREE ENGRAVING</h4>
-                    <h5>AirPod Max</h5>
-                    <p>
-                      From 900.00 $ <br /> or $40/mo.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+                <Carousel.Caption>
+                  <h3>First slide label</h3>
+                  <p>
+                    Nulla vitae elit libero, a pharetra augue mollis interdum.
+                  </p>
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100 img-fluid"
+                  src="https://images.unsplash.com/photo-1648931851212-3020920ba36e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
+                  alt="Second slide"
+                />
+
+                <Carousel.Caption>
+                  <h3>Second slide label</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </p>
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100 img-fluid"
+                  src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
+                  alt="Third slide"
+                />
+
+                <Carousel.Caption>
+                  <h3>Third slide label</h3>
+                  <p>
+                    Praesent commodo cursus magna, vel scelerisque nisl
+                    consectetur.
+                  </p>
+                </Carousel.Caption>
+              </Carousel.Item>
+            </Carousel>
           </div>
         </div>
       </section>
