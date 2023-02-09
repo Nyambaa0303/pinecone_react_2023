@@ -18,6 +18,7 @@ import OurStore from "./clientApp/pages/ourstore/OurStore";
 import { useState } from "react";
 import Header from "./clientApp/components/Header/Header";
 import Footer from "./clientApp/components/footer/Footer";
+import Categories from "./admin/Pages/categories/Categories";
 // import { createContext } from "react";
 
 function App() {
@@ -46,6 +47,7 @@ function AdminApp() {
           <Route path="products" element={<ProductList />} />
           <Route path="products/:productId" element={<Product />} />
           <Route path="newproduct" element={<NewProduct />} />
+          <Route path="categories" element={<Categories />} />
         </Routes>
       </div>
       <ToastContainer
