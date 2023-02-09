@@ -6,10 +6,6 @@
 .categories > div:nth-child(1) {
   width: 100%;
 }
-.col-12 {
-  padding: 50px;
-  border-bottom: 31px solid gray;
-}
 
 .categoriesLeftSide {
   box-shadow: 1px 10px 25px -14px rgba(0, 0, 0, 0.66);
