@@ -65,7 +65,7 @@ export const HomePage = ({ query }) => {
           </div>
         </div>
       </section>
-      <section className="home-wrapper-2 py-5">
+      {/* <section className="home-wrapper-2 py-5">
         <div className="container-xxl">
           <div className="row">
             <div className="col-12">
@@ -199,7 +199,7 @@ export const HomePage = ({ query }) => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <section className="featured-wrapper py-5 home-wrapper-2">
         <div className="container-xxl">
           <div className="row">
@@ -210,7 +210,7 @@ export const HomePage = ({ query }) => {
           </div>
         </div>
       </section>
-      <section className="special-wrapper py-5 home-wrapper-2">
+      {/* <section className="special-wrapper py-5 home-wrapper-2">
         <div className="container-xxl">
           <div className="row">
             <div className="col-12">
@@ -290,7 +290,7 @@ export const HomePage = ({ query }) => {
             <BlogCard />
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };

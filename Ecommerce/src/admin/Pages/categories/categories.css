@@ -1,15 +1,38 @@
 .categories {
   flex: 4;
   padding: 30px;
+  margin: 0;
+}
+.categories > div {
+  width: 100%;
+}
+.categoriesTitle {
+  margin: 0;
+}
+
+.categoriesPageTop {
+  display: flex;
+  justify-content: space-between;
+}
+.categories > div:nth-child(2) {
+  border-right: none;
 }
 
 .categories > div:nth-child(1) {
-  width: 100%;
+  border-right: none;
 }
 
-.categoriesLeftSide {
-  box-shadow: 1px 10px 25px -14px rgba(0, 0, 0, 0.66);
-  -webkit-box-shadow: 1px 10px 25px -14px rgba(0, 0, 0, 0.66);
+.categoriesRightSide {
+  border-radius: 10px;
+  border: 1px solid #ededed;
+  padding: 30px;
+}
+.categoriesRightSide h6 {
+  border-bottom: 1px solid #ededed;
   padding: 20px;
-  margin-right: 20px;
+}
+
+.categoriesButtons {
+  display: flex;
+  justify-content: space-around;
 }
