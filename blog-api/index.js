@@ -15,6 +15,43 @@ function readData() {
   return data;
 }
 
+function readCategories() {
+  const content = fs.readFileSync("shopCategories.json");
+  const categories = JSON.parse(content);
+  return categories;
+}
+
+app.post("/categories", (req, res) => {
+  const { name } = req.body;
+  const newCategory = { id: uuid(), name: name };
+
+  const categories = readCategories();
+
+  categories.unshift(newCategory);
+  fs.writeFileSync("shopCategories.json", JSON.stringify(categories));
+
+  res.sendStatus(201);
+});
+
+app.get("/categories", (req, res) => {
+  const categories = readCategories();
+  res.json(categories);
+});
+
+app.delete("/categories/:id", (req, res) => {
+  const { id } = req.params;
+  const categories = readCategories();
+  const one = categories.find((category) => category.id === id);
+
+  if (one) {
+    const newList = categories.filter((category) => category.id !== id);
+    fs.writeFileSync("shopCategories.json", JSON.stringify(newList));
+    res.json({ deletedId: id });
+  } else {
+    res.sendStatus(404);
+  }
+});
+
 app.get("/", (req, res) => {
   const { q } = req.query;
   const data = readData();
