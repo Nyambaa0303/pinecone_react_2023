@@ -12,6 +12,7 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import ReportIcon from "@mui/icons-material/Report";
 import { Link, NavLink } from "react-router-dom";
+import CategoryIcon from "@mui/icons-material/Category";
 
 export default function Sidebar() {
   return (
@@ -53,7 +54,7 @@ export default function Sidebar() {
             </NavLink>
             <NavLink to={"categories/"} className="link">
               <li className="sidebarListItem">
-                <InventoryIcon className="sidebarIcon" />
+                <CategoryIcon className="sidebarIcon" />
                 Ангилал
               </li>
             </NavLink>

@@ -2,12 +2,14 @@
   flex: 4;
   padding: 30px;
   margin: 0;
+  background-color: rgb(247, 247, 251);
 }
 .categories > div {
   width: 100%;
 }
 .categoriesTitle {
-  margin: 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .categoriesPageTop {
@@ -26,6 +28,8 @@
   border-radius: 10px;
   border: 1px solid #ededed;
   padding: 30px;
+  background-color: white;
+  color: #555;
 }
 .categoriesRightSide h6 {
   border-bottom: 1px solid #ededed;
@@ -35,4 +39,12 @@
 .categoriesButtons {
   display: flex;
   justify-content: space-around;
+}
+
+.categoriesButtonGreen {
+  background-color: #00d97e;
+  color: #fff;
+  border-radius: 18px;
+  padding: 5px 15px;
+  border: none;
 }
