@@ -1,6 +1,6 @@
 import "./newProduct.css";
 import PublishIcon from "@mui/icons-material/Publish";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,7 +12,18 @@ export default function NewProduct() {
   const [status, setStatus] = useState("No");
   const [price, setPrice] = useState("");
   const [error, setError] = useState("");
-  const [category, setCategory] = useState();
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:4000/categories").then((res) => {
+      const { data, status } = res;
+      if (status === 200) {
+        setCategories(data);
+      } else {
+        alert(`aldaa garlaa: ${status}`);
+      }
+    });
+  });
 
   function handleSave(e) {
     e.preventDefault();
@@ -26,7 +37,6 @@ export default function NewProduct() {
           stock: stock,
           status: status,
           price: price,
-          categories: category,
         })
 
         .then((res) => {
@@ -70,19 +80,19 @@ export default function NewProduct() {
           />
         </div>
         <div className="addProductItem">
-          <label>Categories</label>
+          <label>Ангилал</label>
           <select
             name="active"
             id="active"
-            onChange={(e) => setCategory(e.target.value)}
-            value={category}
+            onChange={(e) => setCategories(e.target.value)}
+            // value={category}
           >
-            <option value="Empy">Empy</option>
-            <option value="Apple">Apple</option>
-            <option value="Samsung">Samsung</option>
-            <option value="Redmi">Redmi</option>
-            <option value="Dell">Dell</option>
-            <option value="Huawei">Huawei</option>
+            <option value="Empy">Ангилалгүй</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
           </select>
         </div>
         <div className="addProductItem">

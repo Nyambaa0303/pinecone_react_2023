@@ -11,7 +11,7 @@ import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import ReportIcon from "@mui/icons-material/Report";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import CategoryIcon from "@mui/icons-material/Category";
 
 export default function Sidebar() {

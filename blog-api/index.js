@@ -21,6 +21,22 @@ function readCategories() {
   return categories;
 }
 
+app.get("/categories", (req, res) => {
+  const categories = readCategories();
+  res.json(categories);
+});
+
+app.get("/categories/:id", (req, res) => {
+  const { id } = req.params;
+  const categories = readCategories();
+  const one = categories.find((category) => category.id === id);
+  if (one) {
+    res.json(one);
+  } else {
+    res.sendStatus(404);
+  }
+});
+
 app.post("/categories", (req, res) => {
   const { name } = req.body;
   const newCategory = { id: uuid(), name: name };
@@ -33,11 +49,6 @@ app.post("/categories", (req, res) => {
   res.sendStatus(201);
 });
 
-app.get("/categories", (req, res) => {
-  const categories = readCategories();
-  res.json(categories);
-});
-
 app.delete("/categories/:id", (req, res) => {
   const { id } = req.params;
   const categories = readCategories();
@@ -47,6 +58,21 @@ app.delete("/categories/:id", (req, res) => {
     const newList = categories.filter((category) => category.id !== id);
     fs.writeFileSync("shopCategories.json", JSON.stringify(newList));
     res.json({ deletedId: id });
+  } else {
+    res.sendStatus(404);
+  }
+});
+
+app.put("/categories/:id", (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+  const categories = readCategories();
+  const index = categories.findIndex((category) => category.id === id);
+
+  if (index > -1) {
+    categories[index].name = name;
+    fs.writeFileSync("shopCategories.json", JSON.stringify(categories));
+    res.json({ updatedId: id });
   } else {
     res.sendStatus(404);
   }

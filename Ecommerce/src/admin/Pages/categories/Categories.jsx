@@ -8,10 +8,16 @@ import axios from "axios";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { AiOutlineShareAlt } from "react-icons/ai";
 
+// axios.interceptors.request.use((config) => {
+//   console.log("Request sent to: ", config.url);
+//   return config;
+// });
+
 function Categories() {
   const [searchParams, setSearchParams] = useSearchParams({});
 
   const [list, setList] = useState([]);
+  console.log("fsf");
 
   function loadCategories() {
     axios.get("http://localhost:4000/categories").then((res) => {
@@ -62,7 +68,12 @@ function Categories() {
           </div>
         </div>
       </div>
-      <CategoriesEdit onClose={closeModal} show={editing} editingId={editing} />
+      <CategoriesEdit
+        onClose={closeModal}
+        show={editing}
+        editingId={editing}
+        onComplete={loadCategories}
+      />
     </div>
   );
 }

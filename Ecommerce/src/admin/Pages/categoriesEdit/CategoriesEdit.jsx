@@ -5,11 +5,24 @@ import Form from "react-bootstrap/Form";
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
-function CategoriesEdit({ show, onClose, editingId }) {
+function CategoriesEdit({ show, onClose, editingId, onComplete }) {
   const [name, setName] = useState("");
 
+  useEffect(() => {
+    if (editingId) {
+      axios.get(`http://localhost:4000/categories/${editingId}`).then((res) => {
+        const { data, status } = res;
+        if (status === 200) {
+          setName(data.name);
+        } else {
+          alert(`aldaa garlaa: ${status}`);
+        }
+      });
+    }
+  }, [editingId]);
+
   function handleSave() {
-    if (editingId === "new")
+    if (editingId === "new") {
       axios
         .post("http://localhost:4000/categories", {
           name: name,
@@ -19,8 +32,23 @@ function CategoriesEdit({ show, onClose, editingId }) {
           if (status === 201) {
             onClose();
             setName("");
+            onComplete();
           }
         });
+    } else {
+      axios
+        .put(`http://localhost:4000/categories/${editingId}`, {
+          name: name,
+        })
+        .then((res) => {
+          const { status } = res;
+          if (status === 200) {
+            onClose();
+            onComplete();
+            setName("");
+          }
+        });
+    }
   }
 
   // react DOM buyu useref
@@ -43,7 +71,8 @@ function CategoriesEdit({ show, onClose, editingId }) {
           <Form.Control
             onChange={(e) => setName(e.target.value)}
             ref={inputEl}
-            type="email"
+            value={name}
+            type="text"
             placeholder="Ангилал нэр..."
           />
         </Modal.Body>
