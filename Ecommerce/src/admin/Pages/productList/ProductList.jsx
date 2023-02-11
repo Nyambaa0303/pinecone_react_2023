@@ -36,7 +36,7 @@ export default function ProductList() {
   const columns = [
     {
       field: "product",
-      headerName: "Product",
+      headerName: "Бараа бүтээгдэхүүн",
       width: 200,
       renderCell: (params) => {
         return (
@@ -47,20 +47,20 @@ export default function ProductList() {
         );
       },
     },
-    { field: "stock", headerName: "Stock", width: 200 },
+    { field: "stock", headerName: "Үлдэгдэл", width: 200 },
     {
       field: "status",
-      headerName: "Status",
+      headerName: "Төлөв",
       width: 120,
     },
     {
       field: "price",
-      headerName: "Price",
+      headerName: "Үнэ",
       width: 160,
     },
     {
       field: "action",
-      headerName: "Action",
+      headerName: "Үйлдэл",
       width: 150,
       renderCell: (params) => {
         return (

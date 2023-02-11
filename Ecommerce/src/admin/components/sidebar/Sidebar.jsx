@@ -13,6 +13,8 @@ import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import ReportIcon from "@mui/icons-material/Report";
 import { NavLink } from "react-router-dom";
 import CategoryIcon from "@mui/icons-material/Category";
+import CreditCardIcon from "@mui/icons-material/CreditCard";
+import WarehouseIcon from "@mui/icons-material/Warehouse";
 
 export default function Sidebar() {
   return (
@@ -38,14 +40,23 @@ export default function Sidebar() {
           </ul>
         </div>
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Каталог</h3>
+          <h3 className="sidebarTitle">Захиалга</h3>
           <ul className="sidebarList">
+            <li className="sidebarListItem">
+              <CreditCardIcon className="sidebarIcon" />
+              Захиалгууд
+            </li>
             <NavLink to={"users/"} className="link">
               <li className="sidebarListItem ">
                 <PersonOutlineIcon className="sidebarIcon" />
                 Хэрэглэгчид
               </li>
             </NavLink>
+          </ul>
+        </div>
+        <div className="sidebarMenu">
+          <h3 className="sidebarTitle">Каталог</h3>
+          <ul className="sidebarList">
             <NavLink to={"products/"} className="link">
               <li className="sidebarListItem">
                 <InventoryIcon className="sidebarIcon" />
@@ -59,12 +70,12 @@ export default function Sidebar() {
               </li>
             </NavLink>
             <li className="sidebarListItem">
-              <AttachMoneyIcon className="sidebarIcon" />
-              Transactions
+              <WorkOutlineIcon className="sidebarIcon" />
+              Брэнд
             </li>
             <li className="sidebarListItem">
-              <AssessmentIcon className="sidebarIcon" />
-              Reports
+              <WarehouseIcon className="sidebarIcon" />
+              Агуулах
             </li>
           </ul>
         </div>
