@@ -64,10 +64,10 @@ export default function NewProduct() {
   }
   return (
     <div className="newProduct">
-      <h1 className="addProductTitle">New Product</h1>
+      <h1 className="addProductTitle">Шинэ бараа</h1>
       <form className="addProductForm">
         <div className="addProductItem">
-          <label>Image</label>
+          <label>Зураг</label>
           <img src={img} alt="image" className="addProductImg" />
           <input type="file" id="file" style={{ display: "none" }} />
           <label htmlFor="file">
@@ -96,7 +96,7 @@ export default function NewProduct() {
           </select>
         </div>
         <div className="addProductItem">
-          <label>Name</label>
+          <label>Барааний нэр</label>
           <input
             type="text"
             placeholder="product name"
@@ -105,7 +105,7 @@ export default function NewProduct() {
           />
         </div>
         <div className="addProductItem">
-          <label>Price</label>
+          <label>Үнэ</label>
           <input
             type="text"
             placeholder="price"
@@ -114,7 +114,7 @@ export default function NewProduct() {
           />
         </div>
         <div className="addProductItem">
-          <label>Stock</label>
+          <label>Үлдэгдэл</label>
           <input
             type="text"
             placeholder="stock"
@@ -123,7 +123,7 @@ export default function NewProduct() {
           />
         </div>
         <div className="addProductItem">
-          <label>Active</label>
+          <label>Үйлдэл</label>
           <select
             name="active"
             id="active"
@@ -135,7 +135,7 @@ export default function NewProduct() {
           </select>
         </div>
         <button className="addProductButton" onClick={handleSave}>
-          Publish
+          Нийтэл
         </button>
       </form>
     </div>
