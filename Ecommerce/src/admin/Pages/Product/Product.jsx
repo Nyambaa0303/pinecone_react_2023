@@ -121,7 +121,7 @@ function EditingItem({ defaultValue }) {
             onChange={(e) => setStatus(e.target.value)}
           >
             <option value="yes">Yes</option>
-            <option value="no">No</option>
+            <option value="No">No</option>
           </select>
         </div>
         <div className="productFormRight">

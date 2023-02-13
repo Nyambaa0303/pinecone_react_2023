@@ -8,6 +8,7 @@ import axios from "axios";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { AiOutlineShareAlt } from "react-icons/ai";
 import { useDebounce } from "use-debounce";
+// import useCategories from "../../useHooks/useCategories";
 
 // axios.interceptors.request.use((config) => {
 //   console.log("Request sent to: ", config.url);
@@ -18,6 +19,7 @@ function Categories() {
   const [searchParams, setSearchParams] = useSearchParams({});
   const [query, setQuery] = useState("");
   const [searchedQuery] = useDebounce(query, 1000);
+  // const categories = useCategories();
 
   const [list, setList] = useState([]);
 
@@ -27,6 +29,7 @@ function Categories() {
 
       if (status === 200) {
         setList(data);
+        setQuery(query);
       } else {
         alert(`aldaa garlaa: ${status}`);
       }
@@ -35,11 +38,8 @@ function Categories() {
 
   useEffect(() => {
     loadCategories(searchedQuery);
+    console.log("sfsd");
   }, [searchedQuery]);
-
-  useEffect(() => {
-    loadCategories();
-  }, []);
 
   function closeModal() {
     setSearchParams({});
@@ -60,7 +60,11 @@ function Categories() {
       </div>
       <div className="categoriesPageTop">
         <div className="categoriesLeftSide">
-          <CategoriesList list={list} onChange={loadCategories} />
+          <CategoriesList
+            list={list}
+            onChange={loadCategories}
+            searchedQuery={searchedQuery}
+          />
         </div>
         <div className="categoriesRightSide">
           <h6>Тохиргоо</h6>

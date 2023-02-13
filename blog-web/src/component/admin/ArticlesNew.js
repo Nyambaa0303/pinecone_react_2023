@@ -10,7 +10,7 @@ export function ArticlesNew() {
   const [categoryId, setCategoryId] = useState("");
 
   function submit() {
-    console.log({ text, categoryId });
+    // console.log({ text, categoryId });
 
     axios
       .post("http://localhost:8000/articles", {

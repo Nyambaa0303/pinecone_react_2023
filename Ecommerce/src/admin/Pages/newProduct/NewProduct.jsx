@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
+import CategoriesSelector from "../categoriesSelector/CategoriesSelector";
 
 export default function NewProduct() {
   const [img, setImg] = useState("");
@@ -12,18 +13,7 @@ export default function NewProduct() {
   const [status, setStatus] = useState("No");
   const [price, setPrice] = useState("");
   const [error, setError] = useState("");
-  const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:4000/categories").then((res) => {
-      const { data, status } = res;
-      if (status === 200) {
-        setCategories(data);
-      } else {
-        alert(`aldaa garlaa: ${status}`);
-      }
-    });
-  });
+  const [categoryId, setCategoryId] = useState("");
 
   function handleSave(e) {
     e.preventDefault();
@@ -37,6 +27,7 @@ export default function NewProduct() {
           stock: stock,
           status: status,
           price: price,
+          categoryId: categoryId,
         })
 
         .then((res) => {
@@ -48,6 +39,7 @@ export default function NewProduct() {
             setStock("");
             setStatus("No");
             setPrice("");
+            setCategoryId("");
             toast.success("Success", {
               position: "top-right",
               autoClose: 5000,
@@ -81,19 +73,10 @@ export default function NewProduct() {
         </div>
         <div className="addProductItem">
           <label>Ангилал</label>
-          <select
-            name="active"
-            id="active"
-            onChange={(e) => setCategories(e.target.value)}
-            // value={category}
-          >
-            <option value="Ангилалгүй">Ангилалгүй</option>
-            {categories.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
+          <CategoriesSelector
+            value={categoryId}
+            onChange={(val) => setCategoryId(val)}
+          />
         </div>
         <div className="addProductItem">
           <label>Барааний нэр</label>

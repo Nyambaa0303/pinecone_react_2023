@@ -29,6 +29,8 @@ export default function ProductList() {
     }
   }
 
+  console.log(products);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -37,14 +39,24 @@ export default function ProductList() {
     {
       field: "product",
       headerName: "Бараа бүтээгдэхүүн",
-      width: 200,
+      width: 300,
       renderCell: (params) => {
         return (
-          <div className="productListItem">
-            <img className="productListImg" src={params.row.img} alt="" />
-            {params.row.name}
-          </div>
+          <>
+            <div className="productListItem">
+              <img className="productListImg" src={params.row.img} alt="" />
+              {params.row.name}
+            </div>
+          </>
         );
+      },
+    },
+    {
+      field: "categoryId",
+      headerName: "Барааний ангилал",
+      width: 200,
+      renderCell: (params) => {
+        return <div>{params.row.category.name}</div>;
       },
     },
     { field: "stock", headerName: "Үлдэгдэл", width: 200 },

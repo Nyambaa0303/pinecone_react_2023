@@ -89,6 +89,18 @@ app.put("/categories/:id", (req, res) => {
 app.get("/", (req, res) => {
   const { q } = req.query;
   const data = readData();
+
+  const categories = readCategories();
+
+  data.forEach((product) => {
+    const singleCategory = categories.find(
+      (category) => category.id === product.categoryId
+    );
+    product.category = singleCategory;
+  });
+
+  console.log(data);
+
   if (q) {
     const filteredData = data.filter((list) =>
       list.name.toLowerCase().includes(q.toLowerCase())
@@ -111,7 +123,7 @@ app.get("/:id", (req, res) => {
 });
 
 app.post("/", (req, res) => {
-  const { name, img, stock, status, price } = req.body;
+  const { name, img, stock, status, price, categoryId } = req.body;
   const newData = {
     id: uuid(),
     name: name,
@@ -119,6 +131,7 @@ app.post("/", (req, res) => {
     stock: stock,
     status: status,
     price: price,
+    categoryId: categoryId,
   };
 
   const data = readData();

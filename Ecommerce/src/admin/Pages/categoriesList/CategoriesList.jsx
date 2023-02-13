@@ -5,11 +5,19 @@ import { BsFillPenFill } from "react-icons/bs";
 import { FiTrash } from "react-icons/fi";
 import axios from "axios";
 
-function CategoriesList({ list, onChange }) {
+function CategoriesList({ list, onChange, searchedQuery }) {
+  if (list.length === 0) {
+    return <div>Ийм ангилал олдсонгүй...</div>;
+  }
   return (
     <>
       {list.map((item) => (
-        <ListItem onChange={onChange} key={item.id} category={item} />
+        <ListItem
+          onChange={onChange}
+          key={item.id}
+          category={item}
+          searchedQuery={searchedQuery}
+        />
       ))}
     </>
   );
@@ -17,7 +25,7 @@ function CategoriesList({ list, onChange }) {
 
 export default CategoriesList;
 
-function ListItem({ category, onChange }) {
+function ListItem({ category, onChange, searchedQuery }) {
   const [searchParams, setSearchParams] = useSearchParams({});
 
   function handleDelete() {
