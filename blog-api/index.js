@@ -22,8 +22,16 @@ function readCategories() {
 }
 
 app.get("/categories", (req, res) => {
+  const { q } = req.query;
   const categories = readCategories();
-  res.json(categories);
+  if (q) {
+    const filteredList = categories.filter((category) =>
+      category.name.toLowerCase().includes(q.toLowerCase())
+    );
+    res.json(filteredList);
+  } else {
+    res.json(categories);
+  }
 });
 
 app.get("/categories/:id", (req, res) => {

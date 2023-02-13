@@ -74,7 +74,7 @@ export default function ProductList() {
                 //   setSearchParams({ id: params.row.id });
                 // }}
               >
-                Edit
+                Засах
               </button>
             </Link>
 

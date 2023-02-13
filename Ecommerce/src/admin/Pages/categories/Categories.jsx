@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { AiOutlineShareAlt } from "react-icons/ai";
+import { useDebounce } from "use-debounce";
 
 // axios.interceptors.request.use((config) => {
 //   console.log("Request sent to: ", config.url);
@@ -15,12 +16,13 @@ import { AiOutlineShareAlt } from "react-icons/ai";
 
 function Categories() {
   const [searchParams, setSearchParams] = useSearchParams({});
+  const [query, setQuery] = useState("");
+  const [searchedQuery] = useDebounce(query, 1000);
 
   const [list, setList] = useState([]);
-  console.log("fsf");
 
-  function loadCategories() {
-    axios.get("http://localhost:4000/categories").then((res) => {
+  function loadCategories(query = "") {
+    axios.get(`http://localhost:4000/categories?q=${query}`).then((res) => {
       const { data, status } = res;
 
       if (status === 200) {
@@ -30,6 +32,10 @@ function Categories() {
       }
     });
   }
+
+  useEffect(() => {
+    loadCategories(searchedQuery);
+  }, [searchedQuery]);
 
   useEffect(() => {
     loadCategories();
@@ -44,7 +50,12 @@ function Categories() {
       <div className="categoriesTitle">
         <h3> Ангилал</h3>
         <Form>
-          <Form.Control type="email" placeholder="Ангилал хайх" />
+          <Form.Control
+            type="email"
+            placeholder="Ангилал хайх"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
         </Form>
       </div>
       <div className="categoriesPageTop">

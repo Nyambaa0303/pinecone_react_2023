@@ -87,7 +87,7 @@ export default function NewProduct() {
             onChange={(e) => setCategories(e.target.value)}
             // value={category}
           >
-            <option value="Empy">Ангилалгүй</option>
+            <option value="Ангилалгүй">Ангилалгүй</option>
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.name}
@@ -123,7 +123,7 @@ export default function NewProduct() {
           />
         </div>
         <div className="addProductItem">
-          <label>Үйлдэл</label>
+          <label>Идэвхитэй</label>
           <select
             name="active"
             id="active"
@@ -135,7 +135,7 @@ export default function NewProduct() {
           </select>
         </div>
         <button className="addProductButton" onClick={handleSave}>
-          Нийтэл
+          Нийтлэх
         </button>
       </form>
     </div>
