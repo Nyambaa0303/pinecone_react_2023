@@ -4,9 +4,11 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import useCategories from "../../useHooks/useCategories";
 
-function CategoriesEdit({ show, onClose, editingId, onComplete }) {
+function CategoriesEdit({ show, onClose, editingId }) {
   const [name, setName] = useState("");
+  const { loadCategories } = useCategories();
 
   useEffect(() => {
     if (editingId) {
@@ -32,7 +34,7 @@ function CategoriesEdit({ show, onClose, editingId, onComplete }) {
           if (status === 201) {
             onClose();
             setName("");
-            onComplete();
+            loadCategories();
           }
         });
     } else {
@@ -44,7 +46,7 @@ function CategoriesEdit({ show, onClose, editingId, onComplete }) {
           const { status } = res;
           if (status === 200) {
             onClose();
-            onComplete();
+            loadCategories();
             setName("");
           }
         });

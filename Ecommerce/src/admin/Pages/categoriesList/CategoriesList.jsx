@@ -1,23 +1,19 @@
 import "./categoriesList.css";
 import { useSearchParams } from "react-router-dom";
-
 import { BsFillPenFill } from "react-icons/bs";
 import { FiTrash } from "react-icons/fi";
 import axios from "axios";
+import useCategories from "../../useHooks/useCategories";
 
-function CategoriesList({ list, onChange, searchedQuery }) {
+function CategoriesList() {
+  const { list, searchedQuery } = useCategories();
   if (list.length === 0) {
     return <div>Ийм ангилал олдсонгүй...</div>;
   }
   return (
     <>
       {list.map((item) => (
-        <ListItem
-          onChange={onChange}
-          key={item.id}
-          category={item}
-          searchedQuery={searchedQuery}
-        />
+        <ListItem key={item.id} category={item} searchedQuery={searchedQuery} />
       ))}
     </>
   );
@@ -25,18 +21,18 @@ function CategoriesList({ list, onChange, searchedQuery }) {
 
 export default CategoriesList;
 
-function ListItem({ category, onChange, searchedQuery }) {
+function ListItem({ category }) {
   const [searchParams, setSearchParams] = useSearchParams({});
+  const { loadCategories } = useCategories();
 
   function handleDelete() {
     if (window.confirm("Are you delete?")) {
       axios
         .delete(`http://localhost:4000/categories/${category.id}`)
         .then((res) => {
-          console.log(res);
           const { status } = res;
           if (status === 200) {
-            onChange();
+            loadCategories();
           }
         });
     }
