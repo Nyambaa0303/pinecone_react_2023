@@ -4,10 +4,11 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import axios from "axios";
+// import useProductList from "../../useHooks/useProductList";
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
-
+  // const products = useProductList([]);
   const [searchParams, setSearchParams] = useSearchParams({});
 
   function fetchData() {
