@@ -11,7 +11,7 @@
     "axios": "^1.2.4",
     "bootstrap": "^5.2.3",
     "hexagons": "^0.0.0",
-    "html-react-parser": "^3.0.8",
+    "html-react-parser": "^3.0.9",
     "react": "^18.2.0",
     "react-awesome-button": "^7.0.5",
     "react-bootstrap": "^2.7.0",

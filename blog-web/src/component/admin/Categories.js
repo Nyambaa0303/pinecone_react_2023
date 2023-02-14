@@ -5,6 +5,7 @@ import { useDebounce } from "use-debounce";
 
 import { CategoriesEdit } from "./CategoriesEdit";
 import { CategoriesList } from "./CategoriesList";
+import { useCategories } from "../useHooksWeb/useCategories";
 
 axios.interceptors.request.use((config) => {
   console.log("Request sent to: ", config.url);
@@ -15,27 +16,15 @@ function Categories() {
   const [searchParams, setSearchParams] = useSearchParams({});
   const [query, setQuery] = useState("");
   const [searchedQuery] = useDebounce(query, 1000);
+  const categories = useCategories();
 
-  const [list, setList] = useState([]);
+  // useEffect(() => {
+  //   loadCategories(searchedQuery);
+  // }, [searchedQuery]);
 
-  function loadCategories(query = "") {
-    axios.get(`http://localhost:8000/categories?q=${query}`).then((res) => {
-      const { data, status } = res;
-      if (status === 200) {
-        setList(data);
-      } else {
-        alert(`Aldaa garlaa: ${status}`);
-      }
-    });
-  }
-
-  useEffect(() => {
-    loadCategories(searchedQuery);
-  }, [searchedQuery]);
-
-  useEffect(() => {
-    loadCategories();
-  }, []);
+  // useEffect(() => {
+  //   loadCategories();
+  // }, []);
 
   function closeModal() {
     setSearchParams({});
@@ -60,14 +49,14 @@ function Categories() {
 
       <CategoriesList
         searchedQuery={searchedQuery}
-        list={list}
-        onChange={loadCategories}
+        list={categories}
+        // onChange={loadCategories}
       />
       <CategoriesEdit
         show={editing}
         editingId={editing}
         onClose={closeModal}
-        onComplete={loadCategories}
+        // onComplete={loadCategories}
       />
     </div>
   );
