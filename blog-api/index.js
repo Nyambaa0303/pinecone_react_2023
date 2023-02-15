@@ -9,11 +9,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// delguuriin data unshuulj baigaa heseg
+
 function readData() {
   const content = fs.readFileSync("data.json");
   const data = JSON.parse(content);
   return data;
 }
+
+// delguuriin angilal unshuulj baigaaa heseg
 
 function readCategories() {
   const content = fs.readFileSync("shopCategories.json");
@@ -21,8 +25,11 @@ function readCategories() {
   return categories;
 }
 
+// angilaliiig front endruuu response ywuulj bgaa heseg
+
 app.get("/categories", (req, res) => {
   const { q } = req.query;
+
   const categories = readCategories();
   if (q) {
     const filteredList = categories.filter((category) =>

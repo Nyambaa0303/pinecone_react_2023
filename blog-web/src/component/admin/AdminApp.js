@@ -1,17 +1,65 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { useContext, useState } from "react";
 import { Navigate, NavLink, Route, Routes } from "react-router-dom";
 import { Articles } from "./Articles";
 import { ArticlesNew } from "./ArticlesNew";
 import Categories from "./Categories";
-// import { Todos } from "./Todos";
+import axios from "axios";
+import { UserContext } from "../../App";
 
+function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  function handleLogin() {
+    axios
+      .get(
+        `http://localhost:8000/login?username=${username}&password=${password}`
+      )
+      .then((res) => {
+        const { data, status } = res;
+        if (status === 200) {
+          const { token } = data;
+          localStorage.setItem("loginToken", token);
+          window.location.reload();
+        }
+      });
+  }
+
+  return (
+    <div style={{ width: 200, margin: "2em auto" }}>
+      <input
+        className="form-control"
+        placeholder="Хэрэглэгчийн нэр"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <input
+        type="password"
+        className="form-control"
+        placeholder="Нууц үг"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button className="btn btn-primary" onClick={handleLogin}>
+        Нэвтрэх
+      </button>
+    </div>
+  );
+}
 export function AdminApp() {
+  const displayName = useContext(UserContext);
+
+  if (!localStorage.getItem("loginToken")) {
+    return <Login />;
+  }
+
   return (
     <>
+      {displayName.greeting} {displayName.name}
       <AdminNavbar />
-
       <div style={{ maxWidth: 700, margin: "2rem auto" }}>
         <Routes>
           <Route path="/" element={<Navigate to="/admin/categories" />} />
@@ -26,10 +74,14 @@ export function AdminApp() {
 }
 
 function AdminNavbar() {
+  const displayName = useContext(UserContext);
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">ADMIN</Navbar.Brand>
+        <Navbar.Brand href="#home">
+          {displayName.greeting} {displayName.name}
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

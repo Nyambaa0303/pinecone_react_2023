@@ -3,6 +3,13 @@ const cors = require("cors");
 const fs = require("fs");
 const { v4: uuid } = require("uuid");
 
+const user = {
+  username: "Nyambaa",
+  password: "nyambaa",
+};
+
+// let userTokens = [];
+
 const port = 8000;
 const app = express();
 
@@ -21,8 +28,33 @@ function readArticles() {
   return articles;
 }
 
+app.get("/login", (req, res) => {
+  const { username, password } = req.query;
+
+  if (user.username === username && user.password === password) {
+    const token = uuid();
+    // userTokens.push(token);
+    const content = fs.readFileSync("webToken.json");
+    const userTokens = JSON.parse(content);
+    userTokens.push({ token });
+    fs.writeFileSync("webToken.json", JSON.stringify(userTokens));
+    res.json({ token });
+  } else {
+    res.sendStatus(401);
+  }
+});
+
 app.get("/categories", (req, res) => {
-  const { q } = req.query;
+  const { q, token } = req.query;
+  // console.log(token);
+  // console.log(userTokens);
+  const content = fs.readFileSync("webToken.json");
+  const userTokens = JSON.parse(content);
+  if (!userTokens.filter((e) => e.token === token).length > 0) {
+    res.sendStatus(401);
+    return;
+  }
+
   const categories = readCategories();
   if (q) {
     const filteredList = categories.filter((category) =>

@@ -5,12 +5,31 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AdminApp } from "./component/admin/AdminApp";
 import { ClientApp } from "./component/client/ClientApp";
+import { createContext } from "react";
 
+export const UserContext = createContext("Guest");
+
+function Greeting() {
+  return (
+    <div>
+      <strong>Context</strong>
+    </div>
+  );
+}
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/admin/*" element={<AdminApp />} />
+        <Route
+          path="/admin/*"
+          element={
+            <UserContext.Provider
+              value={{ greeting: <Greeting />, name: "Nyambaa" }}
+            >
+              <AdminApp />
+            </UserContext.Provider>
+          }
+        />
         <Route path="*" element={<ClientApp />} />
       </Routes>
       <ToastContainer position="top-right" />
