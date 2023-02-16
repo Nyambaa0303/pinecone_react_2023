@@ -116,6 +116,15 @@ app.put("/categories/:id", (req, res) => {
   }
 });
 
+// buh medeeg unshij duudah heseg
+
+app.get("/articles", (req, res) => {
+  const articles = readArticles();
+
+  console.log(articles);
+  res.json(articles);
+});
+
 app.post("/articles", (req, res) => {
   const { title, categoryId, text } = req.body;
   const newArticle = { id: uuid(), title, categoryId, text };

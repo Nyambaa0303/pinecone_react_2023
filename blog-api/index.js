@@ -54,6 +54,7 @@ app.get("/categories/:id", (req, res) => {
 
 app.post("/categories", (req, res) => {
   const { name } = req.body;
+
   const newCategory = { id: uuid(), name: name };
 
   const categories = readCategories();
