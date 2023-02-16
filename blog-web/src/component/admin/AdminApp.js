@@ -25,6 +25,13 @@ function Login() {
           localStorage.setItem("loginToken", token);
           window.location.reload();
         }
+      })
+      .catch(({ response, code }) => {
+        if (response.status === 401) {
+          alert(`Нууц үг эсвэл нэр буруу байна`);
+        } else {
+          alert(code);
+        }
       });
   }
 
@@ -76,6 +83,11 @@ export function AdminApp() {
 function AdminNavbar() {
   const displayName = useContext(UserContext);
 
+  function logout() {
+    localStorage.removeItem("loginToken");
+    window.location.reload();
+  }
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -96,6 +108,7 @@ function AdminNavbar() {
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
+        <button onClick={logout}>garah</button>
       </Container>
     </Navbar>
   );

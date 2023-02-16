@@ -22,32 +22,37 @@ export function ClientApp() {
 
 function BlogList() {
   const [articles, setArticles] = useState();
+  const [categories, setCategories] = useState();
+  // const { id } = useParams();
 
   useEffect(() => {
-    axios.get("http://localhost:8000/articles").then((res, req) => {
-      const [data, status] = res;
-
+    axios.get(`http://localhost:8000/articles`).then((res) => {
+      const { data, status } = res;
       if (status === 200) {
         setArticles(data);
       } else {
-        alert(`aldaa garlaa: ${status}`);
+        alert(`Aldaa garlaa: ${status}`);
       }
     });
   }, []);
 
+  if (!articles) {
+    return (
+      <div>
+        <h1>Articles</h1>
+      </div>
+    );
+  }
+
   return (
     <div className="container" style={{ maxWidth: 700 }}>
-      {articles.map((article) => {
-        <>
-          <span className="badge rounded-pill text-bg-primary">
-            {article.category?.name}
-          </span>
-
-          <h1 className="mb-4">{article.title}</h1>
-
-          {/* <div className="content">{parse(singleArticle.text)}</div> */}
-        </>;
-      })}
+      {articles.map((article) => (
+        <div key={article.id}>
+          <h3 className="mb-4">{article.title}</h3>
+          <img></img>
+          <button>see more</button>
+        </div>
+      ))}
     </div>
   );
 }

@@ -2,10 +2,14 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const { v4: uuid } = require("uuid");
+const bcrypt = require("bcryptjs");
+
+// const hash = bcrypt.hashSync("nyambaa");
+// console.log(hash);
 
 const user = {
   username: "Nyambaa",
-  password: "nyambaa",
+  password: "$2a$10$WhE2K2zxsUuKktV0NqxscuHieUEmbcSxfamf6wimVHoPx1NO2JjaG",
 };
 
 // let userTokens = [];
@@ -31,7 +35,10 @@ function readArticles() {
 app.get("/login", (req, res) => {
   const { username, password } = req.query;
 
-  if (user.username === username && user.password === password) {
+  if (
+    user.username === username &&
+    bcrypt.compareSync(password, user.password)
+  ) {
     const token = uuid();
     // userTokens.push(token);
     const content = fs.readFileSync("webToken.json");
