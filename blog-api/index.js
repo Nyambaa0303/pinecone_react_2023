@@ -17,6 +17,14 @@ function readData() {
   return data;
 }
 
+// shop users read
+
+function readUsersData() {
+  const content = fs.readFileSync("shopUsersData.json");
+  const data = JSON.parse(content);
+  return data;
+}
+
 // delguuriin angilal unshuulj baigaaa heseg
 
 function readCategories() {
@@ -184,6 +192,24 @@ app.put("/:id", (req, res) => {
   }
 });
 
+// users data
+
+app.post("/signup", (req, res) => {
+  const info = readUsersData();
+
+  const { email, newpassword, repeatpass, username } = req.body;
+  const users = {
+    email: email,
+    newpassword: newpassword,
+    repeatpass: repeatpass,
+    username: username,
+  };
+
+  info.unshift(users);
+  fs.writeFileSync("shopUsersData.json", JSON.stringify(info));
+
+  res.json(info);
+});
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

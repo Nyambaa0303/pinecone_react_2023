@@ -12,6 +12,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import axios from "axios";
+import { useState } from "react";
 
 function Copyright(props) {
   return (
@@ -34,13 +36,47 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
+  const [username1, setUsername] = useState("");
+  const [email1, setEmail] = useState("");
+  const [newpassword1, setNewpassword] = useState("");
+  const [repeatpass1, setRepeatpass] = useState("");
+
   const handleSubmit = (event) => {
-    event.preventDefault();
+    console.log(event.currentTarget);
+    //  fdsadfas
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    const email = data.get("email");
+    const newpassword = data.get("newpassword");
+    const repeatpass = data.get("repeatpass");
+    const username = data.get("username");
+    setUsername(data.get("username"));
+    setEmail(data.get("email"));
+    setNewpassword(data.get("newpassword"));
+    setRepeatpass(data.get("repeatpass"));
+    if (!email || !newpassword || !username) {
+      alert("Buren buglunu uu!");
+    } else if (newpassword !== repeatpass) {
+      alert("Password zuruutei bnshde");
+    } else {
+      axios
+        .post("http://localhost:4000/signup", {
+          email: email,
+          newpassword: newpassword,
+          repeatpass: repeatpass,
+          username: username,
+        })
+        .then((res) => {
+          const { data, status } = res;
+
+          if (status === 200) {
+            console.log(data);
+            setUsername("");
+            setEmail("");
+            setNewpassword("");
+            setRepeatpass("");
+          }
+        });
+    }
   };
 
   return (
@@ -71,10 +107,10 @@ export default function SignUp() {
               <Grid item xs={12}>
                 <TextField
                   autoComplete="given-name"
-                  name="firstName"
+                  name="username"
                   required
                   fullWidth
-                  id="firstName"
+                  id="username"
                   label="Хэрэглэгчийн нэр"
                   autoFocus
                 />
@@ -94,10 +130,10 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  name="password"
+                  name="newpassword"
                   label="Шинэ нууц үг?"
                   type="password"
-                  id="password"
+                  id="newpassword"
                   autoComplete="new-password"
                 />
               </Grid>
@@ -105,11 +141,11 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  name="password"
+                  name="repeatpass"
                   label="Нууц үгээ давтан уу?"
                   type="password"
-                  id="password"
-                  autoComplete="new-password"
+                  id="repeatpass"
+                  autoComplete="repeatpass"
                 />
               </Grid>
             </Grid>

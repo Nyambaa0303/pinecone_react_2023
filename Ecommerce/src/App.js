@@ -19,8 +19,8 @@ import { useState } from "react";
 import Header from "./clientApp/components/Header/Header";
 import Footer from "./clientApp/components/footer/Footer";
 import Categories from "./admin/Pages/categories/Categories";
-import SignIn from "./clientApp/pages/users/LogIn/SignIn/SignIn";
-import SignUp from "./clientApp/pages/users/LogIn/SignUp/SignUp";
+import SignIn from "./clientApp/pages/users/SignIn/SignIn";
+import SignUp from "./clientApp/pages/users/SignUp/SignUp";
 // import { createContext } from "react";
 
 function App() {
