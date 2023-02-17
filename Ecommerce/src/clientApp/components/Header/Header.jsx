@@ -75,20 +75,20 @@ export default function Header({ query, setQuery }) {
                 </div>
                 <div>
                   <Link className="d-flex align-items-center gap-10 text-white">
-                    <PermIdentityIcon className="header-upper-icon" />
-                    <p className="m-0">
-                      LogIn
-                      <br /> MyAccount
-                    </p>
-                  </Link>
-                </div>
-                <div>
-                  <Link className="d-flex align-items-center gap-10 text-white">
                     <AiOutlineShoppingCart className="header-upper-icon" />
                     <div className="d-flex flex-column gap-10">
                       <span className="badge bg-white text-dark">0</span>
                       <p className="m-0">$ 500</p>
                     </div>
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    to="/signin"
+                    className="d-flex flex-column align-items-center text-white"
+                  >
+                    <PermIdentityIcon className="header-upper-icon" />
+                    <p className="m-0">Нэвтрэх</p>
                   </Link>
                 </div>
               </div>

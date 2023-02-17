@@ -19,6 +19,8 @@ import { useState } from "react";
 import Header from "./clientApp/components/Header/Header";
 import Footer from "./clientApp/components/footer/Footer";
 import Categories from "./admin/Pages/categories/Categories";
+import SignIn from "./clientApp/pages/users/LogIn/SignIn/SignIn";
+import SignUp from "./clientApp/pages/users/LogIn/SignUp/SignUp";
 // import { createContext } from "react";
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
       <Routes>
         <Route path="/admin/*" element={<AdminApp />} />
         <Route path="*" element={<ClientApp />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   );
@@ -76,6 +80,7 @@ function ClientApp() {
         <Route>
           <Route path="/" element={<HomePage query={searchedQuery} />} />
           <Route path="/about" element={<About />} />
+          {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/contact" element={<Contact />} />
           <Route path="/store" element={<OurStore query={searchedQuery} />} />
         </Route>
