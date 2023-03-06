@@ -3,6 +3,8 @@ const cors = require("cors");
 const fs = require("fs");
 const { v4: uuid } = require("uuid");
 const bcrypt = require("bcryptjs");
+// const { connection } = require("./config/mysql");
+const { categoryRouter } = require("./routes/categoryController");
 
 // const hash = bcrypt.hashSync("nyambaa");
 // console.log(hash);
@@ -19,12 +21,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
-function readCategories() {
-  const content = fs.readFileSync("categories.json");
-  const categories = JSON.parse(content);
-  return categories;
-}
+app.use("/categories", categoryRouter);
 
 function readArticles() {
   const content = fs.readFileSync("articles.json");

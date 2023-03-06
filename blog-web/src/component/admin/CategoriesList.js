@@ -32,8 +32,10 @@ function ListItem({ category, onChange, searchedQuery }) {
         .delete(`http://localhost:8000/categories/${category.id}`)
         .then((res) => {
           const { status } = res;
-          if (status === 200) {
-            onChange();
+          if (res) {
+            // onChange();
+            window.location.reload();
+            console.log("Deleted");
           }
         });
     }

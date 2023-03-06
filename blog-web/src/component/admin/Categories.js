@@ -56,7 +56,9 @@ function Categories() {
         show={editing}
         editingId={editing}
         onClose={closeModal}
-        // onComplete={loadCategories}
+        onComplete={() => {
+          window.location = "/admin/categories";
+        }}
       />
     </div>
   );
