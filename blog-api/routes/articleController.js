@@ -4,13 +4,14 @@ const { connection } = require("../config/mysql");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  const { q } = req.query;
-  z;
   connection.query(
-    `SELECT * FROM category where name like ? order by name `,
-    [`%${q}%`],
+    `SELECT article.id, title, category.name as categoryName FROM article left join category on article.category_id = category.id`,
     function (err, results, fields) {
-      res.json(results);
+      console.log({ err });
+      res.json({
+        list: results,
+        count: 10,
+      });
     }
   );
 });
@@ -18,7 +19,7 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   const { id } = req.params;
   connection.query(
-    `select * from category where id=?`,
+    `SELECT * FROM article where id=?`,
     [id],
     function (err, results, fields) {
       res.json(results[0]);
@@ -26,27 +27,27 @@ router.get("/:id", (req, res) => {
   );
 });
 
-//  zasah uildel.........
-
 router.post("/", (req, res) => {
-  const { name } = req.body;
-  const newCategory = {
+  const { title, content, categoryId } = req.body;
+  const newArticle = {
     id: uuid(),
-    name: name,
+    title,
+    content,
+    category_id: categoryId,
   };
   connection.query(
-    `insert into category set ? `,
-    newCategory,
+    `insert into article set ?`,
+    newArticle,
     function (err, results, fields) {
       res.sendStatus(201);
     }
   );
 });
 
-router.delete(`/:id`, (req, res) => {
+router.delete("/:id", (req, res) => {
   const { id } = req.params;
   connection.query(
-    `delete from category where id=?`,
+    `delete from article where id=?`,
     [id],
     function (err, results, fields) {
       res.json({ deletedId: id });
@@ -56,10 +57,10 @@ router.delete(`/:id`, (req, res) => {
 
 router.put("/:id", (req, res) => {
   const { id } = req.params;
-  const { name } = req.body;
+  const { title, content, categoryId } = req.body;
   connection.query(
-    `update category set name=? where id=?`,
-    [name, id],
+    `update article set ? where id=?`,
+    [{ title, content, category_id: categoryId }, id],
     function (err, results, fields) {
       res.json({ updatedId: id });
     }
@@ -67,5 +68,5 @@ router.put("/:id", (req, res) => {
 });
 
 module.exports = {
-  categoryRouter: router,
+  articleRouter: router,
 };

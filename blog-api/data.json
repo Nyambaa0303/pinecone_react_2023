@@ -1,1 +1,20 @@
-[{"id":"71b46d70-a15e-41ed-8f23-efdea10a2acb","name":"TCL 50C635 50 инч UHD QLED SMART TV Ухаалаг зурагт","img":"https://images.unsplash.com/photo-1676234722308-ee7e21b9d3a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60","stock":"23","status":"Yes","price":"1,699,900 ₮","categoryId":"1e0db03a-314f-468a-a2f0-bb9b5497fa2a"},{"id":"03138e47-c2a0-4dc6-a609-f79900c5fccb","name":"Burbery W CARDCASE","img":"https://cdnp.cody.mn/spree/images/1645105/zoom/open-uri20230203-2901033-13q22df.","stock":"34","status":"No","price":"810000 $","categoryId":"91f825a8-41e5-475f-a761-eba09afd216f"}]
+[
+  {
+    "id": "71b46d70-a15e-41ed-8f23-efdea10a2acb",
+    "name": "TCL 50C635 50 инч UHD QLED SMART TV Ухаалаг зурагт",
+    "img": "https://images.unsplash.com/photo-1676234722308-ee7e21b9d3a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+    "stock": "23",
+    "status": "Yes",
+    "price": "1,699,900 ₮",
+    "categoryId": "1e0db03a-314f-468a-a2f0-bb9b5497fa2a"
+  },
+  {
+    "id": "03138e47-c2a0-4dc6-a609-f79900c5fccb",
+    "name": "Burbery W CARDCASE",
+    "img": "https://cdnp.cody.mn/spree/images/1645105/zoom/open-uri20230203-2901033-13q22df.",
+    "stock": "34",
+    "status": "No",
+    "price": "810000 $",
+    "categoryId": "91f825a8-41e5-475f-a761-eba09afd216f"
+  }
+]

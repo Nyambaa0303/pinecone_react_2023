@@ -27,3 +27,11 @@ select
     category.name as category_name
 from article
     left join category on article.category_id = category.id;
+
+select first_name from employees where emp_no = (
+    select emp_no from salaries where salary = (
+        select max(salary) from salaries
+    )
+);
+
+select dept_name from departments union select title from titles;

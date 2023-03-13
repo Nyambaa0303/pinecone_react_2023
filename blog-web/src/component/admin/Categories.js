@@ -16,7 +16,7 @@ function Categories() {
   const [searchParams, setSearchParams] = useSearchParams({});
   const [query, setQuery] = useState("");
   const [searchedQuery] = useDebounce(query, 1000);
-  const categories = useCategories();
+  const categories = useCategories(searchedQuery);
 
   // useEffect(() => {
   //   loadCategories(searchedQuery);
@@ -43,15 +43,9 @@ function Categories() {
           Шинэ
         </button>
       </div>
-
       <input value={query} onChange={(e) => setQuery(e.target.value)} />
       {/* <button onClick={() => loadCategories(query)}>Хайх</button> */}
-
-      <CategoriesList
-        searchedQuery={searchedQuery}
-        list={categories}
-        // onChange={loadCategories}
-      />
+      <CategoriesList searchedQuery={searchedQuery} list={categories} />
       <CategoriesEdit
         show={editing}
         editingId={editing}

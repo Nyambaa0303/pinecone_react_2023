@@ -7,6 +7,9 @@ import Spinner from "react-bootstrap/Spinner";
 export function CategoriesEdit({ show, onClose, onComplete, editingId }) {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
+  const [date, setDate] = useState("");
+
+  // const a = useRef(0);
 
   useEffect(() => {
     if (editingId) {
@@ -30,6 +33,7 @@ export function CategoriesEdit({ show, onClose, onComplete, editingId }) {
           name: name,
         })
         .then((res) => {
+          console.log(res);
           const { status } = res;
           if (status === 201) {
             onComplete();
@@ -55,9 +59,8 @@ export function CategoriesEdit({ show, onClose, onComplete, editingId }) {
     }
   }
 
-  // react DOM buyu useref
-
   const inputEl = useRef();
+  const divEl = useRef();
 
   useEffect(() => {
     if (show) {
@@ -68,17 +71,20 @@ export function CategoriesEdit({ show, onClose, onComplete, editingId }) {
   return (
     <>
       <Modal show={show} onHide={onClose}>
+        {date}
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading {editingId}</Modal.Title>
+          <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <input
-            ref={inputEl}
-            disabled={loading}
-            className="form-control"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+          <div ref={divEl}>
+            <input
+              ref={inputEl}
+              disabled={loading}
+              className="form-control"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button disabled={loading} variant="secondary" onClick={onClose}>

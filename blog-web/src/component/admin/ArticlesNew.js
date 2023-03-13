@@ -1,30 +1,14 @@
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import axios from "axios";
+import { useArticleMutations } from "./articleMutations";
 import { useState } from "react";
 import { CategoriesSelector } from "./CategoriesSelector";
 
 export function ArticlesNew() {
-  const [text, setText] = useState();
+  const [content, setContent] = useState();
   const [title, setTitle] = useState("");
   const [categoryId, setCategoryId] = useState("");
-
-  function submit() {
-    // console.log({ text, categoryId });
-
-    axios
-      .post("http://localhost:8000/articles", {
-        title, // title: title,
-        categoryId, //  categoryId: categoryId,
-        text, // text: text,
-      })
-      .then((res) => {
-        const { status } = res;
-        if (status === 201) {
-          alert("Success");
-        }
-      });
-  }
+  const { createArticle } = useArticleMutations();
 
   return (
     <>
@@ -44,18 +28,17 @@ export function ArticlesNew() {
 
       <CKEditor
         editor={ClassicEditor}
-        data={text}
+        data={content}
         onChange={(event, editor) => {
           const data = editor.getData();
-          setText(data);
+          setContent(data);
           // console.log({ event, editor, data });
         }}
       />
 
-      <button onClick={submit}>Хадгалах</button>
-
-      {/* <div>{text}</div>
-            <div dangerouslySetInnerHTML={{ __html: text }}></div> */}
+      <button onClick={() => createArticle({ title, categoryId, content })}>
+        Хадгалах
+      </button>
     </>
   );
 }

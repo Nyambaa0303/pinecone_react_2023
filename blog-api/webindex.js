@@ -1,18 +1,19 @@
 const express = require("express");
 const cors = require("cors");
-const fs = require("fs");
-const { v4: uuid } = require("uuid");
-const bcrypt = require("bcryptjs");
+// const fs = require("fs");
+// const { v4: uuid } = require("uuid");
+// const bcrypt = require("bcryptjs");
 // const { connection } = require("./config/mysql");
 const { categoryRouter } = require("./routes/categoryController");
+const { articleRouter } = require("./routes/articleController");
 
 // const hash = bcrypt.hashSync("nyambaa");
 // console.log(hash);
 
-const user = {
-  username: "Nyambaa",
-  password: "$2a$10$WhE2K2zxsUuKktV0NqxscuHieUEmbcSxfamf6wimVHoPx1NO2JjaG",
-};
+// const user = {
+//   username: "Nyambaa",
+//   password: "$2a$10$WhE2K2zxsUuKktV0NqxscuHieUEmbcSxfamf6wimVHoPx1NO2JjaG",
+// };
 
 // let userTokens = [];
 
@@ -21,147 +22,29 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
 app.use("/categories", categoryRouter);
-
-function readArticles() {
-  const content = fs.readFileSync("articles.json");
-  const articles = JSON.parse(content);
-  return articles;
-}
-
-app.get("/login", (req, res) => {
-  const { username, password } = req.query;
-
-  if (
-    user.username === username &&
-    bcrypt.compareSync(password, user.password)
-  ) {
-    const token = uuid();
-    // userTokens.push(token);
-    const content = fs.readFileSync("webToken.json");
-    const userTokens = JSON.parse(content);
-    userTokens.push({ token });
-    fs.writeFileSync("webToken.json", JSON.stringify(userTokens));
-    res.json({ token });
-  } else {
-    res.sendStatus(401);
-  }
-});
-
-app.get("/categories", (req, res) => {
-  const { q, token } = req.query;
-  // console.log(token);
-  // console.log(userTokens);
-  const content = fs.readFileSync("webToken.json");
-  const userTokens = JSON.parse(content);
-  if (!userTokens.filter((e) => e.token === token).length > 0) {
-    res.sendStatus(401);
-    return;
-  }
-
-  const categories = readCategories();
-  if (q) {
-    const filteredList = categories.filter((category) =>
-      category.name.toLowerCase().includes(q.toLowerCase())
-    );
-    res.json(filteredList);
-  } else {
-    res.json(categories);
-  }
-});
-
-app.get("/categories/:id", (req, res) => {
-  const { id } = req.params;
-  const categories = readCategories();
-  const one = categories.find((category) => category.id === id);
-  if (one) {
-    res.json(one);
-  } else {
-    res.sendStatus(404);
-  }
-});
-
-app.post("/categories", (req, res) => {
-  const { name } = req.body;
-  const newCategory = { id: uuid(), name: name };
-
-  const categories = readCategories();
-
-  categories.unshift(newCategory);
-  fs.writeFileSync("categories.json", JSON.stringify(categories));
-
-  res.sendStatus(201);
-});
-
-app.delete("/categories/:id", (req, res) => {
-  const { id } = req.params;
-  const categories = readCategories();
-  const one = categories.find((category) => category.id === id);
-  if (one) {
-    const newList = categories.filter((category) => category.id !== id);
-    fs.writeFileSync("categories.json", JSON.stringify(newList));
-    res.json({ deletedId: id });
-  } else {
-    res.sendStatus(404);
-  }
-});
-
-app.put("/categories/:id", (req, res) => {
-  const { id } = req.params;
-  const { name } = req.body;
-  const categories = readCategories();
-  const index = categories.findIndex((category) => category.id === id);
-  if (index > -1) {
-    categories[index].name = name;
-    fs.writeFileSync("categories.json", JSON.stringify(categories));
-    res.json({ updatedId: id });
-  } else {
-    res.sendStatus(404);
-  }
-});
-
-// buh medeeg unshij duudah heseg
-
-app.get("/articles", (req, res) => {
-  const articles = readArticles();
-
-  console.log(articles);
-  res.json(articles);
-});
-
-app.post("/articles", (req, res) => {
-  const { title, categoryId, text } = req.body;
-  const newArticle = { id: uuid(), title, categoryId, text };
-
-  const articles = readArticles();
-
-  articles.unshift(newArticle);
-  fs.writeFileSync("articles.json", JSON.stringify(articles));
-
-  res.sendStatus(201);
-});
-
-app.get("/articles/:id", (req, res) => {
-  const { id } = req.params;
-  const articles = readArticles();
-  const one = articles.find((item) => item.id === id);
-
-  const categories = readCategories();
-  const category = categories.find(
-    (category) => category.id === one.categoryId
-  );
-
-  // console.log({ category });
-
-  one.category = category;
-
-  if (one) {
-    res.json(one);
-  } else {
-    res.sendStatus(404);
-  }
-});
+app.use("/articles", articleRouter);
 
 app.listen(port, () => {
   console.log("App is listering at port", port);
 });
+
+// app.get("/login", (req, res) => {
+//   const { username, password } = req.query;
+
+//   if (
+//     user.username === username &&
+//     bcrypt.compareSync(password, user.password)
+//   ) {
+//     const token = uuid();
+//     // userTokens.push(token);
+//     const content = fs.readFileSync("webToken.json");
+//     const userTokens = JSON.parse(content);
+//     userTokens.push({ token });
+//     fs.writeFileSync("webToken.json", JSON.stringify(userTokens));
+//     res.json({ token });
+//   } else {
+//     res.sendStatus(401);
+//   }
+// });
