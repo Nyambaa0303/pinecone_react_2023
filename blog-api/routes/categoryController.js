@@ -38,20 +38,22 @@ router.get("/:id", (req, res) => {
 
 router.post("/", async (req, res) => {
   const { name } = req.body;
-  //
-
-  const newCategory = {
-    id: uuid(),
+  await Category.create({
+    _id: uuid(),
     name: name,
-    // res.sendStatus(201);
-  };
-  connection.query(
-    `insert into category values (?,?)`,
-    [newCategory.id, newCategory.name],
-    function (err, results, fields) {
-      res.sendStatus(201);
-    }
-  );
+  });
+  // const newCategory = {
+  //   id: uuid(),
+  //   name: name,
+  // };
+  res.sendStatus(201);
+  // connection.query(
+  //   `insert into category values (?,?)`,
+  //   [newCategory.id, newCategory.name],
+  //   function (err, results, fields) {
+  //     res.sendStatus(201);
+  //   }
+  // );
 });
 
 router.delete(`/:id`, (req, res) => {
