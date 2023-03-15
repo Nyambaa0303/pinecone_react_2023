@@ -12,7 +12,7 @@ export function ClientApp() {
         <Routes>
           <Route path="/" element={<div>Home page</div>} />
           <Route path="/articles" element={<BlogList />} />
-          {/* <Route path="/blog/:id" element={<SingleBlog />} /> */}
+          <Route path="/blog/:id" element={<SingleBlog />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
@@ -57,22 +57,39 @@ function BlogList() {
   );
 }
 
-// function SingleBlog() {
-//   const { id } = useParams();
-//   const [article, setArticle] = useState();
-//   // const [category, setCategory] = useState();
+function SingleBlog() {
+  const { id } = useParams();
+  const [article, setArticle] = useState();
+  // const [category, setCategory] = useState();
 
-//   useEffect(() => {
-//     axios.get(`http://localhost:8000/articles/${id}`).then((res) => {
-//       const { data, status } = res;
-//       if (status === 200) {
-//         console.log(data);
-//         setArticle(data);
-//       } else {
-//         alert(`Aldaa garlaa: ${status}`);
-//       }
-//     });
-//   }, []);
+  useEffect(() => {
+    axios.get(`http://localhost:8000/articles/${id}`).then((res) => {
+      const { data, status } = res;
+      if (status === 200) {
+        console.log(data);
+        setArticle(data);
+      } else {
+        alert(`Aldaa garlaa: ${status}`);
+      }
+    });
+  }, []);
+
+  if (!article) return <div>Loading...</div>;
+
+  return (
+    <div className="container" style={{ maxWidth: 700 }}>
+      {/* {category && <span>{category.name}</span>} */}
+
+      <span className="badge rounded-pill text-bg-primary">
+        {article.category?.name}
+      </span>
+
+      <h1 className="mb-4">{article.title}</h1>
+
+      <div className="content">{parse(article.text)}</div>
+    </div>
+  );
+}
 
 //   // useEffect(() => {
 //   //     if (article) {
