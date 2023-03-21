@@ -36,6 +36,16 @@ export function ArticlesNew() {
         }}
       />
 
+      <form
+        action="http://localhost:8000/upload-image"
+        method="post"
+        enctype="multipart/form-data"
+        style={{ margin: "2em" }}
+      >
+        <input type="file" name="image" />
+        <button type="submit">Submit</button>
+      </form>
+
       <button onClick={() => createArticle({ title, categoryId, content })}>
         Хадгалах
       </button>
