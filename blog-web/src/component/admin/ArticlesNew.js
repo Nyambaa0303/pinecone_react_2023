@@ -9,6 +9,27 @@ export function ArticlesNew() {
   const [title, setTitle] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const { createArticle } = useArticleMutations();
+  const [image, setImage] = useState(null);
+  const [uploading, setUploading] = useState(false);
+
+  async function handleFileUpload(event) {
+    setUploading(true);
+
+    const imageFile = event.target.files[0];
+
+    const formData = new FormData();
+    formData.append("image", imageFile);
+
+    await fetch("http://localhost:8000/upload-image", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setImage(data);
+        setUploading(false);
+      });
+  }
 
   return (
     <>
@@ -36,17 +57,16 @@ export function ArticlesNew() {
         }}
       />
 
-      <form
-        action="http://localhost:8000/upload-image"
-        method="post"
-        enctype="multipart/form-data"
-        style={{ margin: "2em" }}
-      >
-        <input type="file" name="image" />
-        <button type="submit">Submit</button>
-      </form>
+      <div>
+        <input type="file" name="image" onChange={handleFileUpload} />
+        {uploading && <div class="spinner-border" role="status"></div>}
 
-      <button onClick={() => createArticle({ title, categoryId, content })}>
+        {image && <img src={image.path} width="100" alt="" />}
+      </div>
+
+      <button
+        onClick={() => createArticle({ title, categoryId, content, image })}
+      >
         Хадгалах
       </button>
     </>

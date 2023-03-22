@@ -36,6 +36,7 @@ export function Articles() {
       <table className="table table-bordered table-striped">
         <thead>
           <tr>
+            <th>Зураг</th>
             <th>Гарчиг</th>
             <th>Ангилал</th>
           </tr>
@@ -43,8 +44,15 @@ export function Articles() {
         <tbody>
           {list.map((article) => (
             <tr key={article.id}>
+              <td>
+                {article.image ? (
+                  <img src={article.image.path} width="100" alt="" />
+                ) : (
+                  <div></div>
+                )}
+              </td>
               <td>{article.title}</td>
-              <td>{article.categoryName}</td>
+              <td>{article.categoryId?.Name}</td>
             </tr>
           ))}
         </tbody>

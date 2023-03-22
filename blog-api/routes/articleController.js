@@ -1,70 +1,65 @@
 const express = require("express");
 const { v4: uuid } = require("uuid");
-const { connection } = require("../config/mysql");
 const router = express.Router();
+const mongoose = require("mongoose");
 
-router.get("/", (req, res) => {
-  connection.query(
-    `SELECT article.id, title, category.name as categoryName FROM article left join category on article.category_id = category.id`,
-    function (err, results, fields) {
-      console.log({ err });
-      res.json({
-        list: results,
-        count: 10,
-      });
-    }
-  );
+const articleSchema = new mongoose.Schema({
+  _id: { type: String, default: () => uuid() },
+  title: String,
+  content: String,
+  categoryId: { type: String, ref: "Category" },
+  image: {
+    path: String,
+    width: Number,
+    height: Number,
+  },
 });
 
-router.get("/:id", (req, res) => {
+const Article = mongoose.model("Article", articleSchema);
+
+router.get("/", async (req, res) => {
+  const list = await Article.find({}).populate("categoryId");
+
+  res.json({
+    list: list,
+    count: 10,
+  });
+});
+
+router.get("/:id", async (req, res) => {
   const { id } = req.params;
-  connection.query(
-    `SELECT * FROM article where id=?`,
-    [id],
-    function (err, results, fields) {
-      res.json(results[0]);
-    }
-  );
+
+  const one = await Article.findById(id);
+  res.json(one);
 });
 
-router.post("/", (req, res) => {
-  const { title, content, categoryId } = req.body;
-  const newArticle = {
+router.post("/", async (req, res) => {
+  const { title, content, categoryId, image } = req.body;
+
+  await Article.create({
     id: uuid(),
     title,
     content,
-    category_id: categoryId,
-  };
-  connection.query(
-    `insert into article set ?`,
-    newArticle,
-    function (err, results, fields) {
-      res.sendStatus(201);
-    }
-  );
+    categoryId,
+  });
+
+  res.sendStatus(201);
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", async (req, res) => {
   const { id } = req.params;
-  connection.query(
-    `delete from article where id=?`,
-    [id],
-    function (err, results, fields) {
-      res.json({ deletedId: id });
-    }
-  );
+
+  await Article.deleteOne({ _id: id });
+  res.json({ deletedId: id });
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", async (req, res) => {
   const { id } = req.params;
   const { title, content, categoryId } = req.body;
-  connection.query(
-    `update article set ? where id=?`,
-    [{ title, content, category_id: categoryId }, id],
-    function (err, results, fields) {
-      res.json({ updatedId: id });
-    }
-  );
+
+  await Article.updateOne({ _id: id }, { title, content, categoryId });
+
+  res.json({ updatedId: id });
 });
 
 module.exports = {
