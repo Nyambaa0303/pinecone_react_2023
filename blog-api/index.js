@@ -7,7 +7,8 @@ const bcrypt = require("bcryptjs");
 const { categoryRouter } = require("./routes/categoryController");
 const { articleRouter } = require("./routes/articleController");
 const multer = require("multer");
-const cloudinary = require("cloudinary").v2;
+const cloudinary = require("cloudinary");
+const { userRouter } = require("./routes/userController");
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -29,13 +30,6 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage: storage,
 });
-
-const user = {
-  username: "Nyambaa",
-  password: "$2a$10$WhE2K2zxsUuKktV0NqxscuHieUEmbcSxfamf6wimVHoPx1NO2JjaG",
-};
-
-// let userTokens = [];
 
 mongoose
   .connect(process.env.MONGODB_STRING)
@@ -66,29 +60,8 @@ app.post(
 
 app.use("/categories", categoryRouter);
 app.use("/articles", articleRouter);
+app.use("/users", userRouter);
 
 app.listen(port, () => {
   console.log("App is listering at port", port);
-});
-
-// const hash = bcrypt.hashSync("nyambaa");
-// console.log(hash);
-
-app.get("/login", (req, res) => {
-  const { username, password } = req.query;
-
-  if (
-    user.username === username &&
-    bcrypt.compareSync(password, user.password)
-  ) {
-    const token = uuid();
-    // userTokens.push(token);
-    const content = fs.readFileSync("webToken.json");
-    const userTokens = JSON.parse(content);
-    userTokens.push({ token });
-    fs.writeFileSync("webToken.json", JSON.stringify(userTokens));
-    res.json({ token });
-  } else {
-    res.sendStatus(401);
-  }
 });

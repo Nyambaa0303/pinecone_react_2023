@@ -15,9 +15,10 @@ function Login() {
 
   function handleLogin() {
     axios
-      .get(
-        `http://localhost:8000/login?username=${username}&password=${password}`
-      )
+      .post(`http://localhost:8000/users/login`, {
+        username,
+        password,
+      })
       .then((res) => {
         const { data, status } = res;
         if (status === 200) {
@@ -26,13 +27,7 @@ function Login() {
           window.location.reload();
         }
       })
-      .catch(({ response, code }) => {
-        if (response.status === 401) {
-          alert(`Нууц үг эсвэл нэр буруу байна`);
-        } else {
-          alert(code);
-        }
-      });
+      .catch(({ response, code }) => {});
   }
 
   return (

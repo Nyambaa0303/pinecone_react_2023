@@ -48,11 +48,11 @@ export function Articles() {
                 {article.image ? (
                   <img src={article.image.path} width="100" alt="" />
                 ) : (
-                  <div></div>
+                  <div>sdfaw</div>
                 )}
               </td>
               <td>{article.title}</td>
-              <td>{article.categoryId?.Name}</td>
+              <td>{article.categoryId?.name}</td>
             </tr>
           ))}
         </tbody>

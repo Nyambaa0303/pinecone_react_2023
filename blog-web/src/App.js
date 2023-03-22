@@ -6,8 +6,13 @@ import "react-toastify/dist/ReactToastify.css";
 import { AdminApp } from "./component/admin/AdminApp";
 import { ClientApp } from "./component/client/ClientApp";
 import { createContext } from "react";
+import axios from "axios";
 
 export const UserContext = createContext("Guest");
+
+axios.defaults.headers.common["Authorization"] = `${localStorage.getItem(
+  "loginToken"
+)}`;
 
 function Greeting() {
   return (

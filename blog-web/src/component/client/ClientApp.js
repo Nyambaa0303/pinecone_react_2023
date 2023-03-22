@@ -2,6 +2,7 @@ import axios from "axios";
 import parse from "html-react-parser";
 import { useEffect, useState } from "react";
 import { Link, Route, Routes, useParams } from "react-router-dom";
+import { Register } from "../Register";
 
 export function ClientApp() {
   return (
@@ -13,6 +14,7 @@ export function ClientApp() {
           <Route path="/" element={<div>Home page</div>} />
           <Route path="/articles" element={<BlogList />} />
           <Route path="/blog/:id" element={<SingleBlog />} />
+          <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

@@ -40,6 +40,7 @@ router.post("/", async (req, res) => {
     id: uuid(),
     title,
     content,
+    image,
     categoryId,
   });
 
