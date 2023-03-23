@@ -9,7 +9,7 @@ const { articleRouter } = require("./routes/articleController");
 const multer = require("multer");
 const cloudinary = require("cloudinary");
 const { userRouter } = require("./routes/userController");
-const { checkAuth } = require("./middlewares/checkAuth");
+const { checkAuth } = require("./middleware/checkAuth");
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
