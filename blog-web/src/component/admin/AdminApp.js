@@ -27,7 +27,10 @@ function Login() {
           window.location.reload();
         }
       })
-      .catch(({ response, code }) => {});
+      .catch(({ response, code }) => {
+        const { data } = response;
+        alert(data.message);
+      });
   }
 
   return (
