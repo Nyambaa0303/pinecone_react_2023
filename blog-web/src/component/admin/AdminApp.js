@@ -29,7 +29,7 @@ function Login() {
       })
       .catch(({ response, code }) => {
         const { data } = response;
-        alert(data);
+        alert(data.message);
       });
   }
 

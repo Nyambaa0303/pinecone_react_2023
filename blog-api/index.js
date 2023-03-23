@@ -59,9 +59,9 @@ app.post(
   }
 );
 
-app.use("categories", checkAuth, categoryRouter);
-app.use("articles", checkAuth, articleRouter);
-app.use("users", userRouter);
+app.use("/categories", checkAuth, categoryRouter);
+app.use("/articles", checkAuth, articleRouter);
+app.use("/users", userRouter);
 
 app.listen(port, () => {
   console.log("App is listering at port", port);
