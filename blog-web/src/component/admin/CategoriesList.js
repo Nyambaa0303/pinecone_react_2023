@@ -29,7 +29,7 @@ function ListItem({ category, onChange, searchedQuery }) {
   function handleDelete() {
     if (window.confirm("Delete?")) {
       axios
-        .delete(`http://localhost:8000/categories/${category._id}`)
+        .delete(`${process.env.REACT_APP_API_URL}/categories/${category._id}`)
         .then((res) => {
           const { status } = res;
           if (res) {

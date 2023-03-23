@@ -3,7 +3,7 @@ import axios from "axios";
 export function useCreateArticle() {
   function createArticle({ title, categoryId, text }) {
     axios
-      .post("http://localhost:8000/articles", {
+      .post(`${process.env.REACT_APP_API_URL}/articles`, {
         title, // title: title,
         categoryId, //  categoryId: categoryId,
         text, // text: text,

@@ -12,22 +12,12 @@ const categorySchema = new mongoose.Schema({
 const Category = mongoose.model("Category", categorySchema);
 
 router.get("/", async (req, res) => {
-  const token = req.headers.authorization;
-
-  jwt.verify(token, "XZv01Mp1", async function (err, decoded) {
-    if (err) {
-      res.sendStatus(401);
-    } else {
-      var decoded = jwt.verify(token, "XZv01Mp1");
-      console.log(decoded);
-      const { q } = req.query;
-      const qregex = new RegExp(`${q}`, "i");
-      const list = await Category.find({ name: qregex }, "", {
-        sort: { name: 1 },
-      });
-      res.json(list);
-    }
+  const { q } = req.query;
+  const qregex = new RegExp(`${q}`, "i");
+  const list = await Category.find({ name: qregex }, "", {
+    sort: { name: 1 },
   });
+  res.json(list);
 });
 
 router.get("/:id", async (req, res) => {

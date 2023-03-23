@@ -7,7 +7,9 @@ export function useCategories(searchedQuery) {
   function loadCategories(query = "") {
     const token = localStorage.getItem("loginToken");
     axios
-      .get(`http://localhost:8000/categories?q=${query}&token=${token}`)
+      .get(
+        `${process.env.REACT_APP_API_URL}/categories?q=${query}&token=${token}`
+      )
       .then((res) => {
         const { data, status } = res;
         if (status === 200) {

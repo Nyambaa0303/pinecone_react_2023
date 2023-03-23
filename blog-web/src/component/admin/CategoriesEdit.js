@@ -13,14 +13,16 @@ export function CategoriesEdit({ show, onClose, onComplete, editingId }) {
 
   useEffect(() => {
     if (editingId) {
-      axios.get(`http://localhost:8000/categories/${editingId}`).then((res) => {
-        const { data, status } = res;
-        if (status === 200) {
-          setName(data.name);
-        } else {
-          alert(`Aldaa garlaa: ${status}`);
-        }
-      });
+      axios
+        .get(`${process.env.REACT_APP_API_URL}/categories/${editingId}`)
+        .then((res) => {
+          const { data, status } = res;
+          if (status === 200) {
+            setName(data.name);
+          } else {
+            alert(`Aldaa garlaa: ${status}`);
+          }
+        });
     }
   }, [editingId]);
 
@@ -29,7 +31,7 @@ export function CategoriesEdit({ show, onClose, onComplete, editingId }) {
 
     if (editingId === "new") {
       axios
-        .post("http://localhost:8000/categories", {
+        .post(`${process.env.REACT_APP_API_URL}/categories`, {
           name: name,
         })
         .then((res) => {
@@ -44,7 +46,7 @@ export function CategoriesEdit({ show, onClose, onComplete, editingId }) {
         });
     } else {
       axios
-        .put(`http://localhost:8000/categories/${editingId}`, {
+        .put(`${process.env.REACT_APP_API_URL}/categories/${editingId}`, {
           name: name,
         })
         .then((res) => {

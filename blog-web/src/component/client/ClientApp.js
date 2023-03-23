@@ -24,12 +24,13 @@ export function ClientApp() {
 
 function BlogList() {
   const [articles, setArticles] = useState();
-  const [categories, setCategories] = useState();
+  // const [categories, setCategories] = useState();
   // const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/articles`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/articles`).then((res) => {
       const { data, status } = res;
+
       if (status === 200) {
         setArticles(data);
       } else {
@@ -48,12 +49,17 @@ function BlogList() {
 
   return (
     <div className="container" style={{ maxWidth: 700 }}>
-      {articles.map((article) => (
-        <div key={article.id}>
-          <h3 className="mb-4">{article.title}</h3>
-          <img></img>
-          <button>see more</button>
-        </div>
+      {articles?.list.map((article) => (
+        <>
+          <div
+            key={article._id}
+            style={{ display: "flex", flexDirection: "column" }}
+          >
+            <h3 className="mb-4">{article.title}</h3>
+            <img src={article.image.path} style={{ width: 300 }} />
+          </div>
+          <button style={{ marginBottom: 50 }}>see more</button>
+        </>
       ))}
     </div>
   );
@@ -65,7 +71,7 @@ function SingleBlog() {
   // const [category, setCategory] = useState();
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/articles/${id}`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/articles/${id}`).then((res) => {
       const { data, status } = res;
       if (status === 200) {
         console.log(data);

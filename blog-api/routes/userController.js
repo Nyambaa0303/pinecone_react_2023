@@ -53,7 +53,7 @@ router.post("/login", async (req, res) => {
   if (one) {
     const auth = bcrypt.compareSync(password, one.password);
     if (auth) {
-      const token = jwt.sign({ userId: one._id }, "XZv01Mp1");
+      const token = jwt.sign({ userId: one._id }, process.env.JWT_SECRET);
       res.json({ token: token });
     } else {
       res.status(400).json({ message: "Буруу байна" });

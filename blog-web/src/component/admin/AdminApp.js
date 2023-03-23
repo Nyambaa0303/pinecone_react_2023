@@ -15,7 +15,7 @@ function Login() {
 
   function handleLogin() {
     axios
-      .post(`http://localhost:8000/users/login`, {
+      .post(`${process.env.REACT_APP_API_URL}/users/login`, {
         username,
         password,
       })
