@@ -5,7 +5,6 @@ export function useCategories(searchedQuery) {
   const [list, setList] = useState([]);
 
   function loadCategories(query = "") {
-    const token = localStorage.getItem("loginToken");
     axios
       .get(`${process.env.REACT_APP_API_URL}/categories?q=${query}`)
       .then((res) => {
