@@ -36,7 +36,6 @@ mongoose
   .connect(process.env.MONGODB_STRING)
   .then(() => console.log("Connected!"));
 
-const port = 8000;
 const app = express();
 
 app.use(cors());
@@ -63,6 +62,6 @@ app.use("/categories", checkAuth, categoryRouter);
 app.use("/articles", checkAuth, articleRouter);
 app.use("/users", userRouter);
 
-app.listen(port, () => {
-  console.log("App is listering at port", port);
+app.listen(process.env.port, () => {
+  console.log("App is listering at port", process.env.port);
 });
