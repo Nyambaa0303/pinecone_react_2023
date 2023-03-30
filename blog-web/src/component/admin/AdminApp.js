@@ -8,6 +8,7 @@ import { ArticlesNew } from "./ArticlesNew";
 import Categories from "./Categories";
 import axios from "axios";
 import { UserContext } from "../../App";
+import SimpleMap from "./Places";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -69,7 +70,7 @@ export function AdminApp() {
         <Routes>
           <Route path="/" element={<Navigate to="/admin/categories" />} />
           <Route path="/categories" element={<Categories />} />
-          {/* <Route path="/todos" element={<Todos />} /> */}
+          <Route path="/places" element={<SimpleMap />} />
           <Route path="/articles" element={<Articles />} />
           <Route path="/articles/new" element={<ArticlesNew />} />
         </Routes>
